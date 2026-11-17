@@ -151,7 +151,7 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 - **Sunk Paper** (`paper-sunk`): one step darker, used only behind inline code.
 - **Ink** (`ink`): body text, headings, button borders, the hover fill of buttons, and the 2px section rule.
 - **Graphite** (`ink-2`): secondary text such as lead paragraphs, summaries, job roles and mono metadata.
-- **Muted Graphite** (`ink-muted`): tertiary indices in section heads ("04 cases", "Full CV (PDF)").
+- **Muted Graphite** (`ink-muted`): tertiary indices and utility links in section heads ("04 cases", "Download CV", "GitHub ↗").
 - **Hairline** (`hairline`): every 1px divider, including the hero meta rule, grid cell borders, job rows, project tops and prose heading rules.
 
 ### Named Rules
@@ -172,9 +172,9 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 - **Headline** (700, clamp 32–56px, 1.0, −0.035em): case-study page titles, capped at 20ch.
 - **Figure** (700, 32px/36px, −0.025em): metric values ("0 → 884", "30 s") and the closing "Let's talk." line. Numbers are the loudest thing after the name.
 - **Title** (600, 20px/24px): the hero role line and the skills list.
-- **Lead** (400, 18px/28px): hero and case summaries in Graphite, max 60ch.
+- **Lead** (400, 18px/28px): hero and case summaries in Graphite, capped at `--measure-lead` (52ch, about 70 characters in Host Grotesk).
 - **Name** (600, 15px/20px): case and project titles inside tiles.
-- **Body** (400, 15px/24px): all running text. Prose is capped at 68ch and job notes at 70ch.
+- **Body** (400, 15px/24px): all running text. Prose and job notes are capped at `--measure-prose` (54ch, about 72 characters). Host Grotesk's "0" is wider than its average letter, so `ch` caps render about 1.35× more characters than their number: never set a measure by the 65–75 rule in raw `ch`. Paragraphs, list items and definitions use `text-wrap: pretty`; headings use `text-wrap: balance`.
 - **Label** (600, 13px/20px, 0.06em, uppercase): section titles and case-prose H2s only.
 - **Control** (500, 13px/16px): buttons and in-tile action cues.
 - **Mono** (400, 12px/16px): all metadata, in Graphite by default.
@@ -236,7 +236,7 @@ The person's datasheet, placed between the role line and the lead paragraph. It 
 Mono text in cobalt ("Open to work") preceded by an 8px solid cobalt square. It sits in the hero meta strip opposite the location, above a hairline.
 
 ### Experience Row
-A two-column ledger row: a mono period on the left, then the bold company with a mono country, the role in Graphite, and the note (max 70ch). Rows are divided by hairlines.
+A two-column ledger row: a mono period on the left, then the bold company with a mono country, the role in Graphite, and the note (capped at `--measure-prose`). Rows are divided by hairlines.
 
 ### Case Facts
 On case pages, a definition-list strip under a 2px rule. A mono "Result" label sits over the metric in Figure with its mono label, and a mono "Stack" label sits over the stack list. The columns are 1fr and 2fr, stacking below 640px.
@@ -253,7 +253,7 @@ A mono "← Name" link at the top of case pages with no underline, above a hairl
 - **Do** keep Blueprint Cobalt for action, state and focus only: one primary button per contact group, status, hover, focus and list markers.
 - **Do** use hairline-bordered auto-fit grids (`minmax(240px, 1fr)`) for collections, with borders split between container and cells so they never double.
 - **Do** keep motion to colour and background changes at 120ms ease-out, and disable it under `prefers-reduced-motion`.
-- **Do** cap measure: 60ch for leads, 68ch for case prose, 70ch for job notes.
+- **Do** cap measure: `--measure-lead` (52ch) for leads, `--measure-prose` (54ch) for case prose and job notes.
 
 ### Don't:
 - **Don't** round any corner. The radius is 0px everywhere.

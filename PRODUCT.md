@@ -17,7 +17,7 @@ Both readers have to succeed on the same page. The scan layer must not hide the 
 
 ## Product Purpose
 
-This is the personal portfolio of Maksym Matsydulskas, a Senior Front-End Engineer (TypeScript), based in Ukraine and working remotely (UTC+2). The goal is to get hired. A full-time remote senior or lead front-end role comes first, and contract work is also welcome. Success means a reader makes contact (email, LinkedIn or Telegram) to set up a conversation. Downloading the CV supports that but is not the end goal.
+This is the personal portfolio of Maksym Matsydulskas, a Senior Front-End Engineer (TypeScript), based in Ukraine and working remotely (UTC+2). The goal is to get hired. A full-time remote senior or lead front-end role comes first, and contract work is also welcome. Success is either of two outcomes, and both count. A recruiter downloads the CV to put into their hiring pipeline, which is why Download CV is the primary action on every contact group. Or a reader makes contact (LinkedIn replies fastest, then email or Telegram) to set up a conversation.
 
 ## Positioning
 

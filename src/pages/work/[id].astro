@@ -47,7 +47,7 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
         </div>
         <div>
           <dt class="mono">Stack</dt>
-          <dd>{stack.join(' · ')}</dd>
+          <dd class="mono">{stack.join(' · ')}</dd>
         </div>
       </dl>
     </header>
@@ -98,7 +98,7 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
 
   .case-summary {
     margin-top: 24px;
-    max-width: 60ch;
+    max-width: var(--measure-lead);
     font: var(--type-lead);
     color: var(--ink-2);
   }
@@ -122,7 +122,7 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
   }
 
   .prose {
-    max-width: 68ch;
+    max-width: var(--measure-prose);
     margin-top: 64px;
   }
 
