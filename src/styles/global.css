@@ -126,6 +126,7 @@ img {
 }
 
 .section-title {
+  scroll-margin-top: 32px;
   font: var(--type-label);
   text-transform: uppercase;
   letter-spacing: 0.06em;
