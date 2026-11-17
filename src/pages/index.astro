@@ -105,15 +105,24 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     <section class="section" aria-labelledby="skills-title">
       <div class="section-head">
         <h2 class="section-title" id="skills-title">Skills</h2>
+        {techGraph?.url && <a class="section-index" href={techGraph.url}>Full map in Tech graph ↗</a>}
       </div>
-      <p class="skills">{profile.coreStack.join(' · ')}</p>
-      {
-        techGraph?.url && (
-          <a class="button skills-map" href={techGraph.url}>
-            Full skills map → Tech graph
-          </a>
-        )
-      }
+      <dl class="skills">
+        {
+          profile.skills.map((skill) => (
+            <div class="skill">
+              <dt class="mono">{skill.group}</dt>
+              <dd>
+                <ul class="skill-items">
+                  {skill.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
     </section>
 
     <footer class="section footer">
@@ -254,13 +263,36 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     font: var(--type-name);
   }
 
-  .skills {
-    font: var(--type-title);
-    max-width: 50ch;
+  .skill {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
   }
 
-  .skills-map {
-    margin-top: 24px;
+  .skill dd {
+    overflow: clip;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -24px;
+    font: var(--type-title);
+  }
+
+  .skill-items li {
+    position: relative;
+    margin-left: 24px;
+  }
+
+  .skill-items li::before {
+    content: "·" / "";
+    position: absolute;
+    left: -15px;
+    color: var(--ink-muted);
   }
 
   .footer {
@@ -293,7 +325,8 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
       height: 96px;
     }
 
-    .job {
+    .job,
+    .skill {
       grid-template-columns: 1fr;
       gap: 4px;
     }

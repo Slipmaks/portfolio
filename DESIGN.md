@@ -238,6 +238,9 @@ Mono text in cobalt ("Open to work") preceded by an 8px solid cobalt square. It 
 ### Experience Row
 A two-column ledger row: a mono period on the left, then the bold company with a mono country, the role in Graphite, and the note (capped at `--measure-prose`). Rows are divided by hairlines.
 
+### Skills Ledger
+Grouped skills in the same two-column structure as the Experience rows: a mono group label in a 160px column, then the items in Title type. Rows are 12px apart, divided by hairlines and baseline-aligned. Items are a real list separated by muted `·` marks drawn in CSS. The marks sit in the 24px gap, and the parent clips them, so a wrapped line never starts or ends with a separator. The marks are hidden from screen readers. The link to the full Tech graph map is the section-head utility link, not a button. The data lives in `profile.skills`.
+
 ### Case Facts
 On case pages, a definition-list strip under a 2px rule. A mono "Result" label sits over the metric in Figure with its mono label, and a mono "Stack" label sits over the stack list. The columns are 1fr and 2fr, stacking below 640px.
 

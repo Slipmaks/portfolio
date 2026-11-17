@@ -20,17 +20,10 @@ export const profile = {
   github: 'https://github.com/Slipmaks',
   telegram: 'https://t.me/m_maksym_n',
   cv: '/Maksym_Matsydulskas_Resume.pdf',
-  coreStack: [
-    'TypeScript',
-    'Vue 3',
-    'Nuxt',
-    'React',
-    'Pinia',
-    'Vite',
-    'Vitest',
-    'Playwright',
-    'Node.js (Hono)',
-    'PostgreSQL',
+  skills: [
+    { group: 'Front end', items: ['TypeScript', 'Vue 3', 'Nuxt', 'React', 'Pinia'] },
+    { group: 'Testing & build', items: ['Vitest', 'Playwright', 'Vite'] },
+    { group: 'Back end', items: ['Node.js (Hono)', 'PostgreSQL'] },
   ],
 };
 
