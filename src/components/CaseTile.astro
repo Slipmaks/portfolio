@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  entry: CollectionEntry<'cases'>;
+  position: number;
+};
+
+const { entry, position } = Astro.props;
+const { company, metric, title, summary } = entry.data;
+---
+
+<a class="case-link" href={`/work/${entry.id}/`}>
+  <span class="mono">{String(position).padStart(2, '0')} · {company}</span>
+  <span class="case-metric">{metric.value}</span>
+  <span class="mono">{metric.label}</span>
+  <span class="case-title">{title}</span>
+  <span class="case-summary">{summary}</span>
+  <span class="case-more">Read the case →</span>
+</a>
+
+<style>
+  .case-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    padding: 16px;
+    text-decoration: none;
+    transition: background var(--ease-state);
+  }
+
+  .case-link:hover {
+    background: var(--accent-wash);
+    color: inherit;
+  }
+
+  .case-metric {
+    margin-top: 24px;
+    font: var(--type-display);
+    letter-spacing: -0.025em;
+  }
+
+  .case-title {
+    margin-top: 16px;
+    font: var(--type-name);
+  }
+
+  .case-summary {
+    color: var(--ink-2);
+    flex-grow: 1;
+  }
+
+  .case-more {
+    margin-top: 16px;
+    font: var(--type-control);
+    color: var(--accent);
+  }
+</style>

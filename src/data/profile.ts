@@ -4,7 +4,16 @@ export const profile = {
   focus: 'TypeScript',
   summary:
     '5+ years in web development across telecom, fintech and B2B SaaS. Front-end lead on an enterprise fiber network platform: architecture, code review, mentoring two developers, and working directly with the client.',
+  lead: 'Front-end lead on an enterprise fiber network platform: architecture, code review, mentoring two developers, and working directly with the client.',
+  spec: [
+    { label: 'Experience', value: '5+ yrs' },
+    { label: 'Core stack', value: 'TypeScript · Vue 3 / Nuxt · React' },
+    { label: 'Domains', value: 'Telecom · Fintech · B2B SaaS' },
+    { label: 'Availability', value: 'Full-time or contract · Now' },
+    { label: 'Timezone', value: 'UTC+2' },
+  ],
   status: 'Open to work',
+  contactNote: 'Looking for a senior or lead front-end role, full-time or contract. LinkedIn gets the fastest reply.',
   location: 'Ukraine · Remote (UTC+2)',
   email: 'slipmaks@gmail.com',
   linkedin: 'https://www.linkedin.com/in/maksym-matsydulskas',

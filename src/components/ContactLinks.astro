@@ -7,18 +7,28 @@ import { profile } from '../data/profile';
   <li class="email">
     <a class="button" href={`mailto:${profile.email}`}>{profile.email}</a>
     <button class="button copy" type="button" data-copy={profile.email}>Copy</button>
+    <span class="visually-hidden" role="status" data-copy-status></span>
   </li>
   <li><a class="button" href={profile.linkedin} rel="me">LinkedIn</a></li>
-  <li><a class="button" href={profile.github} rel="me">GitHub</a></li>
   <li><a class="button" href={profile.telegram} rel="me">Telegram</a></li>
 </ul>
 
 <script>
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    const status = button.parentElement?.querySelector('[data-copy-status]');
     button.addEventListener('click', async () => {
-      await navigator.clipboard.writeText(button.dataset.copy ?? '');
-      button.textContent = 'Copied';
-      setTimeout(() => (button.textContent = 'Copy'), 1600);
+      let result = 'Copied';
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy ?? '');
+      } catch {
+        result = 'Copy failed';
+      }
+      button.textContent = result;
+      if (status) status.textContent = result === 'Copied' ? 'Email copied' : 'Could not copy the email';
+      setTimeout(() => {
+        button.textContent = 'Copy';
+        if (status) status.textContent = '';
+      }, 1600);
     });
   }
 </script>

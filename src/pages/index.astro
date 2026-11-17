@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ContactLinks from '../components/ContactLinks.astro';
+import CaseTile from '../components/CaseTile.astro';
 import photo from '../assets/photo.jpg';
 import { profile, experience, projects } from '../data/profile';
 
@@ -28,7 +29,17 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
         </div>
         <Image class="hero-photo" src={photo} alt={profile.name} width={160} height={160} loading="eager" />
       </div>
-      <p class="hero-summary">{profile.summary}</p>
+      <dl class="hero-spec">
+        {
+          profile.spec.map((item) => (
+            <div>
+              <dt class="mono">{item.label}</dt>
+              <dd class="hero-spec-value">{item.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="hero-summary">{profile.lead}</p>
       <ContactLinks />
     </header>
 
@@ -41,16 +52,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
         {
           cases.map((entry, index) => (
             <li class="case">
-              <a class="case-link" href={`/work/${entry.id}/`}>
-                <span class="mono">
-                  {twoDigits(index + 1)} · {entry.data.company}
-                </span>
-                <span class="case-metric">{entry.data.metric.value}</span>
-                <span class="mono">{entry.data.metric.label}</span>
-                <span class="case-title">{entry.data.title}</span>
-                <span class="case-summary">{entry.data.summary}</span>
-                <span class="case-more">Read the case →</span>
-              </a>
+              <CaseTile entry={entry} position={index + 1} />
             </li>
           ))
         }
@@ -60,7 +62,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     <section class="section" aria-labelledby="experience-title">
       <div class="section-head">
         <h2 class="section-title" id="experience-title">Experience</h2>
-        <a class="section-index" href={profile.cv} download>Full CV (PDF)</a>
+        <a class="section-index" href={profile.cv} download>Download CV</a>
       </div>
       <ol class="jobs">
         {
@@ -83,6 +85,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     <section class="section" aria-labelledby="projects-title">
       <div class="section-head">
         <h2 class="section-title" id="projects-title">Projects</h2>
+        <a class="section-index" href={profile.github} rel="me">GitHub ↗</a>
       </div>
       <ul class="projects">
         {
@@ -115,6 +118,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
 
     <footer class="section footer">
       <p class="footer-lead">Let’s talk.</p>
+      <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
       <p class="mono footer-note">{profile.location}</p>
     </footer>
@@ -178,8 +182,22 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     flex-shrink: 0;
   }
 
+  .hero-spec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 40px;
+    margin-top: 32px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .hero-spec-value {
+    margin-top: 4px;
+    font: var(--type-name);
+  }
+
   .hero-summary {
-    margin: 32px 0;
+    margin: 24px 0 32px;
     max-width: 60ch;
     font: var(--type-lead);
     color: var(--ink-2);
@@ -195,43 +213,6 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
   .case {
     border-right: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
-  }
-
-  .case-link {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 100%;
-    padding: 16px;
-    text-decoration: none;
-    transition: background var(--ease-state);
-  }
-
-  .case-link:hover {
-    background: var(--accent-wash);
-    color: inherit;
-  }
-
-  .case-metric {
-    margin-top: 24px;
-    font: var(--type-display);
-    letter-spacing: -0.025em;
-  }
-
-  .case-title {
-    margin-top: 16px;
-    font: var(--type-name);
-  }
-
-  .case-summary {
-    color: var(--ink-2);
-    flex-grow: 1;
-  }
-
-  .case-more {
-    margin-top: 16px;
-    font: var(--type-control);
-    color: var(--accent);
   }
 
   .job {
@@ -288,7 +269,13 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
 
   .footer-lead {
     font: var(--type-display);
-    margin-bottom: 24px;
+  }
+
+  .footer-intent {
+    margin: 8px 0 24px;
+    max-width: 60ch;
+    font: var(--type-lead);
+    color: var(--ink-2);
   }
 
   .footer-note {

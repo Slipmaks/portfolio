@@ -2,16 +2,29 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ContactLinks from '../../components/ContactLinks.astro';
+import CaseTile from '../../components/CaseTile.astro';
 import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
-  const cases = await getCollection('cases');
-  return cases.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+  const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+  return cases.map((entry, index) => {
+    const nextPosition = (index + 1) % cases.length;
+    return {
+      params: { id: entry.id },
+      props: { entry, next: cases[nextPosition], nextPosition: nextPosition + 1, total: cases.length },
+    };
+  });
 }
 
-type Props = { entry: CollectionEntry<'cases'> };
+type Props = {
+  entry: CollectionEntry<'cases'>;
+  next: CollectionEntry<'cases'>;
+  nextPosition: number;
+  total: number;
+};
 
-const { entry } = Astro.props;
+const { entry, next, nextPosition, total } = Astro.props;
+const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, stack } = entry.data;
 ---
@@ -42,6 +55,18 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
     <article class="prose">
       <Content />
     </article>
+
+    <section class="section" aria-labelledby="next-title">
+      <div class="section-head">
+        <h2 class="section-title" id="next-title">Next case</h2>
+        <span class="section-index">{twoDigits(nextPosition)} / {twoDigits(total)}</span>
+      </div>
+      <div class="next-case">
+        <div class="next-case-cell">
+          <CaseTile entry={next} position={nextPosition} />
+        </div>
+      </div>
+    </section>
 
     <footer class="section case-footer">
       <p class="footer-lead">Want this on your team?</p>
@@ -132,6 +157,15 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
     font: var(--type-mono-code);
     background: var(--paper-sunk);
     padding: 0 4px;
+  }
+
+  .next-case {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .next-case-cell {
+    border: 1px solid var(--hairline);
   }
 
   .case-footer {
