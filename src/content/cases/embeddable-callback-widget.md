@@ -22,7 +22,8 @@ Customers wanted to put a callback button on their own websites. The widget had 
 ## What I did
 
 - An embeddable script loaded asynchronously into third-party sites, rendering inside an isolated iframe to avoid CSS collisions.
-- The admin builder: appearance editor, scenario rules, embed snippet and per-widget statistics.
+- Two widget types, callback and call-from-site, each with its own admin builder: embed snippet, scenario rules and per-widget statistics.
+- An appearance builder for the callback widget: button style, size, animation and colours, corner position and offsets, and separate texts for working hours, after hours, leaving the site and deferred calls.
 - A call-from-site widget and a softphone shipped as a Chrome extension with its own Vite build, with real-time call-status handling.
 
 ## Result

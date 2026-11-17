@@ -9,6 +9,7 @@ export const profile = {
   email: 'slipmaks@gmail.com',
   linkedin: 'https://www.linkedin.com/in/maksym-matsydulskas',
   github: 'https://github.com/Slipmaks',
+  telegram: 'https://t.me/m_maksym_n',
   cv: '/Maksym_Matsydulskas_Resume.pdf',
   coreStack: [
     'TypeScript',
@@ -96,6 +97,7 @@ export const projects: Project[] = [
     name: 'Tech graph',
     description: 'An interactive map of the technologies I know, how they connect, and how deeply I have used each one.',
     stack: 'React · TypeScript · ELK',
+    url: 'https://my-tech-graph.vercel.app',
   },
   {
     name: '“Python-1” Station',
@@ -105,7 +107,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Challenge tracker',
-    description: 'An installable progress tracker written in Rust and compiled to WebAssembly, with zero JavaScript.',
+    description: 'Set a goal and mark it off day by day; miss one and the streak resets. An installable PWA in Rust compiled to WebAssembly, with no hand-written JavaScript.',
     stack: 'Rust · Leptos · Trunk · PWA',
     url: 'https://slipmaks.github.io/challenge-tracker',
   },
