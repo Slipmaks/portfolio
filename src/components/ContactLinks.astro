@@ -1,0 +1,41 @@
+---
+import { profile } from '../data/profile';
+---
+
+<ul class="contacts">
+  <li><a class="button button-primary" href={profile.cv} download>Download CV</a></li>
+  <li class="email">
+    <a class="button" href={`mailto:${profile.email}`}>{profile.email}</a>
+    <button class="button copy" type="button" data-copy={profile.email}>Copy</button>
+  </li>
+  <li><a class="button" href={profile.linkedin} rel="me">LinkedIn</a></li>
+  <li><a class="button" href={profile.github} rel="me">GitHub</a></li>
+</ul>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    button.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(button.dataset.copy ?? '');
+      button.textContent = 'Copied';
+      setTimeout(() => (button.textContent = 'Copy'), 1600);
+    });
+  }
+</script>
+
+<style>
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .email {
+    display: flex;
+  }
+
+  .copy {
+    border-left: 0;
+    min-width: 72px;
+    justify-content: center;
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ContactLinks from '../../components/ContactLinks.astro';
+import { profile } from '../../data/profile';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+type Props = { entry: CollectionEntry<'cases'> };
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, company, period, role, summary, metric, stack } = entry.data;
+---
+
+<Base title={`${title} — ${profile.name}`} description={summary}>
+  <main class="page">
+    <nav class="crumbs mono">
+      <a href="/">← {profile.name}</a>
+    </nav>
+
+    <header class="case-head">
+      <p class="mono">{company} · {period} · {role}</p>
+      <h1 class="case-title">{title}</h1>
+      <p class="case-summary">{summary}</p>
+      <dl class="case-facts">
+        <div>
+          <dt class="mono">Result</dt>
+          <dd class="case-metric">{metric.value}</dd>
+          <dd class="mono">{metric.label}</dd>
+        </div>
+        <div>
+          <dt class="mono">Stack</dt>
+          <dd>{stack.join(' · ')}</dd>
+        </div>
+      </dl>
+    </header>
+
+    <article class="prose">
+      <Content />
+    </article>
+
+    <footer class="section case-footer">
+      <p class="footer-lead">Want this on your team?</p>
+      <ContactLinks />
+    </footer>
+  </main>
+</Base>
+
+<style>
+  .crumbs {
+    padding: 24px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .crumbs a {
+    text-decoration: none;
+  }
+
+  .case-head {
+    margin-top: 48px;
+  }
+
+  .case-title {
+    margin-top: 16px;
+    font: 700 clamp(32px, 5vw, 56px) / 1 var(--font-sans);
+    letter-spacing: -0.035em;
+    max-width: 20ch;
+  }
+
+  .case-summary {
+    margin-top: 24px;
+    max-width: 60ch;
+    font: var(--type-lead);
+    color: var(--ink-2);
+  }
+
+  .case-facts {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 2fr;
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 2px solid var(--rule);
+  }
+
+  .case-facts dd {
+    margin-top: 8px;
+  }
+
+  .case-metric {
+    font: var(--type-display);
+    letter-spacing: -0.025em;
+  }
+
+  .prose {
+    max-width: 68ch;
+    margin-top: 64px;
+  }
+
+  .prose :global(h2) {
+    margin: 48px 0 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+    font: var(--type-label);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .prose :global(p),
+  .prose :global(ul) {
+    margin-bottom: 16px;
+  }
+
+  .prose :global(li) {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+
+  .prose :global(li)::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .prose :global(code) {
+    font: var(--type-mono-code);
+    background: var(--paper-sunk);
+    padding: 0 4px;
+  }
+
+  .case-footer {
+    margin-bottom: 64px;
+  }
+
+  .footer-lead {
+    font: var(--type-display);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .case-facts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
