@@ -1,0 +1,7 @@
+---
+type Props = { value: string };
+
+const [from, to] = Astro.props.value.split(' → ');
+---
+
+{to === undefined ? from : <>{from} <span aria-hidden="true">→</span><span class="visually-hidden">to</span> {to}</>}

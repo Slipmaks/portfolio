@@ -224,7 +224,14 @@ The row of buttons used in the hero, footer and case-page footer. Five controls 
 - **Container:** a cell in the ledger grid with hairline borders, 16px padding, square corners and no background at rest.
 - **Content order:** mono index and company, then the metric value in Figure, the mono metric label, the case title in Name, the summary in Graphite (which grows to align tile bottoms), and the cobalt "Read the case →" cue.
 - **Hover:** the whole tile is the link and fills with Cobalt Wash. Text colour stays ink.
-- **Reuse:** one component (`CaseTile.astro`) renders the tile everywhere. On case pages a "Next case" section (section head with a mono `02 / 04` index) shows the following case's tile in a single hairline-bordered cell, the same width as a homepage grid cell. After the last case it wraps to the first.
+- **Semantics:** the tile is an `article` whose case title is an `h3` link stretched over the whole tile with `::after`. In the DOM the title comes first, and the meta, figure and label are moved above it visually with flex `order`. Screen readers hear a short heading link instead of the whole tile, and heading navigation lands on every case. "Read the case →" is `aria-hidden`. Keyboard focus draws the cobalt ring around the whole tile (`:has(a:focus-visible)`). Figures with an arrow ("0 → 884") render through `MetricValue.astro`, which reads them aloud as "0 to 884".
+- **Reuse:** one component (`CaseTile.astro`) renders the tile everywhere. On case pages a "Next case" section (section head with a mono `02 / 04` index) shows the following case's tile in a single hairline-bordered cell, the same width as a homepage grid cell. After the last case it wraps to the first. Next to it is an "All work" cell with the same anatomy: a mono "Index", "← All work" in Figure type, and a mono case count. It links to the homepage work section. The two cells are 272px wide on desktop and stack full width below 640px.
+
+### Not Found Page
+The 404 page uses the case-page skeleton: a breadcrumb strip with "Error 404" as mono metadata on the right (never as an eyebrow above the heading), a Headline that states the problem, a Lead that names the recovery, an outline "See all work" button, then the standard contact compartment.
+
+### Decorative Glyphs
+Arrows used as decoration (`↗`, `←`, `→` in links and cues) are wrapped in `aria-hidden` spans. The portrait has an empty `alt` because the name sits in the `h1` beside it.
 
 ### Section Head
 An uppercase tracked Label on the left and a muted mono index or utility link on the right, sitting under the 2px section rule.

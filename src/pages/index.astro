@@ -27,7 +27,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
           <h1 class="hero-name">{profile.name}</h1>
           <p class="hero-title">{profile.title} <span class="divider">|</span> {profile.focus}</p>
         </div>
-        <Image class="hero-photo" src={photo} alt={profile.name} width={160} height={160} loading="eager" />
+        <Image class="hero-photo" src={photo} alt="" width={160} height={160} loading="eager" />
       </div>
       <dl class="hero-spec">
         {
@@ -85,14 +85,14 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     <section class="section" aria-labelledby="projects-title">
       <div class="section-head">
         <h2 class="section-title" id="projects-title">Projects</h2>
-        <a class="section-index" href={profile.github} rel="me">GitHub ↗</a>
+        <a class="section-index" href={profile.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
       </div>
       <ul class="projects">
         {
           projects.map((project) => (
             <li class="project">
               <h3 class="project-name">
-                {project.url ? <a href={project.url}>{project.name} ↗</a> : project.name}
+                {project.url ? <a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a> : project.name}
               </h3>
               <p>{project.description}</p>
               <p class="mono">{project.stack}</p>
@@ -105,7 +105,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     <section class="section" aria-labelledby="skills-title">
       <div class="section-head">
         <h2 class="section-title" id="skills-title">Skills</h2>
-        {techGraph?.url && <a class="section-index" href={techGraph.url}>Full map in Tech graph ↗</a>}
+        {techGraph?.url && <a class="section-index" href={techGraph.url}>Full map in Tech graph <span aria-hidden="true">↗</span></a>}
       </div>
       <dl class="skills">
         {

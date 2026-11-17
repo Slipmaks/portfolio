@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import MetricValue from './MetricValue.astro';
 
 type Props = {
   entry: CollectionEntry<'cases'>;
@@ -10,40 +11,68 @@ const { entry, position } = Astro.props;
 const { company, metric, title, summary } = entry.data;
 ---
 
-<a class="case-link" href={`/work/${entry.id}/`}>
-  <span class="mono">{String(position).padStart(2, '0')} · {company}</span>
-  <span class="case-metric">{metric.value}</span>
-  <span class="mono">{metric.label}</span>
-  <span class="case-title">{title}</span>
-  <span class="case-summary">{summary}</span>
-  <span class="case-more">Read the case →</span>
-</a>
+<article class="case-tile">
+  <h3 class="case-title"><a href={`/work/${entry.id}/`}>{title}</a></h3>
+  <p class="mono case-meta">{String(position).padStart(2, '0')} · {company}</p>
+  <p class="case-metric"><MetricValue value={metric.value} /></p>
+  <p class="mono case-label">{metric.label}</p>
+  <p class="case-summary">{summary}</p>
+  <p class="case-more" aria-hidden="true">Read the case →</p>
+</article>
 
 <style>
-  .case-link {
+  .case-tile {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
     height: 100%;
     padding: 16px;
-    text-decoration: none;
     transition: background var(--ease-state);
   }
 
-  .case-link:hover {
+  .case-tile:hover {
     background: var(--accent-wash);
-    color: inherit;
+  }
+
+  .case-tile:has(a:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .case-meta {
+    order: -3;
   }
 
   .case-metric {
+    order: -2;
     margin-top: 24px;
     font: var(--type-display);
     letter-spacing: -0.025em;
   }
 
+  .case-label {
+    order: -1;
+  }
+
   .case-title {
     margin-top: 16px;
     font: var(--type-name);
+  }
+
+  .case-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .case-title a:focus-visible {
+    outline: none;
+  }
+
+  .case-title a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
   }
 
   .case-summary {

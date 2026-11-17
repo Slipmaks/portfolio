@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactLinks from '../components/ContactLinks.astro';
+import { profile } from '../data/profile';
+---
+
+<Base title={`Page not found — ${profile.name}`} description="This page does not exist.">
+  <main class="page">
+    <nav class="crumbs mono">
+      <a href="/"><span aria-hidden="true">← </span>{profile.name}</a>
+      <span>Error 404</span>
+    </nav>
+
+    <header class="missing">
+      <h1 class="missing-title">This page doesn’t exist.</h1>
+      <p class="missing-lead">The link may be old or mistyped. The case studies, experience and CV are all on the homepage.</p>
+      <a class="button" href="/#work-title">See all work</a>
+    </header>
+
+    <footer class="section missing-footer">
+      <p class="footer-lead">Or get in touch.</p>
+      <ContactLinks />
+    </footer>
+  </main>
+</Base>
+
+<style>
+  .crumbs {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .crumbs a {
+    text-decoration: none;
+  }
+
+  .missing {
+    margin-top: 96px;
+  }
+
+  .missing-title {
+    font: 700 clamp(32px, 5vw, 56px) / 1 var(--font-sans);
+    letter-spacing: -0.035em;
+    max-width: 20ch;
+  }
+
+  .missing-lead {
+    margin: 24px 0 32px;
+    max-width: var(--measure-lead);
+    font: var(--type-lead);
+    color: var(--ink-2);
+  }
+
+  .missing-footer {
+    margin-bottom: 64px;
+  }
+
+  .footer-lead {
+    font: var(--type-display);
+    margin-bottom: 24px;
+  }
+</style>
