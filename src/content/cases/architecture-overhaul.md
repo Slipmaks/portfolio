@@ -1,6 +1,7 @@
 ---
 order: 1
 title: Architecture overhaul without a feature freeze
+short: Architecture overhaul
 company: CONNECT 972
 period: 2025 – 2026
 role: Front-end lead
@@ -11,12 +12,16 @@ metric:
 measures:
   - value: 0 → 884
     label: unit tests running in CI
+    short: unit tests in CI
   - value: 337 → 1
     label: files handling API errors, now one helper
+    short: error-handling files
   - value: 70.5 → 10.2
     label: payment-form chunk, kB (gzipped 23.9 to 4.1)
+    short: payment chunk, kB
   - value: 26 → 4
     label: production build, seconds
+    short: build, seconds
   - value: −5,300
     label: lines of store code
 stack: [Vue 3, JavaScript, Vuex, Vitest, Vite, Ant Design Vue, oxlint, GitLab CI]

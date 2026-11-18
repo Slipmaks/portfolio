@@ -1,6 +1,7 @@
 ---
 order: 4
 title: An embeddable callback widget for third-party sites
+short: Callback widget
 company: OneVOIPlanet
 period: 2023 – 2024
 role: Front-end developer

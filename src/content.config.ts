@@ -7,12 +7,13 @@ const cases = defineCollection({
   schema: z.object({
     order: z.number(),
     title: z.string(),
+    short: z.string().optional(),
     company: z.string(),
     period: z.string(),
     role: z.string(),
     summary: z.string(),
     metric: z.object({ value: z.string(), label: z.string() }),
-    measures: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
+    measures: z.array(z.object({ value: z.string(), label: z.string(), short: z.string().optional() })).optional(),
     stack: z.array(z.string()),
   }),
 });

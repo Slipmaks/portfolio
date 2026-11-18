@@ -1,6 +1,7 @@
 ---
 order: 5
 title: WeekFit — an offline-first gym notebook
+short: WeekFit
 company: Personal product
 period: "2026"
 role: Sole developer, front end to database

@@ -1,6 +1,7 @@
 ---
 order: 2
 title: A customizable, extensible dashboard builder
+short: Dashboard builder
 company: CONNECT 972
 period: 2025 – 2026
 role: Front-end lead

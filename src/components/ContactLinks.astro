@@ -4,12 +4,12 @@ import { profile } from '../data/profile';
 
 <ul class="contacts">
   <li><a class="button button-primary" href={profile.cv} download>Download CV</a></li>
+  <li><a class="button" href={profile.linkedin} rel="me">LinkedIn</a></li>
   <li class="email">
     <a class="button" href={`mailto:${profile.email}`}>{profile.email}</a>
     <button class="button copy" type="button" data-copy={profile.email} hidden>Copy</button>
     <span class="visually-hidden" role="status" data-copy-status></span>
   </li>
-  <li><a class="button" href={profile.linkedin} rel="me">LinkedIn</a></li>
   <li><a class="button" href={profile.telegram} rel="me">Telegram</a></li>
 </ul>
 

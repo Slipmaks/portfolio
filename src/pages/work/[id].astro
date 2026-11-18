@@ -13,29 +13,41 @@ export async function getStaticPaths() {
     const nextPosition = (index + 1) % cases.length;
     return {
       params: { id: entry.id },
-      props: { entry, next: cases[nextPosition], nextPosition: nextPosition + 1, total: cases.length },
+      props: { entry, position: index + 1, next: cases[nextPosition], nextPosition: nextPosition + 1, total: cases.length },
     };
   });
 }
 
 type Props = {
   entry: CollectionEntry<'cases'>;
+  position: number;
   next: CollectionEntry<'cases'>;
   nextPosition: number;
   total: number;
 };
 
-const { entry, next, nextPosition, total } = Astro.props;
+const { entry, position, next, nextPosition, total } = Astro.props;
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
 const hasMeasures = (measures?.length ?? 0) > 0;
+
+const toNumber = (text: string) => Number.parseFloat(text.replace(/[^\d.]/g, ''));
+
+const scaleOf = (value: string) => {
+  const [before, after] = value.split(' → ').map(toNumber);
+  if (!Number.isFinite(before) || !Number.isFinite(after)) return null;
+  const largest = Math.max(before, after);
+  if (largest <= 0) return null;
+  return { before: (before / largest) * 100, after: (after / largest) * 100 };
+};
 ---
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
   <main class="page">
     <nav class="crumbs mono">
       <a href="/"><span aria-hidden="true">← </span>{profile.name}</a>
+      <span>Case {twoDigits(position)} / {twoDigits(total)}</span>
     </nav>
 
     <header class="case-head">
@@ -65,14 +77,25 @@ const hasMeasures = (measures?.length ?? 0) > 0;
           <aside class="measures" aria-labelledby="measures-title">
             <h2 class="measures-title" id="measures-title">Measured</h2>
             <dl>
-              {measures!.map((measure) => (
-                <div class="measure">
-                  <dt class="mono">{measure.label}</dt>
-                  <dd class="measure-value"><MetricValue value={measure.value} /></dd>
-                </div>
-              ))}
+              {measures!.map((measure) => {
+                const scale = scaleOf(measure.value);
+                return (
+                  <div class="measure">
+                    <dt class="mono">{measure.label}</dt>
+                    <dd class="measure-value">
+                      <MetricValue value={measure.value} />
+                      {scale && (
+                        <span class="measure-scale" aria-hidden="true">
+                          {scale.before > 0 && <span class="scale-before" style={`--scale: ${scale.before}%`} />}
+                          <span class="scale-after" style={`--scale: ${scale.after}%`} />
+                        </span>
+                      )}
+                    </dd>
+                  </div>
+                );
+              })}
             </dl>
-            <h2 class="measures-title measures-stack-title">Stack</h2>
+            <h2 class="measures-title">Stack</h2>
             <StackList items={stack} />
           </aside>
         )
@@ -85,14 +108,14 @@ const hasMeasures = (measures?.length ?? 0) > 0;
     <section class="section" aria-labelledby="next-title">
       <div class="section-head">
         <h2 class="section-title" id="next-title">Next case</h2>
-        <span class="section-index">{twoDigits(nextPosition)} / {twoDigits(total)}</span>
+        <span class="section-index">Next · {twoDigits(nextPosition)}</span>
       </div>
       <div class="next-case">
         <div class="next-case-cell">
           <CaseTile entry={next} position={nextPosition} />
         </div>
         <a class="next-case-cell all-work" href="/#work-title">
-          <span class="mono">Index</span>
+          <span class="mono">Homepage</span>
           <span class="all-work-title"><span aria-hidden="true">← </span>All work</span>
           <span class="mono">{twoDigits(total)} cases</span>
         </a>
@@ -109,6 +132,9 @@ const hasMeasures = (measures?.length ?? 0) > 0;
 
 <style>
   .crumbs {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
     padding: 24px 0 12px;
     border-bottom: 1px solid var(--hairline);
   }
@@ -180,7 +206,6 @@ const hasMeasures = (measures?.length ?? 0) > 0;
     grid-row: 1;
     position: sticky;
     top: 24px;
-    max-width: 400px;
   }
 
   .prose :global(h2),
@@ -208,6 +233,30 @@ const hasMeasures = (measures?.length ?? 0) > 0;
   .measure-value {
     font: var(--type-display);
     letter-spacing: -0.025em;
+  }
+
+  .measure-scale {
+    display: grid;
+    gap: 3px;
+    margin: 12px 0 4px;
+  }
+
+  .measure-scale span {
+    display: block;
+    width: var(--scale);
+    height: 4px;
+  }
+
+  .measure-scale .scale-after {
+    min-width: 4px;
+  }
+
+  .measure-scale .scale-before {
+    background: var(--ink-muted);
+  }
+
+  .measure-scale .scale-after {
+    background: var(--ink);
   }
 
   @media (max-width: 960px) {
@@ -274,9 +323,11 @@ const hasMeasures = (measures?.length ?? 0) > 0;
     transition: background var(--ease-state);
   }
 
-  .all-work:hover {
-    background: var(--accent-wash);
-    color: inherit;
+  @media (hover: hover) {
+    .all-work:hover {
+      background: var(--accent-wash);
+      color: inherit;
+    }
   }
 
   .all-work-title {

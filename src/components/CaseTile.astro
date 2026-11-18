@@ -5,17 +5,38 @@ import MetricValue from './MetricValue.astro';
 type Props = {
   entry: CollectionEntry<'cases'>;
   position: number;
+  featured?: boolean;
 };
 
-const { entry, position } = Astro.props;
-const { company, metric, title, summary } = entry.data;
+const { entry, position, featured = false } = Astro.props;
+const { company, metric, measures, title, summary } = entry.data;
+const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.value.includes('→')).slice(0, 4) : [];
 ---
 
 <article class="case-tile">
   <h3 class="case-title"><a href={`/work/${entry.id}/`}>{title}</a></h3>
   <p class="mono case-meta">{String(position).padStart(2, '0')} · {company}</p>
-  <p class="case-metric"><MetricValue value={metric.value} /></p>
-  <p class="mono case-label">{metric.label}</p>
+  {
+    beforeAfter.length > 1 ? (
+      <dl class="case-figures">
+        {beforeAfter.map((measure) => (
+          <div class="case-figure">
+            <dt class="mono">{measure.short ?? measure.label}</dt>
+            <dd class="case-metric">
+              <MetricValue value={measure.value} />
+            </dd>
+          </div>
+        ))}
+      </dl>
+    ) : (
+      <>
+        <p class="case-metric">
+          <MetricValue value={metric.value} />
+        </p>
+        <p class="mono case-label">{metric.label}</p>
+      </>
+    )
+  }
   <p class="case-summary">{summary}</p>
   <p class="case-more" aria-hidden="true">Read the case →</p>
 </article>
@@ -55,6 +76,51 @@ const { company, metric, title, summary } = entry.data;
 
   .case-label {
     order: -1;
+  }
+
+  .case-figures {
+    order: -2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 40px;
+    margin-top: 24px;
+  }
+
+  .case-figure {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .case-figure .case-metric {
+    order: -1;
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .case-figures {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .case-figure {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .case-figures {
+      gap: 12px;
+    }
+
+    .case-figure {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
   }
 
   .case-title {

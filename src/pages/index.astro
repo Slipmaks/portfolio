@@ -11,7 +11,7 @@ import { profile, experience, projects } from '../data/profile';
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const techGraph = projects.find((project) => project.name === 'Tech graph');
 const twoDigits = (value: number) => String(value).padStart(2, '0');
-const caseById = new Map(cases.map((entry, index) => [entry.id, { title: entry.data.title, position: index + 1 }]));
+const caseById = new Map(cases.map((entry) => [entry.id, entry.data.short ?? entry.data.title]));
 const jobGroups = [
   { label: null, jobs: experience.filter((job) => !job.alongside) },
   { label: 'Alongside, part-time', jobs: experience.filter((job) => job.alongside) },
@@ -58,7 +58,7 @@ const jobGroups = [
         {
           cases.map((entry, index) => (
             <li class="case">
-              <CaseTile entry={entry} position={index + 1} />
+              <CaseTile entry={entry} position={index + 1} featured={index === 0} />
             </li>
           ))
         }
@@ -88,14 +88,12 @@ const jobGroups = [
                   {job.cases && (
                     <ul class="job-cases">
                       {job.cases
-                        .map((id) => ({ id, entry: caseById.get(id) }))
-                        .filter(({ entry }) => entry)
-                        .map(({ id, entry }) => (
+                        .map((id) => ({ id, name: caseById.get(id) }))
+                        .filter(({ name }) => name)
+                        .map(({ id, name }) => (
                           <li>
                             <a href={`/work/${id}/`}>
-                              Case {twoDigits(entry!.position)}
-                              <span class="visually-hidden">: {entry!.title}</span>{' '}
-                              <span aria-hidden="true">→</span>
+                              {name} <span aria-hidden="true">→</span>
                             </a>
                           </li>
                         ))}
