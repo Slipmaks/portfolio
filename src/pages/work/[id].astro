@@ -76,6 +76,7 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
 
     <footer class="section case-footer">
       <p class="footer-lead">Want this on your team?</p>
+      <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
     </footer>
   </main>
@@ -208,7 +209,13 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
 
   .footer-lead {
     font: var(--type-display);
-    margin-bottom: 24px;
+  }
+
+  .footer-intent {
+    margin: 8px 0 24px;
+    max-width: var(--measure-lead);
+    font: var(--type-lead);
+    color: var(--ink-2);
   }
 
   @media (max-width: 640px) {
