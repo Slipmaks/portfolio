@@ -6,8 +6,8 @@ period: 2025 – 2026
 role: Sole front-end developer
 summary: A ticket portal for technicians and a payment-store PWA for payment points, each built from scratch in strict TypeScript.
 metric:
-  value: "2"
-  label: TypeScript apps built alone from scratch
+  value: "4"
+  label: languages per app, 2 right-to-left
 measures:
   - value: 290 / 317
     label: commits across both apps are mine

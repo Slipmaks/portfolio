@@ -6,8 +6,17 @@ period: 2023 – 2024
 role: Front-end developer
 summary: A script any website can embed, isolated from the host page, that gets a visitor a call back from the customer's team.
 metric:
-  value: 80+
-  label: components across 8 modules
+  value: "8"
+  label: appearance settings, texts for 4 visitor states
+measures:
+  - value: "8"
+    label: appearance settings in the widget builder
+  - value: "4"
+    label: visitor states with their own texts
+  - value: "2"
+    label: widget types, each with its own builder
+  - value: 80+
+    label: components I built across 8 cabinet modules
 stack: [Vue 3, TypeScript, Vite, Socket.IO, Chrome Extensions]
 ---
 
