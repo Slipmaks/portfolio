@@ -8,6 +8,17 @@ summary: A six-week refactor of an enterprise fiber network platform while featu
 metric:
   value: 0 → 884
   label: unit tests in CI
+measures:
+  - value: 0 → 884
+    label: unit tests running in CI
+  - value: 337 → 1
+    label: files handling API errors, now one helper
+  - value: 70.5 → 10.2
+    label: payment-form chunk, kB (gzipped 23.9 to 4.1)
+  - value: 26 → 4
+    label: production build, seconds
+  - value: −5,300
+    label: lines of store code
 stack: [Vue 3, JavaScript, Vuex, Vitest, Vite, Ant Design Vue, oxlint, GitLab CI]
 ---
 

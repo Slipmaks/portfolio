@@ -256,6 +256,9 @@ Grouped skills in the same two-column structure as the Experience rows: a mono g
 ### Case Facts
 On case pages, a definition-list strip under a 2px rule. A mono "Result" label sits over the metric in Figure with its mono label, and a mono "Stack" label sits over the stack list. The columns are 1fr and 2fr, stacking below 640px.
 
+### Measured
+The spec-sheet table of a case: every verified before/after or count, so the numbers a hiring manager checks are read as measurements, not prose. It is an `aside` headed "Measured" in the same uppercase label style as the prose sections, holding a definition list. Each row shows the value in Figure (arrows read as "to") above its mono label, with a hairline under every row. Values stay short ("337 → 1", "26 → 4") and units live in the label, so a row fits a 320px phone. On desktop it sits in the right column beside the 54ch prose, top-aligned with the first section and sticky 24px from the top; below 960px it drops between the case facts and the prose. It renders only when the case's `measures` frontmatter has entries, and only verified figures go in it.
+
 ### Breadcrumb
 A mono "← Name" link at the top of case pages with no underline, above a hairline.
 

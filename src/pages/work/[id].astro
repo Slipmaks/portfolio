@@ -27,7 +27,7 @@ type Props = {
 const { entry, next, nextPosition, total } = Astro.props;
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
-const { title, company, period, role, summary, metric, stack } = entry.data;
+const { title, company, period, role, summary, metric, measures, stack } = entry.data;
 ---
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
@@ -53,9 +53,26 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
       </dl>
     </header>
 
-    <article class="prose">
-      <Content />
-    </article>
+    <div class="case-body">
+      {
+        measures && measures.length > 0 && (
+          <aside class="measures" aria-labelledby="measures-title">
+            <h2 class="measures-title" id="measures-title">Measured</h2>
+            <dl>
+              {measures.map((measure) => (
+                <div class="measure">
+                  <dt class="mono">{measure.label}</dt>
+                  <dd class="measure-value"><MetricValue value={measure.value} /></dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        )
+      }
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
 
     <section class="section" aria-labelledby="next-title">
       <div class="section-head">
@@ -131,18 +148,70 @@ const { title, company, period, role, summary, metric, stack } = entry.data;
     letter-spacing: -0.025em;
   }
 
-  .prose {
-    max-width: var(--measure-prose);
+  .case-body {
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure-prose)) minmax(240px, 1fr);
+    column-gap: 64px;
+    align-items: start;
     margin-top: 64px;
   }
 
-  .prose :global(h2) {
+  .prose {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: var(--measure-prose);
+  }
+
+  .measures {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 24px;
+    max-width: 400px;
+  }
+
+  .prose :global(h2),
+  .measures-title {
     margin: 48px 0 16px;
     padding-top: 12px;
     border-top: 1px solid var(--hairline);
     font: var(--type-label);
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+
+  .measure {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .measure:first-child {
+    padding-top: 0;
+  }
+
+  .measure-value {
+    font: var(--type-display);
+    letter-spacing: -0.025em;
+  }
+
+  @media (max-width: 960px) {
+    .case-body {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .prose,
+    .measures {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .measures {
+      position: static;
+      max-width: var(--measure-prose);
+    }
   }
 
   .prose :global(p),

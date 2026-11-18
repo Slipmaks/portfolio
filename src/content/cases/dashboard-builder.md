@@ -8,6 +8,11 @@ summary: Drag-and-drop dashboards of customers, routers, services and revenue th
 metric:
   value: "22"
   label: widgets in 5 card types
+measures:
+  - value: "22"
+    label: widgets users can place
+  - value: "5"
+    label: card types behind them
 stack: [Vue 3, JavaScript, Vuex, GridStack, ApexCharts]
 ---
 

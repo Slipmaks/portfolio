@@ -12,6 +12,7 @@ const cases = defineCollection({
     role: z.string(),
     summary: z.string(),
     metric: z.object({ value: z.string(), label: z.string() }),
+    measures: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
     stack: z.array(z.string()),
   }),
 });

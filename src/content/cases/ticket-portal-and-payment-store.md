@@ -8,6 +8,13 @@ summary: A ticket portal for technicians and a payment-store PWA for payment poi
 metric:
   value: "2"
   label: TypeScript apps built alone from scratch
+measures:
+  - value: 290 / 317
+    label: commits across both apps are mine
+  - value: "4"
+    label: languages in each app
+  - value: "2"
+    label: of them right-to-left, Arabic and Hebrew
 stack: [Vue 3, TypeScript, Pinia, Quasar, Vite, Vitest, PWA]
 ---
 
