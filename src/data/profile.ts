@@ -1,10 +1,10 @@
 export const profile = {
   name: 'Maksym Matsydulskas',
-  title: 'Senior Front-End Engineer',
+  title: 'Senior Front-End Engineer · Lead',
   focus: 'TypeScript',
   summary:
-    '5+ years in web development across telecom, fintech and B2B SaaS. Front-end lead on an enterprise fiber network platform: architecture, code review, mentoring two developers, and working directly with the client.',
-  lead: 'Front-end lead on an enterprise fiber network platform: architecture, code review, mentoring two developers, and working directly with the client.',
+    'Senior front-end engineer and lead, 5+ years across telecom, fintech and B2B SaaS. Led five apps for a fiber network operator: 0 to 884 unit tests, builds from 26 s to 4 s.',
+  lead: 'Front-end lead across a five-app platform for a fiber network operator. I led a refactor from 0 to 884 unit tests without a feature freeze, cut builds from 26 s to 4 s, and built two TypeScript apps from scratch.',
   spec: [
     { label: 'Experience', value: '5+ yrs' },
     { label: 'Core stack', value: 'TypeScript · Vue 3 / Nuxt · React' },
@@ -41,28 +41,28 @@ export const experience: Job[] = [
     country: 'Israel',
     role: 'Front-End Engineer · front-end lead',
     period: '03/2025 – 10/2026',
-    note: 'Led the front end of an enterprise fiber network management platform; built a ticketing portal and a payment store from scratch.',
+    note: 'Front-end lead across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Built the ticket portal and payment store from scratch in TypeScript and moved two apps from Vue CLI to Vite.',
   },
   {
     company: 'SDA',
     country: 'Estonia',
     role: 'Front-End Engineer · part-time contract',
     period: '03/2026 – 07/2026',
-    note: 'Sole front-end developer on a 250+ component B2B platform with six permission roles.',
+    note: 'Brought in to take over a 250+ component B2B platform from the previous developer, as its only dedicated front-end developer. Built sign-in and access for six permission roles, the product editor and the front-end architecture docs.',
   },
   {
     company: 'EVE.calls',
     country: 'USA',
     role: 'Front-End Engineer · part-time',
     period: '12/2024 – 03/2025',
-    note: 'Sole front-end developer on a node-based editor for AI voice-call scenarios.',
+    note: 'Sole front-end developer extending a node-based editor for AI voice-call scenarios: added extract-and-compare branching to speech recognition and an SMS node.',
   },
   {
     company: 'Onepointcollab / OneVOIPlanet',
     country: 'Ukraine',
     role: 'Front-End Developer',
     period: '09/2023 – 06/2024',
-    note: 'One of two core front-end developers on a cloud telephony customer cabinet: 80+ components across 8 modules.',
+    note: 'One of two core front-end developers on a cloud telephony customer cabinet: 80+ components across 8 modules, CRM integrations with SalesDrive, KeyCRM and NetHunt, and the upgrade to Vite 5 and Vue 3.4.',
   },
   {
     company: 'E-groshi',

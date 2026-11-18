@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 title: WeekFit — an offline-first gym notebook
 company: Personal product
 period: "2026"

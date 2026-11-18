@@ -1,6 +1,6 @@
 # Maksym Matsydulskas — portfolio
 
-Personal site: who I am, four case studies, experience, and a link to the full skills map in Tech graph.
+Personal site: who I am, five case studies, experience, and a link to the full skills map in Tech graph.
 
 **Why Astro:** content site → static, zero JS. Interactive app → React (see Tech graph).
 
