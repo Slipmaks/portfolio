@@ -5,7 +5,7 @@ import ContactLinks from '../../components/ContactLinks.astro';
 import CaseTile from '../../components/CaseTile.astro';
 import MetricValue from '../../components/MetricValue.astro';
 import StackList from '../../components/StackList.astro';
-import { scaleOf } from '../../lib/figures';
+import { scaleOf, splitChange } from '../../lib/figures';
 import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
@@ -34,6 +34,7 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
 const hasMeasures = (measures?.length ?? 0) > 0;
+const measuresHeading = measures?.some((measure) => splitChange(measure.value)) ? 'Measured' : 'Scope';
 
 ---
 
@@ -76,7 +77,7 @@ const hasMeasures = (measures?.length ?? 0) > 0;
       {
         hasMeasures && (
           <aside class="measures" aria-labelledby="measures-title">
-            <h2 class="measures-title" id="measures-title">Measured</h2>
+            <h2 class="measures-title" id="measures-title">{measuresHeading}</h2>
             <dl>
               {measures!.map((measure) => {
                 const scale = scaleOf(measure.value);

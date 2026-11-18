@@ -3,7 +3,7 @@ order: 1
 title: Architecture overhaul without a feature freeze
 short: Architecture overhaul
 company: CONNECT 972
-period: 03/2025 – 10/2026
+period: engagement 03/2025 – 10/2026
 role: Front-end lead
 summary: A six-week refactor of an enterprise fiber network platform while features kept shipping.
 metric:
