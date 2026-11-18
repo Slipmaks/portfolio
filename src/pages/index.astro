@@ -7,10 +7,10 @@ import CaseTile from '../components/CaseTile.astro';
 import StackList from '../components/StackList.astro';
 import photo from '../assets/photo.jpg';
 import { profile, experience, projects } from '../data/profile';
+import { keepRangeTogether, keepSeparatorsTogether } from '../lib/text';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const techGraph = projects.find((project) => project.name === 'Tech graph');
-const keepSeparatorsTogether = (text: string) => text.replaceAll(' · ', ' · ');
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const caseById = new Map(cases.map((entry) => [entry.id, entry.data.short ?? entry.data.title]));
 const jobGroups = [
@@ -23,7 +23,7 @@ const jobGroups = [
   title={`${profile.name} — ${profile.title} | ${profile.focus}`}
   description={profile.summary}
 >
-  <main class="page" id="content">
+  <main class="page" id="content" tabindex="-1">
     <header class="hero">
       <div class="hero-meta mono">
         <span class="status">{profile.status}</span>
@@ -78,7 +78,7 @@ const jobGroups = [
             <ol class="jobs">
               {group.jobs.map((job) => (
                 <li class="job">
-                  <span class="mono job-period">{job.period}</span>
+                  <span class="mono job-period">{keepRangeTogether(job.period)}</span>
                   <div>
                     <p class="job-head">
                       <strong>{job.company}</strong> <span class="mono">{job.country}</span>

@@ -6,6 +6,7 @@ import CaseTile from '../../components/CaseTile.astro';
 import MetricValue from '../../components/MetricValue.astro';
 import StackList from '../../components/StackList.astro';
 import { scaleOf, splitChange } from '../../lib/figures';
+import { keepRangeTogether, keepSeparatorsTogether } from '../../lib/text';
 import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
@@ -43,7 +44,7 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
     <nav class="crumbs mono" aria-label="Profile">
       <p class="crumbs-who">
         <a class="crumbs-home" href="/"><span aria-hidden="true">← </span>{profile.name}</a>
-        <span>{profile.title} · {profile.focus}</span>
+        <span>{keepSeparatorsTogether(profile.title)}&nbsp;|&nbsp;{profile.focus}</span>
       </p>
       <p class="crumbs-actions">
         <span class="status">{profile.status}</span>
@@ -51,9 +52,9 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
       </p>
     </nav>
   </div>
-  <main class="page" id="content">
+  <main class="page" id="content" tabindex="-1">
     <header class="case-head">
-      <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {period} · {role}</p>
+      <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {keepRangeTogether(period)} · {role}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-summary">{summary}</p>
       {

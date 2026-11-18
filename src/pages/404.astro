@@ -11,7 +11,7 @@ import { profile } from '../data/profile';
       <span>Error 404</span>
     </nav>
   </div>
-  <main class="page" id="content">
+  <main class="page" id="content" tabindex="-1">
     <header class="missing">
       <h1 class="missing-title">This page doesn’t exist.</h1>
       <p class="missing-lead">The link may be old or mistyped. The case studies, experience and CV are all on the homepage.</p>
@@ -38,6 +38,7 @@ import { profile } from '../data/profile';
 
   .crumbs a {
     display: inline-block;
+    color: var(--ink);
     padding-block: 12px;
     margin-block: -12px;
     text-decoration: none;

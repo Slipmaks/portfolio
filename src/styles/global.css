@@ -107,6 +107,10 @@ a {
   outline-offset: 2px;
 }
 
+main:focus-visible {
+  outline: none;
+}
+
 button {
   font: inherit;
   color: inherit;
