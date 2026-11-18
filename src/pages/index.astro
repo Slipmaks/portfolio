@@ -10,6 +10,11 @@ import { profile, experience, projects } from '../data/profile';
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const techGraph = projects.find((project) => project.name === 'Tech graph');
 const twoDigits = (value: number) => String(value).padStart(2, '0');
+const caseById = new Map(cases.map((entry, index) => [entry.id, { title: entry.data.title, position: index + 1 }]));
+const jobGroups = [
+  { label: null, jobs: experience.filter((job) => !job.alongside) },
+  { label: 'Alongside, part-time', jobs: experience.filter((job) => job.alongside) },
+].filter((group) => group.jobs.length > 0);
 ---
 
 <Base
@@ -64,22 +69,43 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
         <h2 class="section-title" id="experience-title">Experience</h2>
         <a class="section-index" href={profile.cv} download>Download CV</a>
       </div>
-      <ol class="jobs">
-        {
-          experience.map((job) => (
-            <li class="job">
-              <span class="mono job-period">{job.period}</span>
-              <div>
-                <p class="job-head">
-                  <strong>{job.company}</strong> <span class="mono">{job.country}</span>
-                </p>
-                <p class="job-role">{job.role}</p>
-                <p class="job-note">{job.note}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
+      {
+        jobGroups.map((group) => (
+          <>
+            {group.label && <h3 class="jobs-group">{group.label}</h3>}
+            <ol class="jobs">
+              {group.jobs.map((job) => (
+                <li class="job">
+                  <span class="mono job-period">{job.period}</span>
+                  <div>
+                    <p class="job-head">
+                      <strong>{job.company}</strong> <span class="mono">{job.country}</span>
+                    </p>
+                    <p class="job-role">{job.role}</p>
+                    <p class="job-note">{job.note}</p>
+                  </div>
+                  {job.cases && (
+                    <ul class="job-cases">
+                      {job.cases
+                        .map((id) => ({ id, entry: caseById.get(id) }))
+                        .filter(({ entry }) => entry)
+                        .map(({ id, entry }) => (
+                          <li>
+                            <a href={`/work/${id}/`}>
+                              Case {twoDigits(entry!.position)}
+                              <span class="visually-hidden">: {entry!.title}</span>{' '}
+                              <span aria-hidden="true">→</span>
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </>
+        ))
+      }
     </section>
 
     <section class="section" aria-labelledby="projects-title">
@@ -238,10 +264,36 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
 
   .job {
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 160px 1fr auto;
     gap: 16px;
     padding: 16px 0;
     border-bottom: 1px solid var(--hairline);
+  }
+
+  .jobs-group {
+    margin-top: 32px;
+    padding-bottom: 8px;
+    font: var(--type-mono);
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .job-cases {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    padding-top: 2px;
+  }
+
+  .job-cases a {
+    display: inline-block;
+    padding-block: 6px;
+    margin-block: -6px;
+    font: var(--type-mono);
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   .job-period {
@@ -372,6 +424,19 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
     .skill {
       grid-template-columns: 1fr;
       gap: 4px;
+    }
+
+    .job-cases {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 20px;
+      padding-top: 4px;
+    }
+
+    .job-cases a {
+      padding-block: 12px;
+      margin-block: -12px;
     }
 
     .cases {

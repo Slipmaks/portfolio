@@ -33,6 +33,8 @@ export type Job = {
   role: string;
   period: string;
   note: string;
+  cases?: string[];
+  alongside?: boolean;
 };
 
 export const experience: Job[] = [
@@ -42,6 +44,7 @@ export const experience: Job[] = [
     role: 'Front-End Engineer · front-end lead',
     period: '03/2025 – 10/2026',
     note: 'Front-end lead across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Built the ticket portal and payment store from scratch in TypeScript and moved two apps from Vue CLI to Vite.',
+    cases: ['architecture-overhaul', 'dashboard-builder', 'ticket-portal-and-payment-store'],
   },
   {
     company: 'SDA',
@@ -63,6 +66,7 @@ export const experience: Job[] = [
     role: 'Front-End Developer',
     period: '09/2023 – 06/2024',
     note: 'One of two core front-end developers on a cloud telephony customer cabinet: 80+ components across 8 modules, CRM integrations with SalesDrive, KeyCRM and NetHunt, and the upgrade to Vite 5 and Vue 3.4.',
+    cases: ['embeddable-callback-widget'],
   },
   {
     company: 'E-groshi',
@@ -84,6 +88,7 @@ export const experience: Job[] = [
     role: 'Web Developer · part-time',
     period: '01/2021 – 01/2026',
     note: 'Built and maintained the university website; Lighthouse Performance from under 30 to 98.',
+    alongside: true,
   },
 ];
 
