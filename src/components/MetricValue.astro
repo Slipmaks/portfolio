@@ -1,7 +1,24 @@
 ---
+import { splitChange } from '../lib/figures';
+
 type Props = { value: string };
 
-const [from, to] = Astro.props.value.split(' → ');
+const change = splitChange(Astro.props.value);
 ---
 
-{to === undefined ? from : <>{from} <span aria-hidden="true">→</span><span class="visually-hidden">to</span> {to}</>}
+{
+  change ? (
+    <>
+      <span class="figure-side">{change[0]}</span>{' '}
+      <span class="figure-side"><span aria-hidden="true">→</span><span class="visually-hidden">to</span> {change[1]}</span>
+    </>
+  ) : (
+    Astro.props.value
+  )
+}
+
+<style>
+  .figure-side {
+    white-space: nowrap;
+  }
+</style>

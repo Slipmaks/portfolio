@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import MetricValue from './MetricValue.astro';
+import { splitChange } from '../lib/figures';
 
 type Props = {
   entry: CollectionEntry<'cases'>;
@@ -10,8 +11,8 @@ type Props = {
 
 const { entry, position, featured = false } = Astro.props;
 const { company, metric, measures, title, summary } = entry.data;
-const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.value.includes('→')).slice(0, 4) : [];
-const metricIsChange = metric.value.includes('→');
+const beforeAfter = featured ? (measures ?? []).filter((measure) => splitChange(measure.value)) : [];
+const metricIsChange = splitChange(metric.value) !== null;
 const titleLed = beforeAfter.length <= 1 && !metricIsChange;
 ---
 
@@ -105,7 +106,6 @@ const titleLed = beforeAfter.length <= 1 && !metricIsChange;
   .case-figure .case-metric {
     order: -1;
     margin-top: 0;
-    white-space: nowrap;
   }
 
   @media (max-width: 640px) {
@@ -116,8 +116,9 @@ const titleLed = beforeAfter.length <= 1 && !metricIsChange;
 
     .case-figure {
       flex-direction: row;
+      flex-wrap: wrap;
       align-items: baseline;
-      gap: 12px;
+      gap: 0 12px;
     }
   }
 

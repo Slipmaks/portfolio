@@ -5,6 +5,7 @@ import ContactLinks from '../../components/ContactLinks.astro';
 import CaseTile from '../../components/CaseTile.astro';
 import MetricValue from '../../components/MetricValue.astro';
 import StackList from '../../components/StackList.astro';
+import { scaleOf } from '../../lib/figures';
 import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
@@ -34,15 +35,6 @@ const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
 const hasMeasures = (measures?.length ?? 0) > 0;
 
-const toNumber = (text: string) => Number.parseFloat(text.replace(/[^\d.]/g, ''));
-
-const scaleOf = (value: string) => {
-  const [before, after] = value.split(' → ').map(toNumber);
-  if (!Number.isFinite(before) || !Number.isFinite(after)) return null;
-  const largest = Math.max(before, after);
-  if (largest <= 0) return null;
-  return { before: (before / largest) * 100, after: (after / largest) * 100 };
-};
 ---
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
