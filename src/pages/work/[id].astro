@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import ContactLinks from '../../components/ContactLinks.astro';
 import CaseTile from '../../components/CaseTile.astro';
 import MetricValue from '../../components/MetricValue.astro';
+import StackList from '../../components/StackList.astro';
 import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
@@ -28,6 +29,7 @@ const { entry, next, nextPosition, total } = Astro.props;
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
+const hasMeasures = (measures?.length ?? 0) > 0;
 ---
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
@@ -40,32 +42,38 @@ const { title, company, period, role, summary, metric, measures, stack } = entry
       <p class="mono">{company} · {period} · {role}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-summary">{summary}</p>
-      <dl class="case-facts">
-        <div>
-          <dt class="mono">Result</dt>
-          <dd class="case-metric"><MetricValue value={metric.value} /></dd>
-          <dd class="mono">{metric.label}</dd>
-        </div>
-        <div>
-          <dt class="mono">Stack</dt>
-          <dd class="mono">{stack.join(' · ')}</dd>
-        </div>
-      </dl>
+      {
+        !hasMeasures && (
+          <dl class="case-facts">
+            <div>
+              <dt class="mono">Result</dt>
+              <dd class="case-metric"><MetricValue value={metric.value} /></dd>
+              <dd class="mono">{metric.label}</dd>
+            </div>
+            <div>
+              <dt class="mono">Stack</dt>
+              <dd><StackList items={stack} /></dd>
+            </div>
+          </dl>
+        )
+      }
     </header>
 
-    <div class="case-body">
+    <div class:list={['case-body', { 'case-body-flush': hasMeasures }]}>
       {
-        measures && measures.length > 0 && (
+        hasMeasures && (
           <aside class="measures" aria-labelledby="measures-title">
             <h2 class="measures-title" id="measures-title">Measured</h2>
             <dl>
-              {measures.map((measure) => (
+              {measures!.map((measure) => (
                 <div class="measure">
                   <dt class="mono">{measure.label}</dt>
                   <dd class="measure-value"><MetricValue value={measure.value} /></dd>
                 </div>
               ))}
             </dl>
+            <h2 class="measures-title measures-stack-title">Stack</h2>
+            <StackList items={stack} />
           </aside>
         )
       }
@@ -151,9 +159,14 @@ const { title, company, period, role, summary, metric, measures, stack } = entry
   .case-body {
     display: grid;
     grid-template-columns: minmax(0, var(--measure-prose)) minmax(240px, 1fr);
-    column-gap: 64px;
+    gap: 48px 64px;
     align-items: start;
     margin-top: 64px;
+  }
+
+  .case-body-flush :global(.prose > h2:first-child),
+  .case-body-flush .measures-title:first-child {
+    margin-top: 0;
   }
 
   .prose {

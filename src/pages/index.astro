@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ContactLinks from '../components/ContactLinks.astro';
 import CaseTile from '../components/CaseTile.astro';
+import StackList from '../components/StackList.astro';
 import photo from '../assets/photo.jpg';
 import { profile, experience, projects } from '../data/profile';
 
@@ -121,7 +122,7 @@ const jobGroups = [
                 {project.url ? <a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a> : project.name}
               </h3>
               <p>{project.description}</p>
-              <p class="mono">{project.stack}</p>
+              <StackList items={project.stack.split(' · ')} />
             </li>
           ))
         }

@@ -1,0 +1,36 @@
+---
+type Props = { items: string[] };
+
+const { items } = Astro.props;
+---
+
+<div class="stack-clip">
+  <ul class="stack-list mono">
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</div>
+
+<style>
+  .stack-clip {
+    overflow: clip;
+  }
+
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin-left: -16px;
+  }
+
+  .stack-list li {
+    position: relative;
+    margin-left: 16px;
+    white-space: nowrap;
+  }
+
+  .stack-list li::before {
+    content: "·" / "";
+    position: absolute;
+    left: -11px;
+  }
+</style>
