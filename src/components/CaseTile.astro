@@ -31,8 +31,10 @@ const { company, metric, title, summary } = entry.data;
     transition: background var(--ease-state);
   }
 
-  .case-tile:hover {
-    background: var(--accent-wash);
+  @media (hover: hover) {
+    .case-tile:hover {
+      background: var(--accent-wash);
+    }
   }
 
   .case-tile:has(a:focus-visible) {

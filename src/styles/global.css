@@ -22,6 +22,7 @@
   --type-title: 600 20px/24px var(--font-sans);
   --type-name: 600 15px/20px var(--font-sans);
   --type-lead: 400 18px/28px var(--font-sans);
+  --type-lead-compact: 400 16px/24px var(--font-sans);
   --type-prose: 400 15px/24px var(--font-sans);
   --type-control: 500 13px/16px var(--font-sans);
   --type-label: 600 13px/20px var(--font-sans);
@@ -137,6 +138,11 @@ img {
   color: var(--ink-muted);
 }
 
+a.section-index {
+  padding-block: 12px;
+  margin-block: -12px;
+}
+
 .mono {
   font: var(--type-mono);
   color: var(--ink-2);
@@ -156,21 +162,35 @@ img {
   transition: background var(--ease-state), color var(--ease-state), border-color var(--ease-state);
 }
 
-.button:hover {
-  background: var(--ink);
-  color: var(--on-ink);
-}
-
 .button-primary {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--on-accent);
 }
 
-.button-primary:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--on-ink);
+@media (hover: hover) {
+  .button:hover {
+    background: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .button-primary:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--on-ink);
+  }
+}
+
+@media (pointer: coarse) {
+  .button {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-gap: 64px;
+  }
 }
 
 .visually-hidden {

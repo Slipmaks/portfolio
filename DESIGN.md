@@ -40,6 +40,11 @@ typography:
     fontSize: "18px"
     fontWeight: 400
     lineHeight: "28px"
+  lead-compact:
+    fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: "24px"
   name:
     fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "15px"
@@ -186,11 +191,11 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 
 ## Layout
 
-A single centred column, max 1120px wide with a 16px gutter. Sections are separated by a 96px gap and each one opens with a 2px ink rule followed by a section head: an uppercase label on the left and a mono index or utility link on the right, aligned to the baseline, with 32px below. Spacing steps are 4, 8, 12, 16, 24, 32, 48, 64 and 96px, and 16px is the default internal pad.
+A single centred column, max 1120px wide with a 16px gutter. Sections are separated by a 96px gap (64px below 640px) and each one opens with a 2px ink rule followed by a section head: an uppercase label on the left and a mono index or utility link on the right, aligned to the baseline, with 32px below. Spacing steps are 4, 8, 12, 16, 24, 32, 48, 64 and 96px, and 16px is the default internal pad.
 
-Collections use auto-fit grids (`minmax(240px, 1fr)`), so they reflow without breakpoints. Case tiles form a ledger grid where hairlines are drawn top and left on the container and right and bottom on each cell, so borders never double. Experience is a two-column table (160px mono period, then the content) separated by hairlines. Projects sit in the same auto-fit grid with 32px gaps, each topped by a hairline.
+Projects use an auto-fit grid (`minmax(240px, 1fr)`), so it reflows without breakpoints. Case tiles form a ledger grid of three columns (two below 960px, one below 640px) in which the first case, the flagship, spans two columns, so five tiles fill every row without an orphan. Hairlines are drawn top and left on the container and right and bottom on each cell, so borders never double. Experience is a two-column table (160px mono period, then the content) separated by hairlines. Project cells have 32px gaps, each topped by a hairline.
 
-The one breakpoint is 640px. Below it, the hero stacks with the photo above the name (shrinking from 160px to 96px square), experience rows collapse to one column, and the case facts grid stacks.
+The main breakpoint is 640px. Below it, the hero tightens so Download CV sits in the first screen of a 390px phone: the photo shrinks from 160px to a 64px square beside the name, the name scales with the viewport (32–56px), the lead drops to Lead Compact (16/24), experience rows collapse to one column, and the case facts grid stacks. Hover styles apply only on devices that hover, buttons grow to 44px on coarse pointers, and mono utility links carry a 40px hit area without changing the layout.
 
 ### Named Rules
 **The Compartment Rule.** Every section is a labelled compartment: 2px rule, section head, then content. A new block of content gets this structure or it doesn't get a section.

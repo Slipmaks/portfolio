@@ -141,14 +141,16 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
 
   .hero-meta {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 16px;
+    gap: 4px 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--hairline);
   }
 
   .status {
     color: var(--accent);
+    white-space: nowrap;
   }
 
   .status::before {
@@ -325,14 +327,45 @@ const twoDigits = (value: number) => String(value).padStart(2, '0');
   }
 
   @media (max-width: 640px) {
+    .hero {
+      padding-top: 24px;
+    }
+
     .hero-body {
-      flex-direction: column-reverse;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 0 12px;
+      margin-top: 32px;
+    }
+
+    .hero-body > div {
+      display: contents;
+    }
+
+    .hero-name {
+      font-size: clamp(32px, 11vw, 56px);
     }
 
     .hero-photo {
-      width: 96px;
-      height: 96px;
+      grid-column: 2;
+      grid-row: 1;
+      width: 64px;
+      height: 64px;
+    }
+
+    .hero-title {
+      grid-column: 1 / -1;
+    }
+
+    .hero-spec {
+      gap: 12px 32px;
+      margin-top: 24px;
+    }
+
+    .hero-summary {
+      margin: 20px 0 24px;
+      font: var(--type-lead-compact);
     }
 
     .job,
