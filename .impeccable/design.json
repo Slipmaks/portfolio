@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T00:00:00Z",
+  "generatedAt": "2026-11-18T12:00:00Z",
   "title": "Design System: Maksym Matsydulskas — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -265,6 +265,13 @@
       "css": ".ds-measure { display: flex; flex-direction: column; gap: 8px; max-width: 400px; padding: 12px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); } .ds-measure-value { font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-measure-bars { display: flex; flex-direction: column; gap: 2px; } .ds-measure-before, .ds-measure-after { display: block; height: 4px; min-width: 4px; } .ds-measure-before { background: var(--ink-muted, #63635d); } .ds-measure-after { background: var(--ink, #111111); } .ds-measure-label { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); }"
     },
     {
+      "name": "Case Breadcrumb",
+      "kind": "nav",
+      "description": "Identity strip on case pages: name link and role on the left, status and Download CV on the right, above a hairline.",
+      "html": "<nav class=\"ds-crumbs\" aria-label=\"Profile\"><p class=\"ds-crumbs-group\"><a class=\"ds-crumbs-home\" href=\"#\">← Maksym Matsydulskas</a><span>Senior Front-End Engineer · Lead · TypeScript</span></p><p class=\"ds-crumbs-group\"><span class=\"ds-crumbs-status\">Open to work</span><a class=\"ds-crumbs-cv\" href=\"#\">Download CV</a></p></nav>",
+      "css": ".ds-crumbs { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 24px 0 12px; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-crumbs p { margin: 0; } .ds-crumbs-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; } .ds-crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; text-decoration: none; } .ds-crumbs-home { color: var(--ink, #111111); } .ds-crumbs-cv, .ds-crumbs-status { color: var(--accent, #1f3bd6); } .ds-crumbs-status::before { content: \"\"; display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: var(--accent, #1f3bd6); } .ds-crumbs a:hover { color: var(--accent, #1f3bd6); text-decoration: underline; } .ds-crumbs a:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; }"
+    },
+    {
       "name": "Status Marker",
       "kind": "chip",
       "description": "Cobalt mono status preceded by an 8px square.",
@@ -277,13 +284,6 @@
       "description": "Two-column ledger row: mono period, then company, role and note.",
       "html": "<div class=\"ds-job\"><span class=\"ds-job-period\">03/2025 – 10/2026</span><div><p class=\"ds-job-head\"><strong>CONNECT 972</strong> <span class=\"ds-job-country\">Israel</span></p><p class=\"ds-job-role\">Front-End Engineer · front-end lead</p><p class=\"ds-job-note\">Led the front end of an enterprise fiber network management platform.</p></div></div>",
       "css": ".ds-job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-prose, 400 15px/24px sans-serif); color: var(--ink, #111111); } .ds-job p { margin: 0; } .ds-job-period, .ds-job-country { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-job-period { padding-top: 2px; } .ds-job-role { color: var(--ink-2, #5c5c58); } .ds-job-note { margin-top: 4px; max-width: 54ch; }"
-    },
-    {
-      "name": "Prose List",
-      "kind": "custom",
-      "description": "Case-prose list with cobalt em-dash markers.",
-      "html": "<ul class=\"ds-prose-list\"><li>Moved 83 paginated tables onto one store factory.</li><li>Removed 20,000+ lines of dead code with Knip.</li></ul>",
-      "css": ".ds-prose-list { list-style: none; margin: 0; padding: 0; font: var(--type-prose, 400 15px/24px sans-serif); color: var(--ink, #111111); } .ds-prose-list li { position: relative; padding-left: 20px; margin-bottom: 8px; } .ds-prose-list li::before { content: \"—\"; position: absolute; left: 0; color: var(--accent, #1f3bd6); }"
     }
   ],
   "narrative": {

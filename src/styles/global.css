@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   accent-color: var(--accent);
 
   --paper: #f6f6f3;
@@ -36,6 +36,22 @@
   --page-max: 1120px;
   --section-gap: 96px;
   --ease-state: 120ms ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141413;
+    --paper-sunk: #1e1e1c;
+    --ink: #e8e8e3;
+    --ink-2: #a6a69f;
+    --ink-muted: #9b9b94;
+    --hairline: #33332f;
+    --rule: #e8e8e3;
+    --accent: #8a9bff;
+    --accent-wash: rgba(138, 155, 255, 0.12);
+    --on-accent: #141413;
+    --on-ink: #141413;
+  }
 }
 
 * {

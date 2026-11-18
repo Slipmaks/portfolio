@@ -11,6 +11,15 @@ colors:
   ink-2: "#5c5c58"
   ink-muted: "#63635d"
   hairline: "#d6d6d1"
+  blueprint-cobalt-dark: "#8a9bff"
+  cobalt-wash-dark: "rgba(138, 155, 255, 0.12)"
+  on-cobalt-dark: "#141413"
+  paper-dark: "#141413"
+  paper-sunk-dark: "#1e1e1c"
+  ink-dark: "#e8e8e3"
+  ink-2-dark: "#a6a69f"
+  ink-muted-dark: "#9b9b94"
+  hairline-dark: "#33332f"
 typography:
   display:
     fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
@@ -131,7 +140,7 @@ components:
 
 The site reads like the datasheet of a well-engineered part. The engineer is specified, not sold. It is a Swiss-style system in a technical register: one grotesque typeface for statements, one monospace for metadata, rules that divide the page into numbered, labelled compartments, and figures set large enough to read before the sentence around them. Nothing is decorative. Every line, label and number holds information or separates it.
 
-The page is calm and dense in the way a good spec is dense. Content sits on warm off-white paper in near-black ink. Hierarchy comes from type size, weight and rules rather than colour or depth. A single Blueprint Cobalt is the only chromatic voice, and it means one thing: live, actionable, or the current state. The photo is grayscale so it doesn't introduce a second colour.
+The page is calm and dense in the way a good spec is dense. Content sits on warm off-white paper in near-black ink. Hierarchy comes from type size, weight and rules rather than colour or depth. A single Blueprint Cobalt is the only chromatic voice, and it means one thing: live, actionable, or the current state. The photo is grayscale so it doesn't introduce a second colour. At night the same sheet turns over: warm near-black paper, warm off-white ink and a lifted cobalt, following the reader's system setting.
 
 Interaction is precise and mechanical, like switches on an instrument panel. Corners are square, borders are 1px, nothing has a shadow, and hover inverts a control to solid in 120ms with no movement.
 
@@ -149,7 +158,7 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 ### Primary
 - **Blueprint Cobalt** (`blueprint-cobalt`): the only accent. It is used for the primary call to action (Download CV), the "Open to work" status marker, link hover, the `|` divider in the hero title, case-tile "Read the case →" cues, em-dash list markers in case prose, focus outlines, and the browser `accent-color`.
 - **Cobalt Wash** (`cobalt-wash`): an 8% tint of the accent, used only as the hover fill of case tiles.
-- **On Cobalt** (`on-cobalt`): white text on cobalt fills.
+- **On Cobalt** (`on-cobalt`): white text on cobalt fills (Night Paper in the dark theme).
 
 ### Neutral
 - **Paper** (`paper`): the page background, and the text colour on ink fills.
@@ -158,6 +167,15 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 - **Graphite** (`ink-2`): secondary text such as lead paragraphs, summaries, job roles and mono metadata.
 - **Muted Graphite** (`ink-muted`): tertiary indices and utility links in section heads ("04 cases", "Download CV", "GitHub ↗").
 - **Hairline** (`hairline`): every 1px divider, including the hero meta rule, grid cell borders, job rows, project tops and prose heading rules.
+
+### Dark Theme
+The dark theme follows `prefers-color-scheme: dark` (`color-scheme: light dark` on the root) and redefines the same tokens, so every component switches without its own dark styles. It is composed, not inverted: the paper keeps the light paper's warm hue, and each role keeps its contrast step.
+- **Night Paper** (`paper-dark`): the page background and the text on light fills.
+- **Night Sunk Paper** (`paper-sunk-dark`): one step lighter than the paper, behind inline code.
+- **Chalk** (`ink-dark`): body text, headings, button borders and hover fills, and the 2px section rule (15.6:1 on the paper, slightly below white to cut glare).
+- **Night Graphite** (`ink-2-dark`, 7.5:1) and **Night Muted** (`ink-muted-dark`, 6.6:1): the same secondary and tertiary roles as in light.
+- **Night Hairline** (`hairline-dark`): every 1px divider, a touch stronger than the light hairline so it still reads on dark.
+- **Lifted Cobalt** (`blueprint-cobalt-dark`): the signal colour raised to 7.2:1 on the paper, matching the light cobalt's 7.3:1, so it carries the same weight. Because the fill is now light, the primary button's text flips to Night Paper (`on-cobalt-dark`), and the tile hover wash is 12% instead of 8%.
 
 ### Named Rules
 **The One Signal Rule.** Blueprint Cobalt is the only hue on the page and covers well under 10% of any screen. It marks action, state or focus, never decoration or emphasis in running text.
