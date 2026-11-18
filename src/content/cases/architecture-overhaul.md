@@ -54,8 +54,6 @@ Earlier on the project I migrated the build from Vue CLI (webpack) to Vite and l
 
 ## Result
 
-- 0 → 884 Vitest unit tests running in CI.
-- 5,300 lines of store code removed.
-- Payment-form chunk 70.5 → 10.2 kB (23.9 → 4.1 kB gzipped).
-- Production builds from 26 s to 4 s after the Vite 8 upgrade.
-- Defects found along the way fixed, including user data surviving logout in a multi-tenant app.
+- Features kept shipping for all six weeks. The refactor merged in small branches beside the team's regular work, and a realtime feature was built inside the same backlog with its tests in the same suite.
+- The old patterns are blocked, not just removed. Reading raw API errors outside the shared helper fails CI, so a new ticket or a new developer cannot bring them back.
+- A data leak is closed: user data no longer survives logout in the multi-tenant app. It was found and fixed along the way.
