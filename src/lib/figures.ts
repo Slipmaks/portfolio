@@ -1,3 +1,5 @@
+const smallestDrawableRatio = 0.05;
+
 const magnitudes: Record<string, number> = { k: 1e3, K: 1e3, M: 1e6, B: 1e9 };
 
 export const splitChange = (value: string): [string, string] | null => {
@@ -20,5 +22,6 @@ export const scaleOf = (value: string) => {
   if (!before || !after || before.unit !== after.unit) return null;
   const largest = Math.max(before.amount, after.amount);
   if (!(largest > 0)) return null;
+  if (Math.min(before.amount, after.amount) / largest < smallestDrawableRatio) return null;
   return { before: (before.amount / largest) * 100, after: (after.amount / largest) * 100 };
 };

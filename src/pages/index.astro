@@ -10,6 +10,7 @@ import { profile, experience, projects } from '../data/profile';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const techGraph = projects.find((project) => project.name === 'Tech graph');
+const keepSeparatorsTogether = (text: string) => text.replaceAll(' · ', ' · ');
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const caseById = new Map(cases.map((entry) => [entry.id, entry.data.short ?? entry.data.title]));
 const jobGroups = [
@@ -22,7 +23,7 @@ const jobGroups = [
   title={`${profile.name} — ${profile.title} | ${profile.focus}`}
   description={profile.summary}
 >
-  <main class="page">
+  <main class="page" id="content">
     <header class="hero">
       <div class="hero-meta mono">
         <span class="status">{profile.status}</span>
@@ -31,7 +32,7 @@ const jobGroups = [
       <div class="hero-body">
         <div>
           <h1 class="hero-name">{profile.name}</h1>
-          <p class="hero-title">{profile.title.replaceAll(' · ', ' · ')}&nbsp;<span class="divider" aria-hidden="true">|</span>&nbsp;{profile.focus}</p>
+          <p class="hero-title">{keepSeparatorsTogether(profile.title)}&nbsp;|&nbsp;{profile.focus}</p>
         </div>
         <Image class="hero-photo" src={photo} alt="" width={160} height={160} loading="eager" />
       </div>
@@ -150,13 +151,15 @@ const jobGroups = [
       </ul>
     </section>
 
-    <footer class="section footer">
+  </main>
+  <footer class="page">
+    <div class="section footer">
       <p class="footer-lead">Let’s talk.</p>
       <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
       <p class="mono footer-note">{profile.location}</p>
-    </footer>
-  </main>
+    </div>
+  </footer>
 </Base>
 
 <style>
@@ -190,10 +193,6 @@ const jobGroups = [
   .hero-title {
     margin-top: 16px;
     font: var(--type-title);
-  }
-
-  .divider {
-    color: var(--accent);
   }
 
   .hero-photo {
@@ -292,6 +291,12 @@ const jobGroups = [
 
   .project-name {
     font: var(--type-name);
+  }
+
+  .project-name a {
+    display: inline-block;
+    padding-block: 12px;
+    margin-block: -12px;
   }
 
   .skill {

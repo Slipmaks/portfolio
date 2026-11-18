@@ -22,6 +22,7 @@ export const profile = {
   cv: '/Maksym_Matsydulskas_Resume.pdf',
   skills: [
     { group: 'Front end', items: ['TypeScript', 'Vue 3', 'Nuxt', 'React', 'Pinia'] },
+    { group: 'Mobile', items: ['React Native', 'Expo'] },
     { group: 'Testing & build', items: ['Vitest', 'Playwright', 'Vite'] },
     { group: 'Back end', items: ['Node.js (Hono)', 'PostgreSQL'] },
   ],

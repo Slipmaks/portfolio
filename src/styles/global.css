@@ -249,6 +249,19 @@ a.section-index {
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  background: var(--paper);
+  translate: 0 -200%;
+}
+
+.skip-link:focus-visible {
+  translate: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

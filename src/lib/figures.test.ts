@@ -17,9 +17,11 @@ test('scales by magnitude, not by the bare digits', () => {
   assert.deepEqual(scaleOf('1,200 → 600'), { before: 100, after: 50 });
 });
 
-test('draws nothing when the two sides are not comparable', () => {
+test('draws nothing when the sides are not comparable or one bar would vanish', () => {
   assert.equal(scaleOf('2.1 s → 900 ms'), null);
   assert.equal(scaleOf('0 → 0'), null);
+  assert.equal(scaleOf('0 → 884'), null);
+  assert.equal(scaleOf('337 → 1'), null);
   assert.equal(scaleOf('n/a → 4'), null);
   assert.equal(scaleOf('884'), null);
 });

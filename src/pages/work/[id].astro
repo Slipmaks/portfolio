@@ -38,7 +38,7 @@ const hasMeasures = (measures?.length ?? 0) > 0;
 ---
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
-  <main class="page">
+  <div class="page">
     <nav class="crumbs mono" aria-label="Profile">
       <p class="crumbs-who">
         <a class="crumbs-home" href="/"><span aria-hidden="true">← </span>{profile.name}</a>
@@ -49,7 +49,8 @@ const hasMeasures = (measures?.length ?? 0) > 0;
         <a class="crumbs-cv" href={profile.cv} download>Download CV</a>
       </p>
     </nav>
-
+  </div>
+  <main class="page" id="content">
     <header class="case-head">
       <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {period} · {role}</p>
       <h1 class="case-title">{title}</h1>
@@ -84,13 +85,13 @@ const hasMeasures = (measures?.length ?? 0) > 0;
                     <dt class="mono">{measure.label}</dt>
                     <dd class="measure-value">
                       <MetricValue value={measure.value} />
-                      {scale && (
-                        <span class="measure-scale" aria-hidden="true">
-                          {scale.before > 0 && <span class="scale-before" style={`--scale: ${scale.before}%`} />}
-                          <span class="scale-after" style={`--scale: ${scale.after}%`} />
-                        </span>
-                      )}
                     </dd>
+                    {scale && (
+                      <dd class="measure-scale" aria-hidden="true">
+                        <span class="scale-before" style={`--scale: ${scale.before}%`} />
+                        <span class="scale-after" style={`--scale: ${scale.after}%`} />
+                      </dd>
+                    )}
                   </div>
                 );
               })}
@@ -121,12 +122,14 @@ const hasMeasures = (measures?.length ?? 0) > 0;
       </ol>
     </section>
 
-    <footer class="section case-footer">
-      <p class="footer-lead">Want this on your team?</p>
+  </main>
+  <footer class="page">
+    <div class="section case-footer">
+      <p class="footer-lead">Let’s talk.</p>
       <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
-    </footer>
-  </main>
+    </div>
+  </footer>
 </Base>
 
 <style>
@@ -237,7 +240,7 @@ const hasMeasures = (measures?.length ?? 0) > 0;
 
   .measure {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 4px;
     padding: 12px 0;
     border-bottom: 1px solid var(--hairline);
@@ -248,6 +251,7 @@ const hasMeasures = (measures?.length ?? 0) > 0;
   }
 
   .measure-value {
+    order: -1;
     font: var(--type-display);
     letter-spacing: -0.025em;
   }
@@ -255,21 +259,17 @@ const hasMeasures = (measures?.length ?? 0) > 0;
   .measure-scale {
     display: grid;
     gap: 3px;
-    margin: 12px 0 4px;
+    margin-top: 8px;
   }
 
   .measure-scale span {
     display: block;
     width: var(--scale);
-    height: 4px;
-  }
-
-  .measure-scale .scale-after {
-    min-width: 4px;
+    height: 6px;
   }
 
   .measure-scale .scale-before {
-    background: var(--ink-muted);
+    border: 1px solid var(--ink-muted);
   }
 
   .measure-scale .scale-after {

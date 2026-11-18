@@ -23,7 +23,7 @@ stack: [Expo, React Native, TypeScript, Hono, Drizzle, PostgreSQL, Better Auth]
 
 ## Context
 
-A gym notebook for iOS, built alone from the mobile client to the database. Currently in private beta; the repository is private and a demo is available on request.
+A gym notebook for iOS, built alone from the mobile client to the database. Currently in private beta; the repository is private and a demo is available [on request](mailto:slipmaks@gmail.com?subject=WeekFit%20demo).
 
 ## Problem
 
