@@ -40,6 +40,13 @@ The codebase had no test runner, no linting standards and a lot of copy-paste. A
 
 Earlier on the project I migrated the build from Vue CLI (webpack) to Vite and later to Vite 8, upgraded Ant Design v3 → v4, removed 20,000+ lines of dead code, and set up oxlint, oxfmt, Knip and GitLab CI/CD.
 
+## Decisions
+
+- **Expand, migrate, contract instead of a rewrite branch.** Each new module landed beside the old code with its own tests and no change in behaviour. Call sites moved over in batches sized by how far they reached, and the old form was deleted only once nothing used it. CI stayed green at every step, which is what let features keep shipping without a freeze.
+- **A lint rule as the contract, not a style guide.** Once API errors and responses went through one helper, an oxlint rule made reading raw error and Hydra payloads anywhere else fail CI. The old pattern cannot come back through a new ticket or a new developer.
+- **Kept Vuex and fixed the duplication first.** Moving to Pinia at the same time would have multiplied the blast radius of every change. One store factory removed the copy-paste behind 83 tables, and it turns a later move to Pinia into mechanical work instead of a rewrite.
+- **Tickets an AI agent can finish in one pass, with a person owning the design.** I split the refactor into tickets small enough for a coding agent to implement in one context window, each with the figures it would change counted from the code, not estimated. I set the architecture, reviewed every branch, and made the branches and commits myself.
+
 ## Result
 
 - 0 → 884 Vitest unit tests running in CI.

@@ -24,13 +24,26 @@ stack: [Expo, React Native, TypeScript, Hono, Drizzle, PostgreSQL, Better Auth]
 
 A gym notebook for iOS, built alone from the mobile client to the database. Currently in private beta; the repository is private and a demo is available on request.
 
+## Problem
+
+At a machine you need your own settings: seat height, pin position, the cue that makes the lift feel right. Gym apps log sets and reps, and in my comparison of the five leading ones, none ties a photo to an exercise or a machine. And the place you need it most, the gym floor, is often where the signal drops.
+
 ## What I did
 
-- A React Native (Expo) client with an offline cache.
-- A Hono API with Drizzle and PostgreSQL, typed end to end.
-- Idempotent photo uploads.
-- Authentication with Better Auth.
+- An Expo (React Native) client: body parts, exercise cards with photos and notes, search, and a notebook that opens with no connection.
+- A Hono API with Drizzle on PostgreSQL, Better Auth, and photos stored in S3-compatible storage as WebP with a thumbnail.
+- 43 unit tests: API suites against an in-memory Postgres, and the offline and upload logic tested through injected file and network ports.
+
+## Decisions
+
+- **My own API instead of a backend-as-a-service.** I wanted to own and understand the whole path from screen to database, so the backend is Hono, Better Auth and Drizzle rather than Supabase or Firebase. That choice also gave me one typed contract and ownership checks in a single middleware.
+- **Types without codegen.** The API exports its route types and the app imports them type-only, so a change in a server response breaks the app's typecheck instead of a screen at runtime. There is no generated client to drift.
+- **Uploads that can be retried safely.** Every photo carries an idempotency key, backed by a unique index. If two attempts race, the loser deletes its own files and returns the winner's row, and a photo whose response was lost is never uploaded twice.
+- **Offline data that belongs to one person.** Photos are saved by ID, not by URL, so hourly re-signed storage links do not trigger re-downloads. Only the signed-in user can write to the offline copy, so a download that finishes after sign-out leaves nothing behind, and an expired session makes the notebook read-only instead of wiping it.
+- **Backups proven, not assumed.** Every night the database dump is restored into a clean Postgres and its row counts are compared. Photo files are deleted only after the database transaction commits.
+
+I built it with coding agents working under project rules I wrote; the architecture, the reviews and the decisions above are mine.
 
 ## Result
 
-The app keeps working in a gym with no signal, and the client and server share one set of types.
+The notebook opens in a gym with no signal, uploads survive a dropped connection without duplicates, and the client and server share one set of types.
