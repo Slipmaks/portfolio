@@ -139,7 +139,7 @@ Interaction is precise and mechanical, like switches on an instrument panel. Cor
 - Paper-and-ink neutrals with one cobalt accent used sparingly.
 - A heavy 2px ink rule opens every section, and 1px hairlines divide everything inside it.
 - Uppercase tracked labels for section names, monospace for every piece of metadata (dates, countries, indices, stack lists).
-- Big numbers carry the claims: metrics are set in the figure style and placed before their prose.
+- Big numbers carry the claims: metrics are set in the figure style and placed before their prose. On the homepage tiles only a claim of change earns that size: a before/after ("0 → 884") leads its tile, while a count of things ("22 widgets") sits under the title in Mono. The Measured column on a case page sets every figure large, counts included, because each sits beside its own label.
 - Square everything, flat everything, motion limited to colour changes.
 
 ## Colors
@@ -176,9 +176,9 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 - **Display** (700, clamp 40–88px, 0.95, −0.04em): the name in the hero only, capped at 10ch so it breaks into a stacked block.
 - **Headline** (700, clamp 32–56px, 1.0, −0.035em): case-study page titles, capped at 20ch.
 - **Figure** (700, 32px/36px, −0.025em): metric values ("0 → 884", "30 s") and the closing "Let's talk." line. Numbers are the loudest thing after the name.
-- **Title** (600, 20px/24px): the hero role line and the skills list.
+- **Title** (600, 20px/24px): the hero role line, the skills list and case-tile titles.
 - **Lead** (400, 18px/28px): hero and case summaries in Graphite, capped at `--measure-lead` (52ch, about 70 characters in Host Grotesk).
-- **Name** (600, 15px/20px): case and project titles inside tiles.
+- **Name** (600, 15px/20px): project titles and hero spec values.
 - **Body** (400, 15px/24px): all running text. Prose and job notes are capped at `--measure-prose` (54ch, about 72 characters). Host Grotesk's "0" is wider than its average letter, so `ch` caps render about 1.35× more characters than their number: never set a measure by the 65–75 rule in raw `ch`. Paragraphs, list items and definitions use `text-wrap: pretty`; headings use `text-wrap: balance`.
 - **Label** (600, 13px/20px, 0.06em, uppercase): section titles and case-prose H2s only.
 - **Control** (500, 13px/16px): buttons and in-tile action cues.
@@ -193,7 +193,7 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 
 A single centred column, max 1120px wide with a 16px gutter. Sections are separated by a 96px gap (64px below 640px) and each one opens with a 2px ink rule followed by a section head: an uppercase label on the left and a mono index or utility link on the right, aligned to the baseline, with 32px below. Spacing steps are 4, 8, 12, 16, 24, 32, 48, 64 and 96px, and 16px is the default internal pad.
 
-Projects use an auto-fit grid (`minmax(240px, 1fr)`), so it reflows without breakpoints. Case tiles form a ledger grid of three columns (two below 960px, one below 640px) in which the first case, the flagship, spans two columns, so five tiles fill every row without an orphan. Hairlines are drawn top and left on the container and right and bottom on each cell, so borders never double. Experience is a table separated by hairlines: a 160px mono period, the content, and a right rail of cobalt mono links named after the case (its `short` title, e.g. "Architecture overhaul →") for roles that have case studies (they wrap into a row under the note below 640px). Roles are ordered by end date, most recent first; concurrent part-time work sits in a separate group under a mono "Alongside, part-time" label so the order never looks broken. Project cells have 32px gaps, each topped by a hairline.
+Projects use an auto-fit grid (`minmax(240px, 1fr)`), so it reflows without breakpoints. Case tiles form a ledger grid of four columns (two below 960px, one below 640px). The flagship takes a full row and the other four cases fill the row under it, so five tiles never leave an orphan. The same grid (`.tile-grid`) holds the More work row on case pages. The homepage reads hero, Selected work, Experience, Skills, Projects, then the contact footer, so the page ends on live work rather than a list of tools. Hairlines are drawn top and left on the container and right and bottom on each cell, so borders never double. Experience is a table separated by hairlines: a 160px mono period, the content, and a right rail of cobalt mono links named after the case (its `short` title, e.g. "Architecture overhaul →") for roles that have case studies (they wrap into a row under the note below 640px). Roles are ordered by end date, most recent first; client work stays in the main list even when it is a part-time contract that overlaps another role (SDA), because it is a role in its own right; only non-client part-time work that runs alongside the main career (the university website) sits in a separate group under a mono "Alongside, part-time" label. Project cells have 32px gaps, each topped by a hairline.
 
 The main breakpoint is 640px. Below it, the hero tightens so Download CV sits in the first screen of a 390px phone: the photo shrinks from 160px to a 64px square beside the name, the name scales with the viewport (32–56px), the lead drops to Lead Compact (16/24), experience rows collapse to one column, and the case facts grid stacks. Hover styles apply only on devices that hover, buttons grow to 44px on coarse pointers, and mono utility links carry a 40px hit area without changing the layout.
 
@@ -227,10 +227,10 @@ The row of buttons used in the hero, footer and case-page footer. Five controls 
 
 ### Case Tile
 - **Container:** a cell in the ledger grid with hairline borders, 16px padding, square corners and no background at rest.
-- **Content order:** mono index and company, then the metric value in Figure, the mono metric label, the case title in Name, the summary in Graphite (which grows to align tile bottoms), and the cobalt "Read the case →" cue.
+- **Content order:** two variants, chosen by the data. When the metric is a before/after (contains "→"), the tile is figure-led: mono index and company, then the figure in Figure (the flagship shows up to four), the mono label, the case title in Title, the summary in Graphite (which grows to align tile bottoms), and the cobalt "Read the case →" cue. Otherwise the tile is title-led: mono index and company, the case title in Title, then the count and its label on one mono line ("22 widgets in 5 card types"), the summary and the cue. A count never gets Figure size.
 - **Hover:** the whole tile is the link and fills with Cobalt Wash. Text colour stays ink.
-- **Semantics:** the tile is an `article` whose case title is an `h3` link stretched over the whole tile with `::after`. In the DOM the title comes first, and the meta, figure and label are moved above it visually with flex `order`. Screen readers hear a short heading link instead of the whole tile, and heading navigation lands on every case. "Read the case →" is `aria-hidden`. Keyboard focus draws the cobalt ring around the whole tile (`:has(a:focus-visible)`). Figures with an arrow ("0 → 884") render through `MetricValue.astro`, which reads them aloud as "0 to 884".
-- **Reuse:** one component (`CaseTile.astro`) renders the tile everywhere. On case pages a "Next case" section (section head with a mono `Next · 02` index) shows the following case's tile in a single hairline-bordered cell, the same width as a homepage grid cell. After the last case it wraps to the first. Next to it is an "All work" cell with the same anatomy: a mono "Homepage" label, "← All work" in Figure type, and a mono case count. It links to the homepage work section. The two cells are 272px wide on desktop and stack full width below 640px.
+- **Semantics:** the tile is an `article` whose case title is an `h3` link stretched over the whole tile with `::after`. In the DOM the title comes first, and the meta (and, on figure-led tiles, the figure and label) are moved above it visually with flex `order`. Screen readers hear a short heading link instead of the whole tile, and heading navigation lands on every case. "Read the case →" is `aria-hidden`. Keyboard focus draws the cobalt ring around the whole tile (`:has(a:focus-visible)`). Figures with an arrow ("0 → 884") render through `MetricValue.astro`, which reads them aloud as "0 to 884".
+- **Reuse:** one component (`CaseTile.astro`) renders the tile everywhere. On case pages a "More work" section shows the four other cases in the same ledger grid as the homepage row, starting with the next case and wrapping to the first. Its section head carries an "All work" utility link to the homepage work section.
 
 ### Not Found Page
 The 404 page uses the case-page skeleton: a breadcrumb strip with "Error 404" as mono metadata on the right (never as an eyebrow above the heading), a Headline that states the problem, a Lead that names the recovery, an outline "See all work" button, then the standard contact compartment.
@@ -245,7 +245,7 @@ An uppercase tracked Label on the left and a muted mono index or utility link on
 The person's datasheet, placed between the role line and the lead paragraph. It is a definition list under a 1px hairline (12px top pad, 32px above it). Each cell is a mono Graphite label over a value in Name type, with a 4px gap. The cells are Experience, Core stack, Domains, Availability and Timezone. They flow in a wrapping row with 16px vertical and 40px horizontal gaps: one row on desktop, ragged rows on mobile. Values are short facts with no sentences. The data lives in `profile.spec`.
 
 ### Status Marker
-Mono text in cobalt ("Open to work") preceded by an 8px solid cobalt square. It sits in the hero meta strip opposite the location, above a hairline.
+Mono text in cobalt ("Open to work") preceded by an 8px solid cobalt square. It sits in the hero meta strip opposite the location, and in the case-page breadcrumb beside Download CV, always above a hairline.
 
 ### Experience Row
 A two-column ledger row: a mono period on the left, then the bold company with a mono country, the role in Graphite, and the note (capped at `--measure-prose`). Rows are divided by hairlines.
@@ -257,7 +257,7 @@ Grouped skills in the same two-column structure as the Experience rows: a mono g
 Only for a case without a Measured table: a definition-list strip under a 2px rule, with a mono "Result" label over the metric in Figure and its mono label, and a mono "Stack" label over the stack list, in 1fr and 2fr columns that stack below 640px. When a case has measures, the strip is dropped so the headline figure is never shown twice; the stack moves under the Measured table and the first section starts 64px below the summary.
 
 ### Flagship Tile
-The first case tile spans two grid columns, so it carries more than one figure: every before/after row of that case's Measured table (values containing "→", at most four), each a Figure value over its mono `short` label. On desktop and tablet they sit in one row; below 640px they become a list with the label beside the value, and below 380px the label drops under the value. Values never wrap internally. Other tiles keep a single figure with its own label.
+The first case tile spans two grid columns, so it carries more than one figure: every before/after row of that case's Measured table (values containing "→", at most four), each a Figure value over its mono `short` label. They sit in a four-column grid with a 32px gap (two columns below 960px), which puts each figure exactly above a tile column of the row below; below 640px they become a list with the label beside the value, and below 380px the label drops under the value. Values never wrap internally. Other tiles follow the Case Tile variants: a single before/after figure leads its tile, and a count sits under the title in Mono.
 
 ### Stack List
 Tool names (case stacks, project stacks) render as a mono list through `StackList.astro`: each name never wraps internally, and the " · " separators are drawn before each item and clipped at the line start, so a line never begins with a separator. Skills use the same clipped-separator pattern at Title size.
@@ -266,14 +266,14 @@ Tool names (case stacks, project stacks) render as a mono list through `StackLis
 The spec-sheet table of a case: every verified before/after or count, so the numbers a hiring manager checks are read as measurements, not prose. It is an `aside` headed "Measured" in the same uppercase label style as the prose sections, holding a definition list. Each row shows the value in Figure (arrows read as "to") above its mono label, with a hairline under every row. Values stay short ("337 → 1", "26 → 4") and units live in the label, so a row fits a 320px phone. On desktop it sits in the right column beside the 54ch prose, top-aligned with the first section and sticky 24px from the top; below 960px it drops between the case facts and the prose. It renders only when the case's `measures` frontmatter has entries, and only verified figures go in it. A "Stack" block in the same label style closes the aside. Every before/after row also draws its scale: two 4px bars under the value, measured against the larger of the two numbers, "before" in Muted and "after" in Ink, so a reader sees 26 → 4 shrink before reading it. A zero "before" draws nothing, the "after" bar never drops below 4px, and the bars are aria-hidden because the value already says it. They are 4px so they can never be mistaken for a 1px hairline, and they never use Blueprint Cobalt, which stays reserved for action, state and focus.
 
 ### Breadcrumb
-A mono "← Name" link at the top of case pages with no underline, above a hairline, with the case's position ("Case 02 / 05") as mono metadata on the right, so a reader always knows where they are in the set.
+The identity strip at the top of case pages, above a hairline, for a reader who arrives on a forwarded case link. On the left, a mono "← Name" link in ink with no underline, then the role and focus in Graphite. On the right, the cobalt status marker and a cobalt mono "Download CV" link with a 40px hit area. Below 640px the name, role and actions stack into three short lines. The case's position ("Case 02 / 05") opens the mono meta line above the title.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** open every new section with the 2px ink rule and a section head (uppercase Label left, mono index right).
 - **Do** set dates, countries, counts, indices and stack lists in Mono, in Graphite.
-- **Do** lead with the figure: put a metric in the Figure style before the sentence that explains it.
+- **Do** lead with the figure when it is a before/after: put it in the Figure style before the sentence that explains it. On tiles, a count of things goes under the title in Mono.
 - **Do** keep Blueprint Cobalt for action, state and focus only: one primary button per contact group, status, hover, focus and list markers.
 - **Do** use hairline-bordered auto-fit grids (`minmax(240px, 1fr)`) for collections, with borders split between container and cells so they never double.
 - **Do** keep motion to colour and background changes at 120ms ease-out, and disable it under `prefers-reduced-motion`.

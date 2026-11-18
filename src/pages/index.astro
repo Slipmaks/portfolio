@@ -54,7 +54,7 @@ const jobGroups = [
         <h2 class="section-title" id="work-title">Selected work</h2>
         <span class="section-index">{twoDigits(cases.length)} cases</span>
       </div>
-      <ol class="cases">
+      <ol class="cases tile-grid">
         {
           cases.map((entry, index) => (
             <li class="case">
@@ -107,26 +107,6 @@ const jobGroups = [
       }
     </section>
 
-    <section class="section" aria-labelledby="projects-title">
-      <div class="section-head">
-        <h2 class="section-title" id="projects-title">Projects</h2>
-        <a class="section-index" href={profile.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
-      </div>
-      <ul class="projects">
-        {
-          projects.map((project) => (
-            <li class="project">
-              <h3 class="project-name">
-                {project.url ? <a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a> : project.name}
-              </h3>
-              <p>{project.description}</p>
-              <StackList items={project.stack.split(' · ')} />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
     <section class="section" aria-labelledby="skills-title">
       <div class="section-head">
         <h2 class="section-title" id="skills-title">Skills</h2>
@@ -150,6 +130,26 @@ const jobGroups = [
       </dl>
     </section>
 
+    <section class="section" aria-labelledby="projects-title">
+      <div class="section-head">
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <a class="section-index" href={profile.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <ul class="projects">
+        {
+          projects.map((project) => (
+            <li class="project">
+              <h3 class="project-name">
+                {project.url ? <a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a> : project.name}
+              </h3>
+              <p>{project.description}</p>
+              <StackList items={project.stack.split(' · ')} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
     <footer class="section footer">
       <p class="footer-lead">Let’s talk.</p>
       <p class="footer-intent">{profile.contactNote}</p>
@@ -171,20 +171,6 @@ const jobGroups = [
     gap: 4px 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--hairline);
-  }
-
-  .status {
-    color: var(--accent);
-    white-space: nowrap;
-  }
-
-  .status::before {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    background: var(--accent);
   }
 
   .hero-body {
@@ -239,26 +225,8 @@ const jobGroups = [
     color: var(--ink-2);
   }
 
-  .cases {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--hairline);
-    border-left: 1px solid var(--hairline);
-  }
-
-  .case {
-    border-right: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-
   .case:first-child {
-    grid-column: span 2;
-  }
-
-  @media (max-width: 960px) {
-    .cases {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-column: 1 / -1;
   }
 
   .job {
@@ -436,14 +404,6 @@ const jobGroups = [
     .job-cases a {
       padding-block: 12px;
       margin-block: -12px;
-    }
-
-    .cases {
-      grid-template-columns: 1fr;
-    }
-
-    .case:first-child {
-      grid-column: auto;
     }
   }
 </style>

@@ -3,7 +3,7 @@ order: 3
 title: Two TypeScript apps, built alone from scratch
 short: Ticket portal & payment store
 company: CONNECT 972
-period: 2025 – 2026
+period: 04/2025 – 09/2026
 role: Sole front-end developer
 summary: A ticket portal for technicians and a payment-store PWA for payment points, each built from scratch in strict TypeScript.
 metric:

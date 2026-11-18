@@ -38,7 +38,7 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 
 - An Astro static site with almost no client JavaScript by design. The only scripts are the email "Copy" button and Vercel Analytics. Interactive work lives in separate projects (Tech graph uses React).
 - It is deployed on Vercel. Canonical URLs, Open Graph and the sitemap come from `VERCEL_PROJECT_PRODUCTION_URL`, and Vercel Web Analytics is on.
-- Pages: home (hero, selected work, experience, projects, skills, contact) and one page per case study at `/work/[id]/`.
+- Pages: home (hero, selected work, experience, skills, projects, contact) and one page per case study at `/work/[id]/`.
 - Content lives in data files, not markup: `src/data/profile.ts` holds the profile, experience and projects, and `src/content/cases/*.md` holds the case studies (frontmatter: order, title, company, period, role, summary, metric, stack).
 - The CV file name `Maksym_Matsydulskas_Resume.pdf` is fixed so the "Download CV" link never breaks. When the PDF changes, `experience` must be updated to match.
 - The site is English only.

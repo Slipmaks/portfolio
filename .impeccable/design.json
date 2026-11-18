@@ -1,38 +1,212 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T00:00:00Z",
+  "generatedAt": "2026-11-18T00:00:00Z",
   "title": "Design System: Maksym Matsydulskas — Portfolio",
   "extensions": {
     "colorMeta": {
-      "blueprint-cobalt": { "role": "primary", "displayName": "Blueprint Cobalt", "canonical": "#1f3bd6", "tonalRamp": ["oklch(15% 0.06 266)", "oklch(25% 0.12 266)", "oklch(35% 0.18 266)", "oklch(46% 0.24 266)", "oklch(58% 0.19 266)", "oklch(70% 0.13 266)", "oklch(83% 0.07 266)", "oklch(95% 0.02 266)"] },
-      "cobalt-wash": { "role": "primary", "displayName": "Cobalt Wash", "canonical": "rgba(31, 59, 214, 0.08)", "tonalRamp": ["rgba(31, 59, 214, 0.64)", "rgba(31, 59, 214, 0.48)", "rgba(31, 59, 214, 0.32)", "rgba(31, 59, 214, 0.24)", "rgba(31, 59, 214, 0.16)", "rgba(31, 59, 214, 0.12)", "rgba(31, 59, 214, 0.08)", "rgba(31, 59, 214, 0.04)"] },
-      "on-cobalt": { "role": "primary", "displayName": "On Cobalt", "canonical": "#ffffff", "tonalRamp": ["oklch(15% 0 0)", "oklch(28% 0 0)", "oklch(41% 0 0)", "oklch(54% 0 0)", "oklch(67% 0 0)", "oklch(80% 0 0)", "oklch(92% 0 0)", "oklch(100% 0 0)"] },
-      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f6f6f3", "tonalRamp": ["oklch(15% 0.004 106)", "oklch(27% 0.004 106)", "oklch(40% 0.005 106)", "oklch(52% 0.005 106)", "oklch(65% 0.005 106)", "oklch(78% 0.005 106)", "oklch(90% 0.004 106)", "oklch(97% 0.004 106)"] },
-      "paper-sunk": { "role": "neutral", "displayName": "Sunk Paper", "canonical": "#ecece8", "tonalRamp": ["oklch(15% 0.004 106)", "oklch(27% 0.004 106)", "oklch(40% 0.005 106)", "oklch(52% 0.005 106)", "oklch(65% 0.005 106)", "oklch(78% 0.005 106)", "oklch(90% 0.004 106)", "oklch(94% 0.005 106)"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#111111", "tonalRamp": ["oklch(18% 0 0)", "oklch(28% 0 0)", "oklch(40% 0 0)", "oklch(52% 0 0)", "oklch(65% 0 0)", "oklch(78% 0 0)", "oklch(90% 0 0)", "oklch(97% 0 0)"] },
-      "ink-2": { "role": "neutral", "displayName": "Graphite", "canonical": "#5c5c58", "tonalRamp": ["oklch(15% 0.005 106)", "oklch(27% 0.005 106)", "oklch(36% 0.006 106)", "oklch(46% 0.007 106)", "oklch(60% 0.006 106)", "oklch(74% 0.005 106)", "oklch(87% 0.004 106)", "oklch(96% 0.003 106)"] },
-      "ink-muted": { "role": "neutral", "displayName": "Muted Graphite", "canonical": "#63635d", "tonalRamp": ["oklch(15% 0.006 106)", "oklch(27% 0.006 106)", "oklch(38% 0.007 106)", "oklch(48% 0.009 106)", "oklch(61% 0.008 106)", "oklch(75% 0.006 106)", "oklch(88% 0.004 106)", "oklch(96% 0.003 106)"] },
-      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#d6d6d1", "tonalRamp": ["oklch(15% 0.006 106)", "oklch(28% 0.006 106)", "oklch(42% 0.007 106)", "oklch(56% 0.008 106)", "oklch(70% 0.008 106)", "oklch(82% 0.007 106)", "oklch(87% 0.007 106)", "oklch(95% 0.004 106)"] }
+      "blueprint-cobalt": {
+        "role": "primary",
+        "displayName": "Blueprint Cobalt",
+        "canonical": "#1f3bd6",
+        "tonalRamp": [
+          "oklch(15% 0.06 266)",
+          "oklch(25% 0.12 266)",
+          "oklch(35% 0.18 266)",
+          "oklch(46% 0.24 266)",
+          "oklch(58% 0.19 266)",
+          "oklch(70% 0.13 266)",
+          "oklch(83% 0.07 266)",
+          "oklch(95% 0.02 266)"
+        ]
+      },
+      "cobalt-wash": {
+        "role": "primary",
+        "displayName": "Cobalt Wash",
+        "canonical": "rgba(31, 59, 214, 0.08)",
+        "tonalRamp": [
+          "rgba(31, 59, 214, 0.64)",
+          "rgba(31, 59, 214, 0.48)",
+          "rgba(31, 59, 214, 0.32)",
+          "rgba(31, 59, 214, 0.24)",
+          "rgba(31, 59, 214, 0.16)",
+          "rgba(31, 59, 214, 0.12)",
+          "rgba(31, 59, 214, 0.08)",
+          "rgba(31, 59, 214, 0.04)"
+        ]
+      },
+      "on-cobalt": {
+        "role": "primary",
+        "displayName": "On Cobalt",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(41% 0 0)",
+          "oklch(54% 0 0)",
+          "oklch(67% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(92% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#f6f6f3",
+        "tonalRamp": [
+          "oklch(15% 0.004 106)",
+          "oklch(27% 0.004 106)",
+          "oklch(40% 0.005 106)",
+          "oklch(52% 0.005 106)",
+          "oklch(65% 0.005 106)",
+          "oklch(78% 0.005 106)",
+          "oklch(90% 0.004 106)",
+          "oklch(97% 0.004 106)"
+        ]
+      },
+      "paper-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Paper",
+        "canonical": "#ecece8",
+        "tonalRamp": [
+          "oklch(15% 0.004 106)",
+          "oklch(27% 0.004 106)",
+          "oklch(40% 0.005 106)",
+          "oklch(52% 0.005 106)",
+          "oklch(65% 0.005 106)",
+          "oklch(78% 0.005 106)",
+          "oklch(90% 0.004 106)",
+          "oklch(94% 0.005 106)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#111111",
+        "tonalRamp": [
+          "oklch(18% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(52% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(90% 0 0)",
+          "oklch(97% 0 0)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#5c5c58",
+        "tonalRamp": [
+          "oklch(15% 0.005 106)",
+          "oklch(27% 0.005 106)",
+          "oklch(36% 0.006 106)",
+          "oklch(46% 0.007 106)",
+          "oklch(60% 0.006 106)",
+          "oklch(74% 0.005 106)",
+          "oklch(87% 0.004 106)",
+          "oklch(96% 0.003 106)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Graphite",
+        "canonical": "#63635d",
+        "tonalRamp": [
+          "oklch(15% 0.006 106)",
+          "oklch(27% 0.006 106)",
+          "oklch(38% 0.007 106)",
+          "oklch(48% 0.009 106)",
+          "oklch(61% 0.008 106)",
+          "oklch(75% 0.006 106)",
+          "oklch(88% 0.004 106)",
+          "oklch(96% 0.003 106)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d6d6d1",
+        "tonalRamp": [
+          "oklch(15% 0.006 106)",
+          "oklch(28% 0.006 106)",
+          "oklch(42% 0.007 106)",
+          "oklch(56% 0.008 106)",
+          "oklch(70% 0.008 106)",
+          "oklch(82% 0.007 106)",
+          "oklch(87% 0.007 106)",
+          "oklch(95% 0.004 106)"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The name in the hero only, capped at 10ch." },
-      "headline": { "displayName": "Headline", "purpose": "Case-study page titles, capped at 20ch." },
-      "figure": { "displayName": "Figure", "purpose": "Metric values and the closing contact line." },
-      "title": { "displayName": "Title", "purpose": "Hero role line and the skills list." },
-      "lead": { "displayName": "Lead", "purpose": "Hero and case summaries in Graphite, max --measure-lead (52ch)." },
-      "name": { "displayName": "Name", "purpose": "Case and project titles inside tiles." },
-      "body": { "displayName": "Body", "purpose": "All running text; prose max --measure-prose (54ch)." },
-      "label": { "displayName": "Label", "purpose": "Uppercase section titles and case-prose H2s only." },
-      "control": { "displayName": "Control", "purpose": "Buttons and in-tile action cues." },
-      "mono": { "displayName": "Mono", "purpose": "All metadata: dates, countries, indices, stacks." },
-      "mono-code": { "displayName": "Mono Code", "purpose": "Inline code in case prose." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero only, capped at 10ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Case-study page titles, capped at 20ch."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Before/after figures on tiles, every Measured value, and the closing contact line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Hero role line, the skills list and case-tile titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero and case summaries in Graphite, max --measure-lead (52ch)."
+      },
+      "name": {
+        "displayName": "Name",
+        "purpose": "Project titles and hero spec values."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text; prose max --measure-prose (54ch)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase section titles and case-prose H2s only."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Buttons and in-tile action cues."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "All metadata: dates, countries, indices, stacks."
+      },
+      "mono-code": {
+        "displayName": "Mono Code",
+        "purpose": "Inline code in case prose."
+      }
     },
     "shadows": [],
     "motion": [
-      { "name": "ease-state", "value": "120ms ease-out", "purpose": "Background, colour and border changes on hover. Disabled under prefers-reduced-motion." }
+      {
+        "name": "ease-state",
+        "value": "120ms ease-out",
+        "purpose": "Background, colour and border changes on hover. Disabled under prefers-reduced-motion."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" }
+      {
+        "name": "xs",
+        "value": "380px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "960px"
+      }
     ]
   },
   "components": [
@@ -64,16 +238,31 @@
       "name": "Section Head",
       "kind": "custom",
       "description": "2px ink rule, uppercase label left, mono index right.",
-      "html": "<div class=\"ds-section\"><div class=\"ds-section-head\"><h2 class=\"ds-section-title\">Selected work</h2><span class=\"ds-section-index\">04 cases</span></div></div>",
+      "html": "<div class=\"ds-section\"><div class=\"ds-section-head\"><h2 class=\"ds-section-title\">Selected work</h2><span class=\"ds-section-index\">05 cases</span></div></div>",
       "css": ".ds-section { border-top: 2px solid var(--rule, #111111); padding-top: 16px; } .ds-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; } .ds-section-title { margin: 0; font: var(--type-label, 600 13px/20px sans-serif); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink, #111111); } .ds-section-index { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-muted, #63635d); }"
     },
     {
       "name": "Case Tile",
       "kind": "card",
       "refersTo": "case-tile",
-      "description": "Ledger-grid cell led by its metric; the whole tile is the link.",
-      "html": "<a class=\"ds-case\" href=\"#\"><span class=\"ds-case-meta\">01 · CONNECT 972</span><span class=\"ds-case-metric\">0 → 884</span><span class=\"ds-case-meta\">unit tests in CI</span><span class=\"ds-case-title\">Architecture overhaul without a feature freeze</span><span class=\"ds-case-summary\">A six-week, 66-ticket refactor while features kept shipping.</span><span class=\"ds-case-more\">Read the case →</span></a>",
-      "css": ".ds-case { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-case-metric { margin-top: 24px; font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-case-title { margin-top: 16px; font: var(--type-name, 600 15px/20px sans-serif); } .ds-case-summary { color: var(--ink-2, #5c5c58); } .ds-case-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); }"
+      "description": "Figure-led tile for a case whose metric is a before/after; the whole tile is the link.",
+      "html": "<a class=\"ds-case\" href=\"#\"><span class=\"ds-case-meta\">01 · CONNECT 972</span><span class=\"ds-case-metric\">0 → 884</span><span class=\"ds-case-meta\">unit tests in CI</span><span class=\"ds-case-title\">Architecture overhaul without a feature freeze</span><span class=\"ds-case-summary\">A six-week refactor of an enterprise fiber network platform while features kept shipping.</span><span class=\"ds-case-more\">Read the case →</span></a>",
+      "css": ".ds-case { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-case-metric { margin-top: 24px; font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-case-title { margin-top: 16px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-summary { color: var(--ink-2, #5c5c58); } .ds-case-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); }"
+    },
+    {
+      "name": "Case Tile, title-led",
+      "kind": "card",
+      "refersTo": "case-tile",
+      "description": "Tile for a case whose metric is a count, not a change: the title leads and the count sits under it in Mono.",
+      "html": "<a class=\"ds-case-t\" href=\"#\"><span class=\"ds-case-t-meta\">02 · CONNECT 972</span><span class=\"ds-case-t-title\">A customizable, extensible dashboard builder</span><span class=\"ds-case-t-meta\">22 widgets in 5 card types</span><span class=\"ds-case-t-summary\">Drag-and-drop dashboards of customers, routers, services and revenue that tenants and managers arrange for themselves.</span><span class=\"ds-case-t-more\">Read the case →</span></a>",
+      "css": ".ds-case-t { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case-t:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case-t:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-t-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-case-t-title { margin-top: 24px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-t-summary { color: var(--ink-2, #5c5c58); } .ds-case-t-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); }"
+    },
+    {
+      "name": "Measured Row",
+      "kind": "custom",
+      "description": "One row of a case's Measured table: Figure value, 4px before/after scale bars, mono label, hairline under.",
+      "html": "<div class=\"ds-measure\"><span class=\"ds-measure-value\">26 → 4</span><span class=\"ds-measure-bars\" aria-hidden=\"true\"><span class=\"ds-measure-before\" style=\"width:100%\"></span><span class=\"ds-measure-after\" style=\"width:15%\"></span></span><span class=\"ds-measure-label\">production build, seconds</span></div>",
+      "css": ".ds-measure { display: flex; flex-direction: column; gap: 8px; max-width: 400px; padding: 12px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); } .ds-measure-value { font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-measure-bars { display: flex; flex-direction: column; gap: 2px; } .ds-measure-before, .ds-measure-after { display: block; height: 4px; min-width: 4px; } .ds-measure-before { background: var(--ink-muted, #63635d); } .ds-measure-after { background: var(--ink, #111111); } .ds-measure-label { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); }"
     },
     {
       "name": "Status Marker",
@@ -104,21 +293,45 @@
       "Paper-and-ink neutrals with one cobalt accent used sparingly.",
       "A heavy 2px ink rule opens every section, and 1px hairlines divide everything inside it.",
       "Uppercase tracked labels for section names, monospace for every piece of metadata (dates, countries, indices, stack lists).",
-      "Big numbers carry the claims: metrics are set in the figure style and placed before their prose.",
+      "Big numbers carry the claims: metrics are set in the figure style and placed before their prose. On the homepage tiles only a claim of change earns that size: a before/after (\"0 → 884\") leads its tile, while a count of things (\"22 widgets\") sits under the title in Mono. The Measured column on a case page sets every figure large, counts included, because each sits beside its own label.",
       "Square everything, flat everything, motion limited to colour changes."
     ],
     "rules": [
-      { "name": "The One Signal Rule", "body": "Blueprint Cobalt is the only hue on the page and covers well under 10% of any screen. It marks action, state or focus, never decoration or emphasis in running text.", "section": "colors" },
-      { "name": "The Grayscale Portrait Rule", "body": "Photography is desaturated (`filter: grayscale(1)`) so imagery never competes with the signal colour.", "section": "colors" },
-      { "name": "The Measured Metadata Rule", "body": "If a value could sit in a spreadsheet cell (a period, country, index, count or tech list), it is set in Mono. Grotesque is reserved for sentences and names.", "section": "typography" },
-      { "name": "The Single Shout Rule", "body": "Uppercase appears only in Label (section titles and case H2s). Nothing else is set in capitals.", "section": "typography" },
-      { "name": "The Compartment Rule", "body": "Every section is a labelled compartment: 2px rule, section head, then content. A new block of content gets this structure or it doesn't get a section.", "section": "layout" },
-      { "name": "The Drafting Table Rule", "body": "Everything lies on the same sheet. If something needs to stand out, give it a rule, a weight or the signal colour, never a shadow.", "section": "elevation" }
+      {
+        "name": "The One Signal Rule",
+        "body": "Blueprint Cobalt is the only hue on the page and covers well under 10% of any screen. It marks action, state or focus, never decoration or emphasis in running text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Grayscale Portrait Rule",
+        "body": "Photography is desaturated (`filter: grayscale(1)`) so imagery never competes with the signal colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured Metadata Rule",
+        "body": "If a value could sit in a spreadsheet cell (a period, country, index, count or tech list), it is set in Mono. Grotesque is reserved for sentences and names.",
+        "section": "typography"
+      },
+      {
+        "name": "The Single Shout Rule",
+        "body": "Uppercase appears only in Label (section titles and case H2s). Nothing else is set in capitals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Compartment Rule",
+        "body": "Every section is a labelled compartment: 2px rule, section head, then content. A new block of content gets this structure or it doesn't get a section.",
+        "section": "layout"
+      },
+      {
+        "name": "The Drafting Table Rule",
+        "body": "Everything lies on the same sheet. If something needs to stand out, give it a rule, a weight or the signal colour, never a shadow.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do open every new section with the 2px ink rule and a section head (uppercase Label left, mono index right).",
       "Do set dates, countries, counts, indices and stack lists in Mono, in Graphite.",
-      "Do lead with the figure: put a metric in the Figure style before the sentence that explains it.",
+      "Do lead with the figure when it is a before/after: put it in the Figure style before the sentence that explains it. On tiles, a count of things goes under the title in Mono.",
       "Do keep Blueprint Cobalt for action, state and focus only: one primary button per contact group, status, hover, focus and list markers.",
       "Do use hairline-bordered auto-fit grids (`minmax(240px, 1fr)`) for collections, with borders split between container and cells so they never double.",
       "Do keep motion to colour and background changes at 120ms ease-out, and disable it under `prefers-reduced-motion`.",

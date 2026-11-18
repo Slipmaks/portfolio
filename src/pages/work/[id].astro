@@ -9,24 +9,26 @@ import { profile } from '../../data/profile';
 
 export async function getStaticPaths() {
   const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
-  return cases.map((entry, index) => {
-    const nextPosition = (index + 1) % cases.length;
-    return {
-      params: { id: entry.id },
-      props: { entry, position: index + 1, next: cases[nextPosition], nextPosition: nextPosition + 1, total: cases.length },
-    };
-  });
+  const numbered = cases.map((entry, index) => ({ entry, position: index + 1 }));
+  return numbered.map(({ entry, position }, index) => ({
+    params: { id: entry.id },
+    props: {
+      entry,
+      position,
+      others: [...numbered.slice(index + 1), ...numbered.slice(0, index)],
+      total: cases.length,
+    },
+  }));
 }
 
 type Props = {
   entry: CollectionEntry<'cases'>;
   position: number;
-  next: CollectionEntry<'cases'>;
-  nextPosition: number;
+  others: { entry: CollectionEntry<'cases'>; position: number }[];
   total: number;
 };
 
-const { entry, position, next, nextPosition, total } = Astro.props;
+const { entry, position, others, total } = Astro.props;
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
@@ -45,13 +47,19 @@ const scaleOf = (value: string) => {
 
 <Base title={`${title} — ${profile.name}`} description={summary}>
   <main class="page">
-    <nav class="crumbs mono">
-      <a href="/"><span aria-hidden="true">← </span>{profile.name}</a>
-      <span>Case {twoDigits(position)} / {twoDigits(total)}</span>
+    <nav class="crumbs mono" aria-label="Profile">
+      <p class="crumbs-who">
+        <a class="crumbs-home" href="/"><span aria-hidden="true">← </span>{profile.name}</a>
+        <span>{profile.title} · {profile.focus}</span>
+      </p>
+      <p class="crumbs-actions">
+        <span class="status">{profile.status}</span>
+        <a class="crumbs-cv" href={profile.cv} download>Download CV</a>
+      </p>
     </nav>
 
     <header class="case-head">
-      <p class="mono">{company} · {period} · {role}</p>
+      <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {period} · {role}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-summary">{summary}</p>
       {
@@ -105,21 +113,20 @@ const scaleOf = (value: string) => {
       </article>
     </div>
 
-    <section class="section" aria-labelledby="next-title">
+    <section class="section" aria-labelledby="more-title">
       <div class="section-head">
-        <h2 class="section-title" id="next-title">Next case</h2>
-        <span class="section-index">Next · {twoDigits(nextPosition)}</span>
+        <h2 class="section-title" id="more-title">More work</h2>
+        <a class="section-index" href="/#work-title">All work</a>
       </div>
-      <div class="next-case">
-        <div class="next-case-cell">
-          <CaseTile entry={next} position={nextPosition} />
-        </div>
-        <a class="next-case-cell all-work" href="/#work-title">
-          <span class="mono">Homepage</span>
-          <span class="all-work-title"><span aria-hidden="true">← </span>All work</span>
-          <span class="mono">{twoDigits(total)} cases</span>
-        </a>
-      </div>
+      <ol class="tile-grid">
+        {
+          others.map((other) => (
+            <li>
+              <CaseTile entry={other.entry} position={other.position} />
+            </li>
+          ))
+        }
+      </ol>
     </section>
 
     <footer class="section case-footer">
@@ -133,10 +140,20 @@ const scaleOf = (value: string) => {
 <style>
   .crumbs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 16px;
+    align-items: baseline;
+    gap: 8px 24px;
     padding: 24px 0 12px;
     border-bottom: 1px solid var(--hairline);
+  }
+
+  .crumbs-who,
+  .crumbs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 16px;
   }
 
   .crumbs a {
@@ -144,6 +161,14 @@ const scaleOf = (value: string) => {
     padding-block: 12px;
     margin-block: -12px;
     text-decoration: none;
+  }
+
+  .crumbs-home {
+    color: var(--ink);
+  }
+
+  .crumbs-cv {
+    color: var(--accent);
   }
 
   .case-head {
@@ -300,42 +325,6 @@ const scaleOf = (value: string) => {
     padding: 0 4px;
   }
 
-  .next-case {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(240px, 272px);
-    width: fit-content;
-    border-top: 1px solid var(--hairline);
-    border-left: 1px solid var(--hairline);
-  }
-
-  .next-case-cell {
-    border-right: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .all-work {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px;
-    text-decoration: none;
-    transition: background var(--ease-state);
-  }
-
-  @media (hover: hover) {
-    .all-work:hover {
-      background: var(--accent-wash);
-      color: inherit;
-    }
-  }
-
-  .all-work-title {
-    margin-top: 24px;
-    font: var(--type-display);
-    letter-spacing: -0.025em;
-  }
-
   .case-footer {
     margin-bottom: 64px;
   }
@@ -354,12 +343,6 @@ const scaleOf = (value: string) => {
   @media (max-width: 640px) {
     .case-facts {
       grid-template-columns: 1fr;
-    }
-
-    .next-case {
-      grid-auto-flow: row;
-      grid-auto-columns: auto;
-      width: auto;
     }
   }
 </style>

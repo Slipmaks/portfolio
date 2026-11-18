@@ -3,7 +3,7 @@ order: 2
 title: A customizable, extensible dashboard builder
 short: Dashboard builder
 company: CONNECT 972
-period: 2025 – 2026
+period: 01/2026 – 09/2026
 role: Front-end lead
 summary: Drag-and-drop dashboards of customers, routers, services and revenue that tenants and managers arrange for themselves.
 metric:

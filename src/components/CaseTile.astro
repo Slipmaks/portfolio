@@ -11,13 +11,17 @@ type Props = {
 const { entry, position, featured = false } = Astro.props;
 const { company, metric, measures, title, summary } = entry.data;
 const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.value.includes('→')).slice(0, 4) : [];
+const metricIsChange = metric.value.includes('→');
+const titleLed = beforeAfter.length <= 1 && !metricIsChange;
 ---
 
-<article class="case-tile">
+<article class:list={['case-tile', { 'title-led': titleLed }]}>
   <h3 class="case-title"><a href={`/work/${entry.id}/`}>{title}</a></h3>
   <p class="mono case-meta">{String(position).padStart(2, '0')} · {company}</p>
   {
-    beforeAfter.length > 1 ? (
+    titleLed ? (
+      <p class="mono case-count">{metric.value} {metric.label}</p>
+    ) : beforeAfter.length > 1 ? (
       <dl class="case-figures">
         {beforeAfter.map((measure) => (
           <div class="case-figure">
@@ -80,10 +84,16 @@ const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.valu
 
   .case-figures {
     order: -2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 32px;
     margin-top: 24px;
+  }
+
+  @media (max-width: 960px) {
+    .case-figures {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .case-figure {
@@ -100,7 +110,7 @@ const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.valu
 
   @media (max-width: 640px) {
     .case-figures {
-      flex-direction: column;
+      grid-template-columns: minmax(0, 1fr);
       gap: 8px;
     }
 
@@ -125,7 +135,12 @@ const beforeAfter = featured ? (measures ?? []).filter((measure) => measure.valu
 
   .case-title {
     margin-top: 16px;
-    font: var(--type-name);
+    font: var(--type-title);
+    text-wrap: balance;
+  }
+
+  .title-led .case-title {
+    margin-top: 24px;
   }
 
   .case-title a,
