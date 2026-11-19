@@ -1,18 +1,14 @@
 ---
 import Schematic from '../Schematic.astro';
 import Step from '../SchematicStep.astro';
+import Thumb from './thumbs/ticket-portal-and-payment-store.astro';
 
-const tenants = [
-  { name: 'tenant-a', y: 8 },
-  { name: 'tenant-b', y: 38 },
-  { name: 'tenant-c', y: 68 },
-];
 const frontends = [8, 30, 52, 74];
 ---
 
 <Schematic caption="One build for every tenant and environment">
   <Step index={1} name="Build">
-    <svg viewBox="0 0 240 96">
+    <svg class="drawing" viewBox="0 0 240 96">
       <rect x="8" y="32" width="56" height="32" />
       <text x="36" y="52" text-anchor="middle" class="ink">src</text>
       <path d="M68 48H92M88 44.5 92 48 88 51.5" class="muted" />
@@ -27,7 +23,7 @@ const frontends = [8, 30, 52, 74];
     <Fragment slot="text">vue-tsc runs in strict mode in every build. A type error stops the release.</Fragment>
   </Step>
   <Step index={2} name="Deploy">
-    <svg viewBox="0 0 240 96">
+    <svg class="drawing" viewBox="0 0 240 96">
       <rect x="8" y="16" width="132" height="64" />
       <text x="16" y="32" class="ink">deploy</text>
       <rect x="16" y="44" width="56" height="28" class="muted" />
@@ -40,21 +36,11 @@ const frontends = [8, 30, 52, 74];
     <Fragment slot="text">The API address is never baked in. CI writes a runtime config next to the bundle at deploy.</Fragment>
   </Step>
   <Step index={3} name="Open">
-    <svg viewBox="0 0 240 96">
-      <rect x="8" y="32" width="56" height="32" />
-      <text x="36" y="52" text-anchor="middle" class="ink">image</text>
-      {tenants.map(({ name, y }) => (
-        <>
-          <line x1="64" y1="48" x2="128" y2={y + 10} class="muted" />
-          <rect x="128" y={y} width="104" height="20" />
-          <text x="136" y={y + 14} class="ink">{name}</text>
-        </>
-      ))}
-    </svg>
+    <Thumb />
     <Fragment slot="text">The tenant comes from the subdomain, so one Docker image serves every tenant company.</Fragment>
   </Step>
   <Step index={4} name="Request">
-    <svg viewBox="0 0 240 96">
+    <svg class="drawing" viewBox="0 0 240 96">
       <text x="108" y="12" text-anchor="middle" class="signal">X-Client-Id</text>
       {frontends.map((y, index) => (
         <>

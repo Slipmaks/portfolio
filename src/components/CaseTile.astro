@@ -3,6 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 import MetricValue from './MetricValue.astro';
 import { splitChange } from '../lib/figures';
 
+const thumbs = import.meta.glob<typeof import('./schematics/thumbs/weekfit.astro')>('./schematics/thumbs/*.astro', { eager: true });
+
 type Props = {
   entry: CollectionEntry<'cases'>;
   position: number;
@@ -14,11 +16,19 @@ const { company, metric, measures, title, summary } = entry.data;
 const beforeAfter = featured ? (measures ?? []).filter((measure) => splitChange(measure.value)) : [];
 const metricIsChange = splitChange(metric.value) !== null;
 const titleLed = beforeAfter.length <= 1 && !metricIsChange;
+const Thumb = titleLed ? thumbs[`./schematics/thumbs/${entry.id}.astro`]?.default : undefined;
 ---
 
-<article class:list={['case-tile', { 'title-led': titleLed }]}>
+<article class:list={['case-tile', { 'title-led': titleLed, 'has-thumb': Thumb }]}>
   <h3 class="case-title"><a href={`/work/${entry.id}/`}>{title}</a></h3>
   <p class="mono case-meta">{String(position).padStart(2, '0')} · {company}</p>
+  {
+    Thumb && (
+      <div class="case-thumb" aria-hidden="true">
+        <Thumb />
+      </div>
+    )
+  }
   {
     titleLed ? (
       <p class="mono case-count">{metric.value} {metric.label}</p>
@@ -148,6 +158,15 @@ const titleLed = beforeAfter.length <= 1 && !metricIsChange;
 
   .title-led .case-title {
     margin-top: 24px;
+  }
+
+  .case-thumb {
+    order: -2;
+    margin-top: 24px;
+  }
+
+  .has-thumb .case-title {
+    margin-top: 16px;
   }
 
   .case-title a,

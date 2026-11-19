@@ -39,6 +39,8 @@ const { title, company, period, role, summary, metric, measures, stack } = entry
 const hasMeasures = (measures?.length ?? 0) > 0;
 const measuresHeading = measures?.some((measure) => splitChange(measure.value)) ? 'Measured' : 'Scope';
 const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`]?.default;
+const changes = measures?.filter((measure) => splitChange(measure.value)) ?? [];
+const glance = changes.length > 0 ? changes : (measures ?? []).slice(0, 2);
 
 ---
 
@@ -46,7 +48,7 @@ const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`
   <div class="page">
     <nav class="crumbs mono" aria-label="Profile">
       <p class="crumbs-who">
-        <a class="crumbs-home" href="/"><span aria-hidden="true">← </span>{profile.name}</a>
+        <a class="crumbs-home" href="/" aria-label={`${profile.name}, home page`}><span aria-hidden="true">← </span>{profile.name}</a>
         <span>{keepSeparatorsTogether(profile.title)}&nbsp;|&nbsp;{profile.focus}</span>
       </p>
       <p class="crumbs-actions">
@@ -60,6 +62,20 @@ const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`
       <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {keepRangeTogether(period)} · {role}</p>
       <h1 class="case-title">{title}</h1>
       <p class="case-summary">{summary}</p>
+      {
+        hasMeasures && (
+          <dl class="case-glance" aria-hidden="true">
+            {glance.map((measure) => (
+              <div class="glance-row">
+                <dt class="glance-label">{measure.short ?? measure.label}</dt>
+                <dd class="glance-value">
+                  <MetricValue value={measure.value} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
       {
         !hasMeasures && (
           <dl class="case-facts">
@@ -191,6 +207,10 @@ const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`
     color: var(--ink-2);
   }
 
+  .case-glance {
+    display: none;
+  }
+
   .case-facts {
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 2fr;
@@ -289,6 +309,32 @@ const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`
   }
 
   @media (max-width: 960px) {
+    .case-glance {
+      display: block;
+      margin-top: 24px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .glance-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .glance-value {
+      order: -1;
+      font: var(--type-display);
+      letter-spacing: -0.025em;
+    }
+
+    .glance-label {
+      font: var(--type-mono-label);
+      color: var(--ink-2);
+    }
+
     .case-body {
       grid-template-columns: minmax(0, 1fr);
     }

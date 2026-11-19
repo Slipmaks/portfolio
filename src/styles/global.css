@@ -269,6 +269,63 @@ a.section-index {
   translate: none;
 }
 
+svg.drawing {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  overflow: visible;
+}
+
+.drawing :is(rect, line, path, circle) {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.drawing :is(rect, line) {
+  shape-rendering: crispEdges;
+}
+
+.drawing .muted {
+  stroke: var(--ink-muted);
+}
+
+.drawing .signal {
+  stroke: var(--accent);
+}
+
+.drawing .dashed {
+  stroke-dasharray: 3 3;
+}
+
+.drawing .solid {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.drawing .solid-signal {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.drawing text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ink-2);
+  stroke: none;
+}
+
+.drawing text.ink {
+  fill: var(--ink);
+}
+
+.drawing text.signal {
+  fill: var(--accent);
+  stroke: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

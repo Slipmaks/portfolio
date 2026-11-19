@@ -1,22 +1,38 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ContactLinks from '../components/ContactLinks.astro';
 import { profile } from '../data/profile';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Base title={`Page not found — ${profile.name}`} description="This page does not exist.">
   <div class="page">
     <nav class="crumbs mono" aria-label="Site">
-      <a href="/"><span aria-hidden="true">← </span>{profile.name}</a>
+      <a href="/" aria-label={`${profile.name}, home page`}><span aria-hidden="true">← </span>{profile.name}</a>
       <span>Error 404</span>
     </nav>
   </div>
   <main class="page" id="content" tabindex="-1">
     <header class="missing">
       <h1 class="missing-title">This page doesn’t exist.</h1>
-      <p class="missing-lead">The link may be old or mistyped. The case studies, experience and CV are all on the homepage.</p>
-      <a class="button" href="/#work-title">See all work</a>
+      <p class="missing-lead">The link may be old or mistyped. If you were looking for a case study, it is one of these five. The experience and CV are on the homepage.</p>
     </header>
+    <ol class="missing-cases">
+      {
+        cases.map((entry, index) => (
+          <li>
+            <a href={`/work/${entry.id}/`}>
+              <span class="mono">{String(index + 1).padStart(2, '0')}</span>
+              <span class="missing-case-title">{entry.data.title}</span>
+              <span class="mono">{entry.data.company}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    <a class="button missing-home" href="/#work-title">See all work</a>
 
   </main>
   <footer class="page">
@@ -60,6 +76,39 @@ import { profile } from '../data/profile';
     max-width: var(--measure-lead);
     font: var(--type-lead);
     color: var(--ink-2);
+  }
+
+  .missing-cases {
+    max-width: 720px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .missing-cases a {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: baseline;
+    gap: 4px 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+    text-decoration: none;
+  }
+
+  .missing-case-title {
+    font: var(--type-name);
+  }
+
+  .missing-home {
+    margin-top: 32px;
+  }
+
+  @media (max-width: 640px) {
+    .missing-cases a {
+      grid-template-columns: 32px 1fr;
+    }
+
+    .missing-cases a > .mono:last-child {
+      grid-column: 2;
+    }
   }
 
   .missing-footer {

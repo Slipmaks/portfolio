@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T09:31:27Z",
+  "generatedAt": "2026-11-19T09:42:36Z",
   "title": "Design System: Maksym Matsydulskas — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -400,7 +400,7 @@
       "name": "Case Tile, title-led",
       "kind": "card",
       "refersTo": "case-tile",
-      "description": "Tile for a case whose metric is a count, not a change: the title leads and the count sits under it in Mono.",
+      "description": "Tile for a case whose metric is a count, not a change: a thumbnail of one schematic step, then the title, with the count under it in Mono.",
       "html": "<a class=\"ds-case-t\" href=\"#\"><span class=\"ds-case-t-meta\">02 · CONNECT 972</span><span class=\"ds-case-t-title\">A customizable, extensible dashboard builder</span><span class=\"ds-case-t-count\">22 widgets in 5 card types</span><span class=\"ds-case-t-summary\">Drag-and-drop dashboards of customers, routers, services and revenue that tenants and managers arrange for themselves.</span><span class=\"ds-case-t-more\">Read the case →</span></a>",
       "css": ".ds-case-t { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case-t:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case-t:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-t-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-case-t-title { margin-top: 24px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-t-summary { color: var(--ink-2, #4d4d49); } .ds-case-t-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); } .ds-case-t-count { font: var(--type-mono-label, 400 13px/18px monospace); color: var(--ink-2, #4d4d49); }"
     },
@@ -415,7 +415,7 @@
       "name": "Case Breadcrumb",
       "kind": "nav",
       "description": "Identity strip on case pages: name link and role on the left, status and Download CV on the right, above a hairline.",
-      "html": "<nav class=\"ds-crumbs\" aria-label=\"Profile\"><p class=\"ds-crumbs-group\"><a class=\"ds-crumbs-home\" href=\"#\">← Maksym Matsydulskas</a><span>Senior Front-End Engineer · Lead · TypeScript</span></p><p class=\"ds-crumbs-group\"><span class=\"ds-crumbs-status\">Open to work</span><a class=\"ds-crumbs-cv\" href=\"#\">Download CV</a></p></nav>",
+      "html": "<nav class=\"ds-crumbs\" aria-label=\"Profile\"><p class=\"ds-crumbs-group\"><a class=\"ds-crumbs-home\" href=\"#\" aria-label=\"Maksym Matsydulskas, home page\">← Maksym Matsydulskas</a><span>Senior Front-End Engineer · Lead · TypeScript</span></p><p class=\"ds-crumbs-group\"><span class=\"ds-crumbs-status\">Open to work</span><a class=\"ds-crumbs-cv\" href=\"#\">Download CV</a></p></nav>",
       "css": ".ds-crumbs { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 24px 0 12px; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-crumbs p { margin: 0; } .ds-crumbs-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; } .ds-crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; text-decoration: none; } .ds-crumbs-home { color: var(--ink, #111111); } .ds-crumbs-cv, .ds-crumbs-status { color: var(--accent, #1f3bd6); } .ds-crumbs-status::before { content: \"\"; display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: var(--accent, #1f3bd6); } .ds-crumbs a:hover { color: var(--accent, #1f3bd6); text-decoration: underline; } .ds-crumbs a:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; }"
     },
     {
@@ -458,7 +458,7 @@
       },
       {
         "name": "The Grayscale Portrait Rule",
-        "body": "Photography is desaturated (`filter: grayscale(1)`) so imagery never competes with the signal colour.",
+        "body": "Photography is desaturated (`filter: grayscale(1)`) so imagery never competes with the signal colour. The portrait carries a 1px Hairline frame so a dark photo keeps its square edge on Night Paper.",
         "section": "colors"
       },
       {

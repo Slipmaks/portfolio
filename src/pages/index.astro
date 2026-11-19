@@ -27,7 +27,6 @@ const jobGroups = [
     <header class="hero">
       <div class="hero-meta mono">
         <span class="status">{profile.status}</span>
-        <span>{profile.location}</span>
       </div>
       <div class="hero-body">
         <div>
@@ -160,7 +159,6 @@ const jobGroups = [
       <p class="footer-lead">Let’s talk.</p>
       <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
-      <p class="mono footer-note">{profile.location}</p>
     </div>
   </footer>
 </Base>
@@ -204,6 +202,7 @@ const jobGroups = [
     object-fit: cover;
     filter: grayscale(1);
     flex-shrink: 0;
+    border: 1px solid var(--hairline);
   }
 
   .hero-spec {
@@ -352,10 +351,6 @@ const jobGroups = [
     max-width: var(--measure-lead);
     font: var(--type-lead);
     color: var(--ink-2);
-  }
-
-  .footer-note {
-    margin-top: 24px;
   }
 
   @media (max-width: 640px) {

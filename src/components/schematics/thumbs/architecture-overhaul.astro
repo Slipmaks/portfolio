@@ -1,0 +1,17 @@
+---
+const rows = [8, 22, 36, 50, 64, 78];
+const helperCenter = 46;
+---
+
+<svg class="drawing" viewBox="0 0 240 96">
+  {rows.map((y) => (
+    <>
+      <rect x="8" y={y} width="8" height="8" class="solid-signal" />
+      <line x1="16" y1={y + 4} x2="152" y2={helperCenter} class="signal" />
+    </>
+  ))}
+  <rect x="146" y="22" width="92" height="48" class="dashed" />
+  <rect x="152" y="30" width="80" height="32" class="signal" />
+  <text x="192" y="50" text-anchor="middle" class="ink">helper</text>
+  <text x="192" y="86" text-anchor="middle">lint rule</text>
+</svg>
