@@ -1,0 +1,15 @@
+---
+import { splitCompounds } from '../lib/text';
+
+type Props = { text: string };
+
+const parts = splitCompounds(Astro.props.text);
+---
+
+{parts.map((part) => (part.compound ? <span class="compound">{part.text}</span> : part.text))}
+
+<style>
+  .compound {
+    white-space: nowrap;
+  }
+</style>

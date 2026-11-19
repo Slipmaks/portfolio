@@ -1,21 +1,21 @@
 ---
 order: 3
-title: Two TypeScript apps, built alone from scratch
+title: A ticket portal and a payment-store PWA, built alone in strict TypeScript
 short: Ticket portal & payment store
 company: CONNECT 972
 period: 04/2025 – 09/2026
 role: Sole front-end developer
 summary: A ticket portal for technicians and a payment-store PWA for payment points, each built from scratch in strict TypeScript.
 metric:
-  value: 290 / 317
-  label: commits across both apps are mine
+  value: "4"
+  label: languages, 2 of them right-to-left
 measures:
-  - value: 290 / 317
-    label: commits across both apps are mine
   - value: "4"
     label: languages in each app
   - value: "2"
     label: of them right-to-left, Arabic and Hebrew
+  - value: 290 / 317
+    label: commits across both apps are mine
 stack: [Vue 3, TypeScript, Pinia, Quasar, Vite, Vitest, PWA]
 ---
 

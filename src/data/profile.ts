@@ -7,10 +7,10 @@ export const profile = {
   lead: 'Most recently front-end lead in a team of three: I reviewed code, mentored two developers and owned the architecture. I refactor codebases without a feature freeze and build product UI end to end.',
   spec: [
     { label: 'Experience', value: '5+ yrs · since 2021' },
-    { label: 'Core stack', value: 'TypeScript · Vue 3 / Nuxt · React' },
+    { label: 'Core stack', value: 'TypeScript · Vue 3 · React' },
     { label: 'Domains', value: 'Telecom · Fintech · B2B SaaS' },
-    { label: 'Availability', value: 'Full-time or contract · Now' },
-    { label: 'Location', value: 'Ukraine · Remote · UTC+2' },
+    { label: 'Availability', value: 'Remote · Full-time, contract' },
+    { label: 'Location', value: 'Ukraine · English B2' },
   ],
   status: 'Open to work',
   contactNote: 'Looking for a senior or lead front-end role, full-time or contract. LinkedIn gets the fastest reply.',
@@ -21,7 +21,7 @@ export const profile = {
   cv: '/Maksym_Matsydulskas_Resume.pdf',
   cvUpdated: '11/2026',
   skills: [
-    { group: 'Front end', items: ['TypeScript', 'Vue 3', 'Nuxt', 'React', 'Pinia'] },
+    { group: 'Front end', items: ['TypeScript', 'JavaScript', 'HTML/CSS', 'Vue 3', 'Nuxt', 'React', 'Pinia', 'Vuex'] },
     { group: 'Mobile', items: ['React Native', 'Expo'] },
     { group: 'Testing & build', items: ['Vitest', 'Playwright', 'Vite'] },
     { group: 'Back end', items: ['Node.js (Hono)', 'PostgreSQL'] },
@@ -36,6 +36,7 @@ export type Job = {
   note: string;
   cases?: string[];
   alongside?: boolean;
+  earlier?: boolean;
 };
 
 export const experience: Job[] = [
@@ -75,6 +76,7 @@ export const experience: Job[] = [
     role: 'Front-End Developer',
     period: '04/2023 – 08/2023',
     note: 'Built an investment CRM as the sole developer, with a ChatGPT assistant and a Telegram bot.',
+    earlier: true,
   },
   {
     company: 'Visit Everywhere',
@@ -82,6 +84,7 @@ export const experience: Job[] = [
     role: 'Front-End Developer',
     period: '11/2022 – 02/2023',
     note: 'B2B restaurant management admin panel in a three-person startup.',
+    earlier: true,
   },
   {
     company: 'University of Customs and Finance',

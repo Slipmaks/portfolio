@@ -11,7 +11,7 @@ const { caption } = Astro.props;
     <h2 class="schematic-title">Schematic</h2>
     <p class="mono">{caption}</p>
   </figcaption>
-  <ol class="schematic-steps">
+  <ol class="schematic-steps" tabindex="0" aria-label="Schematic steps">
     <slot />
   </ol>
 </figure>
@@ -53,8 +53,16 @@ const { caption } = Astro.props;
 
   @media (max-width: 640px) {
     .schematic-steps {
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: 82%;
       gap: 24px;
+      padding-bottom: 12px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink-muted) transparent;
     }
   }
 </style>

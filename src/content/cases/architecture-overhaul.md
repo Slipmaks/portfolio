@@ -15,13 +15,13 @@ measures:
     short: unit tests in CI
   - value: 337 → 1
     label: files handling API errors, now one helper
-    short: error-handling files
+    short: files handling API errors
   - value: 70.5 → 10.2
     label: payment-form chunk, kB (gzipped 23.9 to 4.1)
-    short: payment chunk, kB
+    short: payment page code, kB
   - value: 26 → 4
     label: production build, seconds
-    short: build, seconds
+    short: build time, seconds
   - value: −5,300
     label: lines of store code
 stack: [Vue 3, JavaScript, Vuex, Vitest, Vite, Ant Design Vue, oxlint, GitLab CI]

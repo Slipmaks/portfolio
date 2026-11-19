@@ -17,7 +17,7 @@ Both readers have to succeed on the same page. The scan layer must not hide the 
 
 ## Product Purpose
 
-This is the personal portfolio of Maksym Matsydulskas, a Senior Front-End Engineer and front-end lead (TypeScript), based in Ukraine and working remotely (UTC+2). The goal is to get hired. A full-time remote senior or lead front-end role comes first, and contract work is also welcome. Success is either of two outcomes, and both count. A recruiter downloads the CV to put into their hiring pipeline, which is why Download CV is the primary action on every contact group. Or a reader makes contact (LinkedIn replies fastest, then email or Telegram) to set up a conversation.
+This is the personal portfolio of Maksym Matsydulskas, a Senior Front-End Engineer and front-end lead (TypeScript), based in Ukraine and working remotely (UTC+2, UTC+3 in summer). The goal is to get hired. A full-time remote senior or lead front-end role comes first, and contract work is also welcome. Success is either of two outcomes, and both count. A recruiter downloads the CV to put into their hiring pipeline, which is why Download CV is the primary action on every contact group. Or a reader makes contact (LinkedIn replies fastest, then email or Telegram) to set up a conversation.
 
 ## Positioning
 
@@ -32,7 +32,7 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 
 - Readers arrive from a CV, a LinkedIn profile, a job application or a recruiter's message, often on a phone and often with several tabs open.
 - The site is passed between people (recruiter to hiring manager), so the Open Graph link preview matters.
-- The PDF CV is the document that travels with an application. The site sits next to it and should never contradict it.
+- The PDF CV is the document that travels with an application. It is rebuilt from this site: the site holds the freshest verified facts (EVIDENCE.md), so a mismatch while the CV catches up is expected and is a CV to-do, never a reason to change the site.
 
 ## Capabilities and Constraints
 
@@ -40,7 +40,7 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 - It is deployed on Vercel. Canonical URLs, Open Graph and the sitemap come from `VERCEL_PROJECT_PRODUCTION_URL`, and Vercel Web Analytics is on.
 - Pages: home (hero, selected work, experience, skills, projects, contact) and one page per case study at `/work/[id]/`.
 - Content lives in data files, not markup: `src/data/profile.ts` holds the profile, experience and projects, and `src/content/cases/*.md` holds the case studies (frontmatter: order, title, company, period, role, summary, metric, stack).
-- The CV file name `Maksym_Matsydulskas_Resume.pdf` is fixed so the "Download CV" link never breaks. When the PDF changes, `experience` must be updated to match, and so must `profile.cvUpdated` (the "updated" month shown under every Download CV).
+- The CV file name `Maksym_Matsydulskas_Resume.pdf` is fixed so the "Download CV" link never breaks. When a new PDF is published, update `profile.cvUpdated` (the "updated" month shown under every Download CV).
 - The site is English only.
 
 ## Brand Commitments
@@ -64,4 +64,4 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 2. **Numbers over adjectives.** Every claim is something a hiring manager could check or ask about in an interview.
 3. **Contact is always one step away.** Every page ends with a clear way to reach him.
 4. **The site is a sample of the work.** It is fast, accessible, uses no unneeded JS and is cleanly built, because the reader is judging front-end craft.
-5. **Stay in sync with the CV.** The site and the PDF never disagree.
+5. **The site is the source of truth.** The CV is built from the site, never the other way round; site figures are the verified ones.

@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ContactLinks from '../components/ContactLinks.astro';
 import { profile } from '../data/profile';
+import CompoundText from '../components/CompoundText.astro';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -25,14 +26,13 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
           <li>
             <a href={`/work/${entry.id}/`}>
               <span class="mono">{String(index + 1).padStart(2, '0')}</span>
-              <span class="missing-case-title">{entry.data.title}</span>
+              <span class="missing-case-title"><CompoundText text={entry.data.title} /></span>
               <span class="mono">{entry.data.company}</span>
             </a>
           </li>
         ))
       }
     </ol>
-    <a class="button missing-home" href="/#work-title">See all work</a>
 
   </main>
   <footer class="page">
@@ -95,10 +95,6 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
 
   .missing-case-title {
     font: var(--type-name);
-  }
-
-  .missing-home {
-    margin-top: 32px;
   }
 
   @media (max-width: 640px) {

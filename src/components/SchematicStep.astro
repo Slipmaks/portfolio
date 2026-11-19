@@ -59,6 +59,10 @@ const { index, name } = Astro.props;
   }
 
   @media (max-width: 640px) {
+    .step {
+      scroll-snap-align: start;
+    }
+
     .step .step-drawing::after {
       display: none;
     }

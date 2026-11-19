@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import MetricValue from './MetricValue.astro';
+import CompoundText from './CompoundText.astro';
 import { splitChange } from '../lib/figures';
 
 const thumbs = import.meta.glob<typeof import('./schematics/thumbs/weekfit.astro')>('./schematics/thumbs/*.astro', { eager: true });
@@ -19,8 +20,8 @@ const titleLed = beforeAfter.length <= 1 && !metricIsChange;
 const Thumb = titleLed ? thumbs[`./schematics/thumbs/${entry.id}.astro`]?.default : undefined;
 ---
 
-<article class:list={['case-tile', { 'title-led': titleLed, 'has-thumb': Thumb }]}>
-  <h3 class="case-title"><a href={`/work/${entry.id}/`}>{title}</a></h3>
+<article class:list={['case-tile', { featured, 'title-led': titleLed, 'has-thumb': Thumb }]}>
+  <h3 class="case-title"><a href={`/work/${entry.id}/`}><CompoundText text={title} /></a></h3>
   <p class="mono case-meta">{String(position).padStart(2, '0')} · {company}</p>
   {
     Thumb && (
@@ -127,25 +128,10 @@ const Thumb = titleLed ? thumbs[`./schematics/thumbs/${entry.id}.astro`]?.defaul
   @media (max-width: 640px) {
     .case-figures {
       grid-template-columns: minmax(0, 1fr);
-      gap: 8px;
-    }
-
-    .case-figure {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0 12px;
-    }
-  }
-
-  @media (max-width: 380px) {
-    .case-figures {
       gap: 12px;
     }
 
     .case-figure {
-      flex-direction: column;
-      align-items: flex-start;
       gap: 4px;
     }
   }
@@ -167,6 +153,16 @@ const Thumb = titleLed ? thumbs[`./schematics/thumbs/${entry.id}.astro`]?.defaul
 
   .has-thumb .case-title {
     margin-top: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .case-thumb {
+      display: none;
+    }
+
+    .has-thumb .case-title {
+      margin-top: 24px;
+    }
   }
 
   .case-title a,
@@ -195,5 +191,44 @@ const Thumb = titleLed ? thumbs[`./schematics/thumbs/${entry.id}.astro`]?.defaul
     margin-top: 16px;
     font: var(--type-control);
     color: var(--accent);
+  }
+
+  @media (min-width: 961px) {
+    .featured {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-content: start;
+      gap: 8px 32px;
+    }
+
+    .featured > * {
+      grid-column: 1 / -1;
+    }
+
+    .featured .case-meta {
+      grid-row: 1;
+    }
+
+    .featured .case-figures {
+      grid-row: 2;
+    }
+
+    .featured .case-title {
+      grid-column: 1 / 3;
+      grid-row: 3;
+      align-self: baseline;
+    }
+
+    .featured .case-summary {
+      grid-column: 3 / -1;
+      grid-row: 3;
+      align-self: baseline;
+      margin-top: 16px;
+    }
+
+    .featured .case-more {
+      grid-column: 3 / -1;
+      grid-row: 4;
+    }
   }
 </style>

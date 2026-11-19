@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ContactLinks from '../../components/ContactLinks.astro';
 import CaseTile from '../../components/CaseTile.astro';
+import CompoundText from '../../components/CompoundText.astro';
 import MetricValue from '../../components/MetricValue.astro';
 import StackList from '../../components/StackList.astro';
 import { scaleOf, splitChange } from '../../lib/figures';
@@ -53,14 +54,14 @@ const glance = changes.length > 0 ? changes : (measures ?? []).slice(0, 2);
       </p>
       <p class="crumbs-actions">
         <span class="status">{profile.status}</span>
-        <a class="crumbs-cv" href={profile.cv} download>Download CV</a>
+        <a class="crumbs-cv" href={profile.cv} download>Download CV<span class="visually-hidden"> (PDF)</span></a>
       </p>
     </nav>
   </div>
   <main class="page" id="content" tabindex="-1">
     <header class="case-head">
       <p class="mono">Case {twoDigits(position)} / {twoDigits(total)} · {company} · {keepRangeTogether(period)} · {role}</p>
-      <h1 class="case-title">{title}</h1>
+      <h1 class="case-title"><CompoundText text={title} /></h1>
       <p class="case-summary">{summary}</p>
       {
         hasMeasures && (
@@ -317,9 +318,8 @@ const glance = changes.length > 0 ? changes : (measures ?? []).slice(0, 2);
 
     .glance-row {
       display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0 12px;
+      flex-direction: column;
+      gap: 4px;
       padding: 8px 0;
       border-bottom: 1px solid var(--hairline);
     }

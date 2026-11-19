@@ -8,13 +8,15 @@ import StackList from '../components/StackList.astro';
 import photo from '../assets/photo.jpg';
 import { profile, experience, projects } from '../data/profile';
 import { keepRangeTogether, keepSeparatorsTogether } from '../lib/text';
+import { durationOf } from '../lib/duration';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 const techGraph = projects.find((project) => project.name === 'Tech graph');
 const twoDigits = (value: number) => String(value).padStart(2, '0');
 const caseById = new Map(cases.map((entry) => [entry.id, entry.data.short ?? entry.data.title]));
 const jobGroups = [
-  { label: null, jobs: experience.filter((job) => !job.alongside) },
+  { label: null, jobs: experience.filter((job) => !job.alongside && !job.earlier) },
+  { label: 'Earlier', jobs: experience.filter((job) => job.earlier && !job.alongside) },
   { label: 'Alongside, part-time', jobs: experience.filter((job) => job.alongside) },
 ].filter((group) => group.jobs.length > 0);
 ---
@@ -27,6 +29,11 @@ const jobGroups = [
     <header class="hero">
       <div class="hero-meta mono">
         <span class="status">{profile.status}</span>
+        <nav class="hero-jump" aria-label="Sections">
+          <a href="#work-title">Work</a>
+          <a href="#experience-title">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
       <div class="hero-body">
         <div>
@@ -68,7 +75,6 @@ const jobGroups = [
     <section class="section" aria-labelledby="experience-title">
       <div class="section-head">
         <h2 class="section-title" id="experience-title">Experience</h2>
-        <a class="section-index" href={profile.cv} download>Download CV</a>
       </div>
       {
         jobGroups.map((group) => (
@@ -79,7 +85,10 @@ const jobGroups = [
                 const JobHeading = group.label ? 'h4' : 'h3';
                 return (
                 <li class="job">
-                  <span class="mono job-period">{keepRangeTogether(job.period)}</span>
+                  <p class="mono job-period">
+                    <span>{keepRangeTogether(job.period)}</span>
+                    <span class="job-duration">{durationOf(job.period)}</span>
+                  </p>
                   <div>
                     <JobHeading class="job-head">
                       {`${job.company} `}<span class="mono">{job.country}</span>
@@ -155,7 +164,7 @@ const jobGroups = [
 
   </main>
   <footer class="page">
-    <div class="section footer">
+    <div class="section footer" id="contact">
       <p class="footer-lead">Let’s talk.</p>
       <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
@@ -177,12 +186,24 @@ const jobGroups = [
     border-bottom: 1px solid var(--hairline);
   }
 
+  .hero-jump {
+    display: flex;
+    gap: 16px;
+  }
+
+  .hero-jump a {
+    display: inline-block;
+    padding-block: 12px;
+    margin-block: -12px;
+    color: var(--ink-2);
+  }
+
   .hero-body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 24px;
-    margin-top: 48px;
+    margin-top: 32px;
   }
 
   .hero-name {
@@ -208,8 +229,8 @@ const jobGroups = [
   .hero-spec {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 40px;
-    margin-top: 32px;
+    gap: 16px 24px;
+    margin-top: 24px;
     padding-top: 12px;
     border-top: 1px solid var(--hairline);
   }
@@ -220,7 +241,7 @@ const jobGroups = [
   }
 
   .hero-summary {
-    margin: 24px 0 32px;
+    margin: 16px 0 24px;
     max-width: var(--measure-lead);
     font: var(--type-lead);
     color: var(--ink-2);
@@ -265,7 +286,14 @@ const jobGroups = [
   }
 
   .job-period {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     padding-top: 2px;
+  }
+
+  .job-duration {
+    color: var(--ink-muted);
   }
 
   .job-head {
@@ -323,7 +351,7 @@ const jobGroups = [
     display: flex;
     flex-wrap: wrap;
     margin-left: -24px;
-    font: var(--type-title);
+    font: var(--type-name);
   }
 
   .skill-items li {
@@ -340,6 +368,7 @@ const jobGroups = [
 
   .footer {
     margin-bottom: 64px;
+    scroll-margin-top: 32px;
   }
 
   .footer-lead {

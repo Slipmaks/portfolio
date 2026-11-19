@@ -28,8 +28,8 @@
   --type-reading-compact: 400 16px/26px var(--font-sans);
   --type-control: 500 13px/16px var(--font-sans);
   --type-label: 600 13px/20px var(--font-sans);
-  --type-mono: 400 12px/16px var(--font-mono);
-  --type-mono-label: 400 13px/18px var(--font-mono);
+  --type-mono: 400 13px/18px var(--font-mono);
+  --type-mono-label: 400 14px/20px var(--font-mono);
   --type-mono-code: 400 14px/20px var(--font-mono);
 
   --measure-prose: 54ch;
