@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ContactLinks from '../components/ContactLinks.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import { profile } from '../data/profile';
 import CompoundText from '../components/CompoundText.astro';
 
@@ -12,7 +13,10 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
   <div class="page">
     <nav class="crumbs mono" aria-label="Site">
       <a href="/" aria-label={`${profile.name}, home page`}><span aria-hidden="true">← </span>{profile.name}</a>
-      <span>Error 404</span>
+      <span class="crumbs-end">
+        <span>Error 404</span>
+        <ThemeToggle />
+      </span>
     </nav>
   </div>
   <main class="page" id="content" tabindex="-1">
@@ -51,6 +55,13 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
     gap: 16px;
     padding: 24px 0 12px;
     border-bottom: 1px solid var(--hairline);
+  }
+
+  .crumbs-end {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 16px;
   }
 
   .crumbs a {

@@ -1,0 +1,66 @@
+<button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle hidden>Dark theme</button>
+
+<script>
+  const root = document.documentElement;
+  const systemDark = matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => (root.dataset.theme ?? (systemDark.matches ? 'dark' : 'light')) === 'dark';
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+
+  const syncPressed = () => {
+    for (const button of buttons) button.setAttribute('aria-pressed', String(isDark()));
+  };
+
+  for (const button of buttons) {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+      syncPressed();
+    });
+  }
+
+  systemDark.addEventListener('change', syncPressed);
+  syncPressed();
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: baseline;
+    padding: 12px 0;
+    margin-block: -12px;
+    font: var(--type-mono);
+    color: var(--ink-2);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color var(--ease-state);
+  }
+
+  .theme-toggle[hidden] {
+    display: none;
+  }
+
+  .theme-toggle::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border: 1px solid currentColor;
+  }
+
+  .theme-toggle[aria-pressed="true"]::before {
+    background: currentColor;
+  }
+
+  @media (hover: hover) {
+    .theme-toggle:hover {
+      color: var(--accent);
+    }
+  }
+</style>

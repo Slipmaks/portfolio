@@ -36,7 +36,7 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 
 ## Capabilities and Constraints
 
-- An Astro static site with almost no client JavaScript by design. The only scripts are the email "Copy" button and Vercel Analytics. Interactive work lives in separate projects (Tech graph uses React).
+- An Astro static site with almost no client JavaScript by design. The only scripts are the email "Copy" button, the light/dark theme toggle (with a one-line inline script that applies the saved theme before first paint) and Vercel Analytics. Interactive work lives in separate projects (Tech graph uses React).
 - It is deployed on Vercel. Canonical URLs, Open Graph and the sitemap come from `VERCEL_PROJECT_PRODUCTION_URL`, and Vercel Web Analytics is on.
 - Pages: home (hero, selected work, experience, skills, projects, contact) and one page per case study at `/work/[id]/`.
 - Content lives in data files, not markup: `src/data/profile.ts` holds the profile, experience and projects, and `src/content/cases/*.md` holds the case studies (frontmatter: order, title, company, period, role, summary, metric, stack).
