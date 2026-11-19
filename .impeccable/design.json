@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T16:30:00Z",
+  "generatedAt": "2026-11-19T09:31:27Z",
   "title": "Design System: Maksym Matsydulskas — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -97,7 +97,7 @@
       "ink-2": {
         "role": "neutral",
         "displayName": "Graphite",
-        "canonical": "#5c5c58",
+        "canonical": "#4d4d49",
         "tonalRamp": [
           "oklch(15% 0.005 106)",
           "oklch(27% 0.005 106)",
@@ -112,7 +112,7 @@
       "ink-muted": {
         "role": "neutral",
         "displayName": "Muted Graphite",
-        "canonical": "#63635d",
+        "canonical": "#6b6b65",
         "tonalRamp": [
           "oklch(15% 0.006 106)",
           "oklch(27% 0.006 106)",
@@ -232,7 +232,7 @@
       "ink-2-dark": {
         "role": "neutral",
         "displayName": "Night Graphite",
-        "canonical": "#a6a69f",
+        "canonical": "#b4b4ad",
         "tonalRamp": [
           "oklch(15% 0.005 106)",
           "oklch(27% 0.005 106)",
@@ -247,7 +247,7 @@
       "ink-muted-dark": {
         "role": "neutral",
         "displayName": "Night Muted",
-        "canonical": "#9b9b94",
+        "canonical": "#8a8a84",
         "tonalRamp": [
           "oklch(15% 0.006 106)",
           "oklch(27% 0.006 106)",
@@ -300,9 +300,17 @@
         "displayName": "Name",
         "purpose": "Project titles and hero spec values."
       },
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "Case-study prose only (17px/28px); the prose column stays at --measure-prose, about 72 characters."
+      },
+      "reading-compact": {
+        "displayName": "Reading Compact",
+        "purpose": "Case-study prose below 640px (16px/26px)."
+      },
       "body": {
         "displayName": "Body",
-        "purpose": "All running text; prose max --measure-prose (54ch)."
+        "purpose": "All other running text; job notes max --measure-prose (54ch)."
       },
       "label": {
         "displayName": "Label",
@@ -316,9 +324,13 @@
         "displayName": "Mono",
         "purpose": "All metadata: dates, countries, indices, stacks."
       },
+      "mono-label": {
+        "displayName": "Mono Label",
+        "purpose": "The mono label that explains a figure: Measured rows, flagship figure labels, tile metric and count lines."
+      },
       "mono-code": {
         "displayName": "Mono Code",
-        "purpose": "Inline code in case prose."
+        "purpose": "Inline code in case prose, sized to sit in Reading text."
       }
     },
     "shadows": [],
@@ -365,8 +377,8 @@
       "name": "Email with Copy",
       "kind": "custom",
       "refersTo": "button",
-      "description": "Email button joined to a Copy button by a shared border.",
-      "html": "<span class=\"ds-email\"><a class=\"ds-email-link\" href=\"#\">name@example.com</a><button class=\"ds-email-copy\" type=\"button\">Copy</button></span>",
+      "description": "Email button joined to a Copy button by a shared border; Copy is announced as \"Copy email address\".",
+      "html": "<span class=\"ds-email\"><a class=\"ds-email-link\" href=\"#\">name@example.com</a><button class=\"ds-email-copy\" type=\"button\" aria-label=\"Copy email address\">Copy</button></span>",
       "css": ".ds-email { display: inline-flex; } .ds-email-link, .ds-email-copy { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--ink, #111111); text-decoration: none; border: 1px solid var(--ink, #111111); border-radius: 0; background: transparent; cursor: pointer; transition: background 120ms ease-out, color 120ms ease-out; } .ds-email-copy { border-left: 0; min-width: 72px; } .ds-email-link:hover, .ds-email-copy:hover { background: var(--ink, #111111); color: var(--on-ink, #f6f6f3); } .ds-email-link:focus-visible, .ds-email-copy:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; }"
     },
     {
@@ -374,37 +386,37 @@
       "kind": "custom",
       "description": "2px ink rule, uppercase label left, mono index right.",
       "html": "<div class=\"ds-section\"><div class=\"ds-section-head\"><h2 class=\"ds-section-title\">Selected work</h2><span class=\"ds-section-index\">05 cases</span></div></div>",
-      "css": ".ds-section { border-top: 2px solid var(--rule, #111111); padding-top: 16px; } .ds-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; } .ds-section-title { margin: 0; font: var(--type-label, 600 13px/20px sans-serif); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink, #111111); } .ds-section-index { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-muted, #63635d); }"
+      "css": ".ds-section { border-top: 2px solid var(--rule, #111111); padding-top: 16px; } .ds-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; } .ds-section-title { margin: 0; font: var(--type-label, 600 13px/20px sans-serif); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink, #111111); } .ds-section-index { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-muted, #6b6b65); }"
     },
     {
       "name": "Case Tile",
       "kind": "card",
       "refersTo": "case-tile",
       "description": "Figure-led tile for a case whose metric is a before/after; the whole tile is the link.",
-      "html": "<a class=\"ds-case\" href=\"#\"><span class=\"ds-case-meta\">01 · CONNECT 972</span><span class=\"ds-case-metric\">0 → 884</span><span class=\"ds-case-meta\">unit tests in CI</span><span class=\"ds-case-title\">Architecture overhaul without a feature freeze</span><span class=\"ds-case-summary\">A six-week refactor of an enterprise fiber network platform while features kept shipping.</span><span class=\"ds-case-more\">Read the case →</span></a>",
-      "css": ".ds-case { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-case-metric { margin-top: 24px; font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-case-title { margin-top: 16px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-summary { color: var(--ink-2, #5c5c58); } .ds-case-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); }"
+      "html": "<a class=\"ds-case\" href=\"#\"><span class=\"ds-case-meta\">01 · CONNECT 972</span><span class=\"ds-case-metric\">0 → 884</span><span class=\"ds-case-label\">unit tests in CI</span><span class=\"ds-case-title\">Architecture overhaul without a feature freeze</span><span class=\"ds-case-summary\">A six-week refactor of an enterprise fiber network platform while features kept shipping.</span><span class=\"ds-case-more\">Read the case →</span></a>",
+      "css": ".ds-case { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-case-metric { margin-top: 24px; font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-case-title { margin-top: 16px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-summary { color: var(--ink-2, #4d4d49); } .ds-case-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); } .ds-case-label { font: var(--type-mono-label, 400 13px/18px monospace); color: var(--ink-2, #4d4d49); }"
     },
     {
       "name": "Case Tile, title-led",
       "kind": "card",
       "refersTo": "case-tile",
       "description": "Tile for a case whose metric is a count, not a change: the title leads and the count sits under it in Mono.",
-      "html": "<a class=\"ds-case-t\" href=\"#\"><span class=\"ds-case-t-meta\">02 · CONNECT 972</span><span class=\"ds-case-t-title\">A customizable, extensible dashboard builder</span><span class=\"ds-case-t-meta\">22 widgets in 5 card types</span><span class=\"ds-case-t-summary\">Drag-and-drop dashboards of customers, routers, services and revenue that tenants and managers arrange for themselves.</span><span class=\"ds-case-t-more\">Read the case →</span></a>",
-      "css": ".ds-case-t { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case-t:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case-t:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-t-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-case-t-title { margin-top: 24px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-t-summary { color: var(--ink-2, #5c5c58); } .ds-case-t-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); }"
+      "html": "<a class=\"ds-case-t\" href=\"#\"><span class=\"ds-case-t-meta\">02 · CONNECT 972</span><span class=\"ds-case-t-title\">A customizable, extensible dashboard builder</span><span class=\"ds-case-t-count\">22 widgets in 5 card types</span><span class=\"ds-case-t-summary\">Drag-and-drop dashboards of customers, routers, services and revenue that tenants and managers arrange for themselves.</span><span class=\"ds-case-t-more\">Read the case →</span></a>",
+      "css": ".ds-case-t { display: flex; flex-direction: column; gap: 8px; max-width: 280px; padding: 16px; border: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); text-decoration: none; transition: background 120ms ease-out; } .ds-case-t:hover { background: var(--accent-wash, rgba(31, 59, 214, 0.08)); } .ds-case-t:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; } .ds-case-t-meta { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-case-t-title { margin-top: 24px; font: var(--type-title, 600 20px/24px sans-serif); text-wrap: balance; } .ds-case-t-summary { color: var(--ink-2, #4d4d49); } .ds-case-t-more { margin-top: 16px; font: var(--type-control, 500 13px/16px sans-serif); color: var(--accent, #1f3bd6); } .ds-case-t-count { font: var(--type-mono-label, 400 13px/18px monospace); color: var(--ink-2, #4d4d49); }"
     },
     {
       "name": "Measured Row",
       "kind": "custom",
-      "description": "One row of a case's Measured table: Figure value, mono label, then 6px scale bars (outlined before, solid after), hairline under.",
+      "description": "One row of a case's Measured table: Figure value, Mono Label, then 6px scale bars (outlined before, solid after), hairline under.",
       "html": "<div class=\"ds-measure\"><span class=\"ds-measure-value\">26 → 4</span><span class=\"ds-measure-label\">production build, seconds</span><span class=\"ds-measure-bars\" aria-hidden=\"true\"><span class=\"ds-measure-before\" style=\"width:100%\"></span><span class=\"ds-measure-after\" style=\"width:15%\"></span></span></div>",
-      "css": ".ds-measure { display: flex; flex-direction: column; gap: 4px; max-width: 400px; padding: 12px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); } .ds-measure-value { font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-measure-label { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-measure-bars { display: grid; gap: 3px; margin-top: 8px; } .ds-measure-before, .ds-measure-after { display: block; height: 6px; box-sizing: border-box; } .ds-measure-before { border: 1px solid var(--ink-muted, #63635d); } .ds-measure-after { background: var(--ink, #111111); }"
+      "css": ".ds-measure { display: flex; flex-direction: column; gap: 4px; max-width: 400px; padding: 12px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); } .ds-measure-value { font: var(--type-display, 700 32px/36px sans-serif); letter-spacing: -0.025em; } .ds-measure-label { font: var(--type-mono-label, 400 13px/18px monospace); color: var(--ink-2, #4d4d49); } .ds-measure-bars { display: grid; gap: 3px; margin-top: 8px; } .ds-measure-before, .ds-measure-after { display: block; height: 6px; box-sizing: border-box; } .ds-measure-before { border: 1px solid var(--ink-muted, #6b6b65); } .ds-measure-after { background: var(--ink, #111111); }"
     },
     {
       "name": "Case Breadcrumb",
       "kind": "nav",
       "description": "Identity strip on case pages: name link and role on the left, status and Download CV on the right, above a hairline.",
       "html": "<nav class=\"ds-crumbs\" aria-label=\"Profile\"><p class=\"ds-crumbs-group\"><a class=\"ds-crumbs-home\" href=\"#\">← Maksym Matsydulskas</a><span>Senior Front-End Engineer · Lead · TypeScript</span></p><p class=\"ds-crumbs-group\"><span class=\"ds-crumbs-status\">Open to work</span><a class=\"ds-crumbs-cv\" href=\"#\">Download CV</a></p></nav>",
-      "css": ".ds-crumbs { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 24px 0 12px; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-crumbs p { margin: 0; } .ds-crumbs-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; } .ds-crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; text-decoration: none; } .ds-crumbs-home { color: var(--ink, #111111); } .ds-crumbs-cv, .ds-crumbs-status { color: var(--accent, #1f3bd6); } .ds-crumbs-status::before { content: \"\"; display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: var(--accent, #1f3bd6); } .ds-crumbs a:hover { color: var(--accent, #1f3bd6); text-decoration: underline; } .ds-crumbs a:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; }"
+      "css": ".ds-crumbs { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 24px 0 12px; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-crumbs p { margin: 0; } .ds-crumbs-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; } .ds-crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; text-decoration: none; } .ds-crumbs-home { color: var(--ink, #111111); } .ds-crumbs-cv, .ds-crumbs-status { color: var(--accent, #1f3bd6); } .ds-crumbs-status::before { content: \"\"; display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: var(--accent, #1f3bd6); } .ds-crumbs a:hover { color: var(--accent, #1f3bd6); text-decoration: underline; } .ds-crumbs a:focus-visible { outline: 2px solid var(--accent, #1f3bd6); outline-offset: 2px; }"
     },
     {
       "name": "Status Marker",
@@ -416,9 +428,16 @@
     {
       "name": "Experience Row",
       "kind": "custom",
-      "description": "Two-column ledger row: mono period, then company, role and note.",
-      "html": "<div class=\"ds-job\"><span class=\"ds-job-period\">03/2025 – 10/2026</span><div><p class=\"ds-job-head\"><strong>CONNECT 972</strong> <span class=\"ds-job-country\">Israel</span></p><p class=\"ds-job-role\">Front-End Engineer · front-end lead</p><p class=\"ds-job-note\">Led the front end of an enterprise fiber network management platform.</p></div></div>",
-      "css": ".ds-job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-prose, 400 15px/24px sans-serif); color: var(--ink, #111111); } .ds-job p { margin: 0; } .ds-job-period, .ds-job-country { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #5c5c58); } .ds-job-period { padding-top: 2px; } .ds-job-role { color: var(--ink-2, #5c5c58); } .ds-job-note { margin-top: 4px; max-width: 54ch; }"
+      "description": "Two-column ledger row: mono period, then the company as a bold heading with a mono country, role and note.",
+      "html": "<div class=\"ds-job\"><span class=\"ds-job-period\">03/2025 – 10/2026</span><div><h3 class=\"ds-job-head\">CONNECT 972 <span class=\"ds-job-country\">Israel</span></h3><p class=\"ds-job-role\">Front-End Engineer · front-end lead</p><p class=\"ds-job-note\">Led the front end of an enterprise fiber network management platform.</p></div></div>",
+      "css": ".ds-job { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--hairline, #d6d6d1); font: var(--type-prose, 400 15px/24px sans-serif); color: var(--ink, #111111); } .ds-job p, .ds-job h3 { margin: 0; } .ds-job-head { font: var(--type-prose, 400 15px/24px sans-serif); font-weight: 700; } .ds-job-period, .ds-job-country { font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-job-period { padding-top: 2px; } .ds-job-role { color: var(--ink-2, #4d4d49); } .ds-job-note { margin-top: 4px; max-width: 54ch; }"
+    },
+    {
+      "name": "Schematic Step",
+      "kind": "custom",
+      "description": "One numbered step of a case schematic: hairline, mono index and name, a 240x96 line drawing (ink structure, muted context, cobalt only for the current path), then a short Graphite sentence.",
+      "html": "<div class=\"ds-step\"><p class=\"ds-step-name\"><span class=\"ds-step-index\">03</span> Migrate</p><svg viewBox=\"0 0 240 96\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"8\" height=\"8\" class=\"ds-sig-fill\"/><line x1=\"16\" y1=\"12\" x2=\"152\" y2=\"46\" class=\"ds-sig\"/><rect x=\"8\" y=\"36\" width=\"8\" height=\"8\" class=\"ds-sig-fill\"/><line x1=\"16\" y1=\"40\" x2=\"152\" y2=\"46\" class=\"ds-sig\"/><rect x=\"8\" y=\"64\" width=\"8\" height=\"8\"/><line x1=\"16\" y1=\"68\" x2=\"40\" y2=\"68\" class=\"ds-mute\"/><rect x=\"40\" y=\"64\" width=\"56\" height=\"8\" class=\"ds-mute\"/><rect x=\"152\" y=\"30\" width=\"80\" height=\"32\" class=\"ds-sig\"/><text x=\"192\" y=\"50\" text-anchor=\"middle\">helper</text></svg><p class=\"ds-step-text\">Call sites move over in batches. CI stays green at every step.</p></div>",
+      "css": ".ds-step { display: flex; flex-direction: column; gap: 12px; max-width: 260px; padding-top: 12px; border-top: 1px solid var(--hairline, #d6d6d1); color: var(--ink, #111111); } .ds-step p { margin: 0; } .ds-step-name { font: var(--type-name, 600 15px/20px sans-serif); } .ds-step-index { margin-right: 8px; font: var(--type-mono, 400 12px/16px monospace); color: var(--ink-2, #4d4d49); } .ds-step svg { display: block; width: 100%; max-width: 280px; height: auto; } .ds-step svg rect, .ds-step svg line { fill: none; stroke: var(--ink, #111111); stroke-width: 1; vector-effect: non-scaling-stroke; shape-rendering: crispEdges; } .ds-step svg .ds-mute { stroke: var(--ink-muted, #6b6b65); } .ds-step svg .ds-sig { stroke: var(--accent, #1f3bd6); } .ds-step svg .ds-sig-fill { fill: var(--accent, #1f3bd6); stroke: none; } .ds-step svg text { font-family: var(--font-mono, monospace); font-size: 12px; fill: var(--ink, #111111); } .ds-step-text { font: var(--type-prose, 400 15px/24px sans-serif); color: var(--ink-2, #4d4d49); }"
     }
   ],
   "narrative": {
