@@ -72,6 +72,13 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
     text-decoration: none;
   }
 
+  @media (max-width: 640px) {
+    .crumbs {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
   .missing {
     margin-top: 96px;
   }

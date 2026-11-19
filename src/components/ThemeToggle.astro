@@ -1,19 +1,25 @@
-<button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle hidden>Dark theme</button>
+<span class="theme-field" role="group" aria-label="Theme" data-theme-field hidden>
+  <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+  <span class="theme-divider" aria-hidden="true">/</span>
+  <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+</span>
 
 <script>
   const root = document.documentElement;
   const systemDark = matchMedia('(prefers-color-scheme: dark)');
-  const isDark = () => (root.dataset.theme ?? (systemDark.matches ? 'dark' : 'light')) === 'dark';
-  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+  const currentTheme = () => root.dataset.theme ?? (systemDark.matches ? 'dark' : 'light');
+  const choices = document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]');
 
   const syncPressed = () => {
-    for (const button of buttons) button.setAttribute('aria-pressed', String(isDark()));
+    for (const choice of choices) choice.setAttribute('aria-pressed', String(choice.dataset.themeChoice === currentTheme()));
   };
 
-  for (const button of buttons) {
-    button.hidden = false;
-    button.addEventListener('click', () => {
-      const next = isDark() ? 'light' : 'dark';
+  for (const field of document.querySelectorAll<HTMLElement>('[data-theme-field]')) field.hidden = false;
+
+  for (const choice of choices) {
+    choice.addEventListener('click', () => {
+      const next = choice.dataset.themeChoice;
+      if (!next || next === currentTheme()) return;
       root.dataset.theme = next;
       try {
         localStorage.setItem('theme', next);
@@ -27,39 +33,45 @@
 </script>
 
 <style>
-  .theme-toggle {
+  .theme-field {
     display: inline-flex;
     align-items: baseline;
+    gap: 8px;
+    font: var(--type-mono);
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .theme-field[hidden] {
+    display: none;
+  }
+
+  .theme-field button {
     padding: 12px 0;
     margin-block: -12px;
-    font: var(--type-mono);
+    font: inherit;
     color: var(--ink-2);
     background: none;
     border: 0;
     cursor: pointer;
-    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     transition: color var(--ease-state);
   }
 
-  .theme-toggle[hidden] {
-    display: none;
+  .theme-field button[aria-pressed="true"] {
+    color: var(--ink);
+    text-decoration: none;
+    cursor: default;
   }
 
-  .theme-toggle::before {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    border: 1px solid currentColor;
-  }
-
-  .theme-toggle[aria-pressed="true"]::before {
-    background: currentColor;
+  .theme-divider {
+    color: var(--ink-muted);
   }
 
   @media (hover: hover) {
-    .theme-toggle:hover {
+    .theme-field button[aria-pressed="false"]:hover {
       color: var(--accent);
     }
   }
