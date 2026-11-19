@@ -1,0 +1,74 @@
+---
+import Schematic from '../Schematic.astro';
+import Step from '../SchematicStep.astro';
+
+const rows = [8, 22, 36, 50, 64, 78];
+const helperCenter = 46;
+---
+
+<Schematic caption="Expand, migrate, contract · 337 files to one helper">
+  <Step index={1} name="Before">
+    <svg viewBox="0 0 240 96">
+      {rows.map((y) => (
+        <>
+          <rect x="8" y={y} width="8" height="8" />
+          <line x1="16" y1={y + 4} x2="40" y2={y + 4} class="muted" />
+          <rect x="40" y={y} width="56" height="8" class="muted" />
+        </>
+      ))}
+      <text x="112" y="50" class="ink">337 copies</text>
+    </svg>
+    <Fragment slot="text">API errors were handled in 337 files, each in its own way.</Fragment>
+  </Step>
+  <Step index={2} name="Expand">
+    <svg viewBox="0 0 240 96">
+      {rows.map((y) => (
+        <>
+          <rect x="8" y={y} width="8" height="8" />
+          <line x1="16" y1={y + 4} x2="40" y2={y + 4} class="muted" />
+          <rect x="40" y={y} width="56" height="8" class="muted" />
+        </>
+      ))}
+      <rect x="152" y="30" width="80" height="32" />
+      <text x="192" y="50" text-anchor="middle" class="ink">helper</text>
+      <text x="192" y="80" text-anchor="middle">+ tests</text>
+    </svg>
+    <Fragment slot="text">One helper lands beside the old code with its own tests. Behaviour doesn’t change.</Fragment>
+  </Step>
+  <Step index={3} name="Migrate">
+    <svg viewBox="0 0 240 96">
+      {rows.map((y, index) =>
+        index < 3 ? (
+          <>
+            <rect x="8" y={y} width="8" height="8" class="solid-signal" />
+            <line x1="16" y1={y + 4} x2="152" y2={helperCenter} class="signal" />
+          </>
+        ) : (
+          <>
+            <rect x="8" y={y} width="8" height="8" />
+            <line x1="16" y1={y + 4} x2="40" y2={y + 4} class="muted" />
+            <rect x="40" y={y} width="56" height="8" class="muted" />
+          </>
+        ),
+      )}
+      <rect x="152" y="30" width="80" height="32" class="signal" />
+      <text x="192" y="50" text-anchor="middle" class="ink">helper</text>
+    </svg>
+    <Fragment slot="text">Call sites move over in batches. CI stays green at every step.</Fragment>
+  </Step>
+  <Step index={4} name="Contract">
+    <svg viewBox="0 0 240 96">
+      {rows.map((y) => (
+        <>
+          <rect x="8" y={y} width="8" height="8" class="solid-signal" />
+          <line x1="16" y1={y + 4} x2="152" y2={helperCenter} class="signal" />
+        </>
+      ))}
+      <rect x="146" y="22" width="92" height="48" class="dashed" />
+      <rect x="152" y="30" width="80" height="32" class="signal" />
+      <text x="192" y="50" text-anchor="middle" class="ink">helper</text>
+      <text x="192" y="86" text-anchor="middle">lint rule</text>
+    </svg>
+    <Fragment slot="text">The old code is deleted. A lint rule fails CI if the pattern comes back.</Fragment>
+  </Step>
+</Schematic>

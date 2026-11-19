@@ -76,13 +76,15 @@ const jobGroups = [
           <>
             {group.label && <h3 class="jobs-group">{group.label}</h3>}
             <ol class="jobs">
-              {group.jobs.map((job) => (
+              {group.jobs.map((job) => {
+                const JobHeading = group.label ? 'h4' : 'h3';
+                return (
                 <li class="job">
                   <span class="mono job-period">{keepRangeTogether(job.period)}</span>
                   <div>
-                    <p class="job-head">
-                      <strong>{job.company}</strong> <span class="mono">{job.country}</span>
-                    </p>
+                    <JobHeading class="job-head">
+                      {`${job.company} `}<span class="mono">{job.country}</span>
+                    </JobHeading>
                     <p class="job-role">{job.role}</p>
                     <p class="job-note">{job.note}</p>
                   </div>
@@ -101,7 +103,8 @@ const jobGroups = [
                     </ul>
                   )}
                 </li>
-              ))}
+                );
+              })}
             </ol>
           </>
         ))
@@ -264,6 +267,11 @@ const jobGroups = [
 
   .job-period {
     padding-top: 2px;
+  }
+
+  .job-head {
+    font: var(--type-prose);
+    font-weight: 700;
   }
 
   .job-role {

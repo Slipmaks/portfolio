@@ -1,0 +1,65 @@
+---
+import Schematic from '../Schematic.astro';
+import Step from '../SchematicStep.astro';
+
+const states = [
+  { text: 'working hours', y: 8, current: true },
+  { text: 'after hours', y: 30, current: false },
+  { text: 'leaving the site', y: 52, current: false },
+  { text: 'deferred call', y: 74, current: false },
+];
+---
+
+<Schematic caption="Isolated from the host page">
+  <Step index={1} name="Snippet">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="8" width="224" height="80" class="muted" />
+      <line x1="8" y1="20" x2="232" y2="20" class="muted" />
+      <line x1="20" y1="34" x2="150" y2="34" class="muted" />
+      <line x1="20" y1="44" x2="120" y2="44" class="muted" />
+      <line x1="20" y1="54" x2="136" y2="54" class="muted" />
+      <text x="20" y="76" class="signal">&lt;script async&gt;</text>
+    </svg>
+    <Fragment slot="text">The customer pastes one snippet into their own site.</Fragment>
+  </Step>
+  <Step index={2} name="Isolation">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="8" width="224" height="80" class="muted" />
+      <line x1="8" y1="20" x2="232" y2="20" class="muted" />
+      <line x1="20" y1="34" x2="150" y2="34" class="muted" />
+      <line x1="20" y1="44" x2="120" y2="44" class="muted" />
+      <text x="72" y="60">css</text>
+      <path d="M100 64H126M122 60.5 126 64 122 67.5" class="muted" />
+      <line x1="132" y1="54" x2="132" y2="74" />
+      <rect x="140" y="40" width="84" height="40" class="dashed" />
+      <rect x="146" y="46" width="72" height="28" class="signal" />
+      <text x="182" y="64" text-anchor="middle" class="signal">iframe</text>
+    </svg>
+    <Fragment slot="text">The script loads asynchronously and renders inside an isolated iframe, so neither page’s CSS reaches the other.</Fragment>
+  </Step>
+  <Step index={3} name="Visitor state">
+    <svg viewBox="0 0 240 96">
+      {states.map(({ text, y, current }) => (
+        <>
+          <rect x="8" y={y} width="224" height="16" class={current ? 'signal' : 'muted'} />
+          <rect x="16" y={y + 4} width="8" height="8" class={current ? 'solid-signal' : 'muted'} />
+          <text x="32" y={y + 12} class={current ? 'ink' : undefined}>{text}</text>
+        </>
+      ))}
+    </svg>
+    <Fragment slot="text">The widget shows one of four texts: working hours, after hours, leaving the site or a deferred call.</Fragment>
+  </Step>
+  <Step index={4} name="Call back">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="32" width="64" height="32" />
+      <text x="40" y="52" text-anchor="middle" class="ink">visitor</text>
+      <text x="120" y="34" text-anchor="middle" class="signal">request</text>
+      <path d="M76 42H164M160 38.5 164 42 160 45.5" class="signal" />
+      <path d="M164 56H76M80 52.5 76 56 80 59.5" />
+      <text x="120" y="74" text-anchor="middle">call back</text>
+      <rect x="168" y="32" width="64" height="32" />
+      <text x="200" y="52" text-anchor="middle" class="ink">team</text>
+    </svg>
+    <Fragment slot="text">The visitor asks for a call and the customer’s team calls back. Every widget keeps its own statistics.</Fragment>
+  </Step>
+</Schematic>

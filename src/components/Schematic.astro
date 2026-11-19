@@ -1,0 +1,117 @@
+---
+type Props = {
+  caption: string;
+};
+
+const { caption } = Astro.props;
+---
+
+<figure class="schematic">
+  <figcaption class="schematic-head">
+    <h2 class="schematic-title">Schematic</h2>
+    <p class="mono">{caption}</p>
+  </figcaption>
+  <ol class="schematic-steps">
+    <slot />
+  </ol>
+</figure>
+
+<style>
+  .schematic {
+    margin-top: 64px;
+  }
+
+  .schematic-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 24px;
+    margin-bottom: 24px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .schematic-title {
+    font: var(--type-label);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .schematic-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .schematic :global(svg) {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .schematic :global(svg :is(rect, line, path, circle, ellipse, polyline)) {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .schematic :global(svg :is(rect, line)) {
+    shape-rendering: crispEdges;
+  }
+
+  .schematic :global(svg .muted) {
+    stroke: var(--ink-muted);
+  }
+
+  .schematic :global(svg .signal) {
+    stroke: var(--accent);
+  }
+
+  .schematic :global(svg .dashed) {
+    stroke-dasharray: 3 3;
+  }
+
+  .schematic :global(svg .solid) {
+    fill: var(--ink);
+    stroke: none;
+  }
+
+  .schematic :global(svg .solid-signal) {
+    fill: var(--accent);
+    stroke: none;
+  }
+
+  .schematic :global(svg text) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    fill: var(--ink-2);
+    stroke: none;
+  }
+
+  .schematic :global(svg text.ink) {
+    fill: var(--ink);
+  }
+
+  .schematic :global(svg text.signal) {
+    fill: var(--accent);
+    stroke: none;
+  }
+
+  @media (max-width: 960px) {
+    .schematic-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .schematic-steps {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+  }
+</style>

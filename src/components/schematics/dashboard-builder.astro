@@ -1,0 +1,68 @@
+---
+import Schematic from '../Schematic.astro';
+import Step from '../SchematicStep.astro';
+---
+
+<Schematic caption="Widgets as configuration · 22 widgets, 5 card types">
+  <Step index={1} name="Config entry">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="12" width="224" height="72" class="muted" />
+      <text x="20" y="38" class="ink">category: services</text>
+      <text x="20" y="60" class="ink">metric: active</text>
+      <text x="224" y="78" text-anchor="end">1 of 22</text>
+    </svg>
+    <Fragment slot="text">A widget is a category and a metric on one endpoint pattern. Adding one is a config entry.</Fragment>
+  </Step>
+  <Step index={2} name="Card type">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="20" width="40" height="56" class="muted" />
+      <rect x="14" y="30" width="18" height="6" class="solid" />
+      <line x1="14" y1="46" x2="38" y2="46" class="muted" />
+
+      <rect x="54" y="20" width="40" height="56" class="muted" />
+      <rect x="60" y="30" width="14" height="6" class="solid" />
+      <line x1="60" y1="46" x2="86" y2="46" class="muted" />
+      <line x1="60" y1="54" x2="80" y2="54" class="muted" />
+
+      <rect x="100" y="20" width="40" height="56" class="muted" />
+      <path d="M104 66 112 52 120 58 128 44 136 50V66Z" class="muted" />
+
+      <rect x="146" y="20" width="40" height="56" class="muted" />
+      <circle cx="166" cy="48" r="11" class="muted" />
+      <circle cx="166" cy="48" r="5" class="muted" />
+
+      <rect x="192" y="20" width="40" height="56" class="signal" />
+      <path d="M196 62 204 52 212 56 220 42 228 46" class="signal" />
+    </svg>
+    <Fragment slot="text">One of five card types renders it. Each type is its own chunk, loaded only when a dashboard shows it.</Fragment>
+  </Step>
+  <Step index={3} name="Grid">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="8" width="224" height="80" class="muted" />
+      <rect x="16" y="16" width="72" height="28" />
+      <rect x="96" y="16" width="48" height="28" />
+      <rect x="16" y="52" width="128" height="28" />
+      <rect x="152" y="16" width="72" height="64" class="signal" />
+      <rect x="158" y="22" width="60" height="24" class="signal" />
+      <rect x="158" y="52" width="60" height="22" class="signal" />
+    </svg>
+    <Fragment slot="text">Widgets sit on a GridStack grid. A group is a nested grid that moves as one block.</Fragment>
+  </Step>
+  <Step index={4} name="Saved layout">
+    <svg viewBox="0 0 240 96">
+      <rect x="8" y="16" width="56" height="40" />
+      <rect x="14" y="22" width="20" height="12" class="muted" />
+      <rect x="38" y="22" width="20" height="12" class="muted" />
+      <rect x="14" y="38" width="44" height="12" class="muted" />
+      <path d="M70 36H102M98 32.5 102 36 98 39.5" class="signal" />
+      <text x="126" y="40" text-anchor="middle" class="ink">json</text>
+      <path d="M150 36H172M168 32.5 172 36 168 39.5" class="signal" />
+      <rect x="176" y="20" width="56" height="32" class="signal" />
+      <text x="204" y="40" text-anchor="middle" class="ink">profile</text>
+      <line x1="36" y1="56" x2="36" y2="68" class="muted dashed" />
+      <rect x="8" y="68" width="56" height="20" class="muted dashed" />
+      <text x="72" y="82">snapshot</text>
+    </svg>
+    <Fragment slot="text">Editing starts from a snapshot, so changes can be dropped. The layout is saved as JSON on the profile endpoint.</Fragment>
+  </Step>
+</Schematic>

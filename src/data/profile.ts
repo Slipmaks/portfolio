@@ -6,7 +6,7 @@ export const profile = {
     'Senior front-end engineer and lead, 5+ years across telecom, fintech and B2B SaaS. Led five apps for a fiber network operator: 0 to 884 unit tests, builds from 26 s to 4 s.',
   lead: 'Front-end lead across a five-app platform for a fiber network operator. I led a refactor from 0 to 884 unit tests without a feature freeze, cut builds from 26 s to 4 s, and built two TypeScript apps from scratch.',
   spec: [
-    { label: 'Experience', value: '5+ yrs' },
+    { label: 'Experience', value: '5+ yrs · since 2021' },
     { label: 'Core stack', value: 'TypeScript · Vue 3 / Nuxt · React' },
     { label: 'Domains', value: 'Telecom · Fintech · B2B SaaS' },
     { label: 'Availability', value: 'Full-time or contract · Now' },
@@ -20,6 +20,7 @@ export const profile = {
   github: 'https://github.com/Slipmaks',
   telegram: 'https://t.me/m_maksym_n',
   cv: '/Maksym_Matsydulskas_Resume.pdf',
+  cvUpdated: '11/2026',
   skills: [
     { group: 'Front end', items: ['TypeScript', 'Vue 3', 'Nuxt', 'React', 'Pinia'] },
     { group: 'Mobile', items: ['React Native', 'Expo'] },

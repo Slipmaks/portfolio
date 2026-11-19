@@ -8,8 +8,8 @@ colors:
   paper: "#f6f6f3"
   paper-sunk: "#ecece8"
   ink: "#111111"
-  ink-2: "#5c5c58"
-  ink-muted: "#63635d"
+  ink-2: "#4d4d49"
+  ink-muted: "#6b6b65"
   hairline: "#d6d6d1"
   blueprint-cobalt-dark: "#8a9bff"
   cobalt-wash-dark: "rgba(138, 155, 255, 0.12)"
@@ -17,8 +17,8 @@ colors:
   paper-dark: "#141413"
   paper-sunk-dark: "#1e1e1c"
   ink-dark: "#e8e8e3"
-  ink-2-dark: "#a6a69f"
-  ink-muted-dark: "#9b9b94"
+  ink-2-dark: "#b4b4ad"
+  ink-muted-dark: "#8a8a84"
   hairline-dark: "#33332f"
 typography:
   display:
@@ -64,6 +64,16 @@ typography:
     fontSize: "15px"
     fontWeight: 400
     lineHeight: "24px"
+  reading:
+    fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: "28px"
+  reading-compact:
+    fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: "26px"
   label:
     fontFamily: "Host Grotesk Variable, Helvetica Neue, Arial, sans-serif"
     fontSize: "13px"
@@ -80,9 +90,14 @@ typography:
     fontSize: "12px"
     fontWeight: 400
     lineHeight: "16px"
+  mono-label:
+    fontFamily: "Geist Mono Variable, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: "18px"
   mono-code:
     fontFamily: "Geist Mono Variable, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-    fontSize: "12.5px"
+    fontSize: "14px"
     fontWeight: 400
     lineHeight: "20px"
 rounded:
@@ -164,8 +179,8 @@ A near-monochrome paper-and-ink palette with a single blueprint-blue signal.
 - **Paper** (`paper`): the page background, and the text colour on ink fills.
 - **Sunk Paper** (`paper-sunk`): one step darker, used only behind inline code.
 - **Ink** (`ink`): body text, headings, button borders, the hover fill of buttons, and the 2px section rule.
-- **Graphite** (`ink-2`): secondary text such as lead paragraphs, summaries, job roles and mono metadata.
-- **Muted Graphite** (`ink-muted`): tertiary indices and utility links in section heads ("04 cases", "Download CV", "GitHub ↗").
+- **Graphite** (`ink-2`, 7.8:1 on Paper): secondary text such as lead paragraphs, summaries, job roles and mono metadata.
+- **Muted Graphite** (`ink-muted`, 4.9:1): tertiary indices and utility links in section heads ("05 cases", "Download CV", "GitHub ↗"). It is a visible step lighter than Graphite, so the tertiary tier reads as a tier.
 - **Hairline** (`hairline`): every 1px divider, including the hero meta rule, grid cell borders, job rows, project tops and prose heading rules.
 
 ### Dark Theme
@@ -173,7 +188,7 @@ The dark theme follows `prefers-color-scheme: dark` (`color-scheme: light dark` 
 - **Night Paper** (`paper-dark`): the page background and the text on light fills.
 - **Night Sunk Paper** (`paper-sunk-dark`): one step lighter than the paper, behind inline code.
 - **Chalk** (`ink-dark`): body text, headings, button borders and hover fills, and the 2px section rule (15.6:1 on the paper, slightly below white to cut glare).
-- **Night Graphite** (`ink-2-dark`, 7.5:1) and **Night Muted** (`ink-muted-dark`, 6.6:1): the same secondary and tertiary roles as in light.
+- **Night Graphite** (`ink-2-dark`, 8.9:1) and **Night Muted** (`ink-muted-dark`, 5.3:1): the same secondary and tertiary roles as in light, with the same visible step between them.
 - **Night Hairline** (`hairline-dark`): every 1px divider, a touch stronger than the light hairline so it still reads on dark.
 - **Lifted Cobalt** (`blueprint-cobalt-dark`): the signal colour raised to 7.2:1 on the paper, matching the light cobalt's 7.3:1, so it carries the same weight. Because the fill is now light, the primary button's text flips to Night Paper (`on-cobalt-dark`), and the tile hover wash is 12% instead of 8%.
 
@@ -197,10 +212,13 @@ The dark theme follows `prefers-color-scheme: dark` (`color-scheme: light dark` 
 - **Title** (600, 20px/24px): the hero role line, the skills list and case-tile titles.
 - **Lead** (400, 18px/28px): hero and case summaries in Graphite, capped at `--measure-lead` (52ch, about 70 characters in Host Grotesk).
 - **Name** (600, 15px/20px): project titles and hero spec values.
-- **Body** (400, 15px/24px): all running text. Prose and job notes are capped at `--measure-prose` (54ch, about 72 characters). Host Grotesk's "0" is wider than its average letter, so `ch` caps render about 1.35× more characters than their number: never set a measure by the 65–75 rule in raw `ch`. Paragraphs, list items and definitions use `text-wrap: pretty`; headings use `text-wrap: balance`.
+- **Reading** (400, 17px/28px; 16px/26px below 640px): case-study prose only, where the engineering manager reads closely. The prose column stays at `--measure-prose`, which resolves against this size (about 72 characters).
+- **Body** (400, 15px/24px): all other running text. Prose and job notes are capped at `--measure-prose` (54ch, about 72 characters). Host Grotesk's "0" is wider than its average letter, so `ch` caps render about 1.35× more characters than their number: never set a measure by the 65–75 rule in raw `ch`. Paragraphs, list items and definitions use `text-wrap: pretty`; headings use `text-wrap: balance`.
 - **Label** (600, 13px/20px, 0.06em, uppercase): section titles and case-prose H2s only.
 - **Control** (500, 13px/16px): buttons and in-tile action cues.
 - **Mono** (400, 12px/16px): all metadata, in Graphite by default.
+- **Mono Label** (400, 13px/18px): the mono label that explains a figure (Measured rows, flagship figure labels, tile metric and count lines). It is one step above Mono because the reader decodes it while holding the figure in mind.
+- **Mono Code** (400, 14px/20px): inline code in case prose, sized to sit in Reading text.
 
 ### Named Rules
 **The Measured Metadata Rule.** If a value could sit in a spreadsheet cell (a period, country, index, count or tech list), it is set in Mono. Grotesque is reserved for sentences and names.
@@ -241,7 +259,7 @@ Precise and mechanical: controls behave like panel switches. They are exact, res
 - **Focus:** a 2px cobalt outline offset by 2px, applied globally through `:focus-visible`.
 
 ### Contact Group
-The row of buttons used in the hero, footer and case-page footer. Five controls in priority order: Download CV (the only primary), LinkedIn (the channel the copy says replies fastest, so it comes right after the CV), email with a joined "Copy" button (shared border, the left border of Copy removed, at least 72px wide, label switches to "Copied" for 1.6s; it ships hidden and appears only when the clipboard is available), then Telegram. GitHub is work evidence, not a contact channel, so it lives in the Projects section head instead. The row wraps with 8px gaps. This is the only place client JavaScript runs in the UI. On the homepage footer and the case-page footer, a Lead-type line in Graphite sits between the sign-off and the row, saying what he is looking for and which channel replies fastest.
+The row of buttons used in the hero, footer and case-page footer. Five controls in priority order: Download CV (the only primary), LinkedIn (the channel the copy says replies fastest, so it comes right after the CV), email with a joined "Copy" button (shared border, the left border of Copy removed, at least 72px wide, label switches to "Copied" for 1.6s; it ships hidden and appears only when the clipboard is available), then Telegram. GitHub is work evidence, not a contact channel, so it lives in the Projects section head instead. The row wraps with 8px gaps. The Copy button is named "Copy email address" for screen readers. A mono line under the row ("CV: PDF, updated 11/2026", from `profile.cvUpdated`) says the PDF is current; update it whenever the PDF changes. This is the only place client JavaScript runs in the UI. On the homepage footer and the case-page footer, a Lead-type line in Graphite sits between the sign-off and the row, saying what he is looking for and which channel replies fastest.
 
 ### Case Tile
 - **Container:** a cell in the ledger grid with hairline borders, 16px padding, square corners and no background at rest.
@@ -263,13 +281,13 @@ Arrows used as decoration (`↗`, `←`, `→` in links and cues) are wrapped in
 An uppercase tracked Label on the left and a muted mono index or utility link on the right, sitting under the 2px section rule.
 
 ### Hero Spec Strip
-The person's datasheet, placed between the role line and the lead paragraph. It is a definition list under a 1px hairline (12px top pad, 32px above it). Each cell is a mono Graphite label over a value in Name type, with a 4px gap. The cells are Experience, Core stack, Domains, Availability and Timezone. They flow in a wrapping row with 16px vertical and 40px horizontal gaps: one row on desktop, ragged rows on mobile. Values are short facts with no sentences. The data lives in `profile.spec`.
+The person's datasheet, placed between the role line and the lead paragraph. It is a definition list under a 1px hairline (12px top pad, 32px above it). Each cell is a mono Graphite label over a value in Name type, with a 4px gap. The cells are Experience ("5+ yrs · since 2021", so the count shows where it starts), Core stack, Domains, Availability and Timezone. They flow in a wrapping row with 16px vertical and 40px horizontal gaps: one row on desktop, ragged rows on mobile. Values are short facts with no sentences. The data lives in `profile.spec`.
 
 ### Status Marker
 Mono text in cobalt ("Open to work") preceded by an 8px solid cobalt square. It sits in the hero meta strip opposite the location, and in the case-page breadcrumb beside Download CV, always above a hairline.
 
 ### Experience Row
-A two-column ledger row: a mono period on the left, then the bold company with a mono country, the role in Graphite, and the note (capped at `--measure-prose`). Rows are divided by hairlines.
+A two-column ledger row: a mono period on the left, then the company as a bold heading (`h3`; `h4` under the "Alongside, part-time" `h3`, so heading navigation reaches every role) with a mono country, the role in Graphite, and the note (capped at `--measure-prose`). Rows are divided by hairlines.
 
 ### Skills Ledger
 Grouped skills in the same two-column structure as the Experience rows: a mono group label in a 160px column, then the items in Title type. Rows are 12px apart, divided by hairlines and baseline-aligned. Items are a real list separated by muted `·` marks drawn in CSS. The marks sit in the 24px gap, and the parent clips them, so a wrapped line never starts or ends with a separator. The marks are hidden from screen readers. The link to the full Tech graph map is the section-head utility link, not a button. The data lives in `profile.skills`.
@@ -284,7 +302,12 @@ The first case tile takes a full row of the grid, so it carries more than one fi
 Tool names (case stacks, project stacks) render as a mono list through `StackList.astro`: each name never wraps internally, and the " · " separators are drawn before each item and clipped at the line start, so a line never begins with a separator. Skills use the same clipped-separator pattern at Title size.
 
 ### Measured
-The spec-sheet table of a case: every verified before/after or count, so the numbers a hiring manager checks are read as figures, not prose. Its heading says what the figures are: "Measured" when at least one row is a before/after change, "Scope" when every row is a count of what was built (22 widgets, 290 / 317 commits, 23 API routes), so "Measured" only ever promises change. It is an `aside` with that heading in the same uppercase label style as the prose sections, holding a definition list. Each row shows the value in Figure (arrows read as "to") above its mono label, with a hairline under every row. Values stay short ("337 → 1", "26 → 4") and units live in the label, so a row fits a 320px phone. On desktop it sits in the right column beside the 54ch prose, top-aligned with the first section and sticky 24px from the top; below 960px it drops between the case facts and the prose. It renders only when the case's `measures` frontmatter has entries, and only verified figures go in it. A "Stack" block in the same label style closes the aside. Every before/after row also draws its scale: two 6px bars under the label, measured against the larger of the two numbers. "Before" is an empty track outlined 1px in Muted and "after" is solid Ink, so a reader sees 26 → 4 shrink before reading it, in either theme. Magnitude suffixes count ("2.1k" is 2,100). No bars are drawn when the two sides carry different units ("2.1 s → 900 ms") or when the smaller side is under 5% of the larger (0 → 884, 337 → 1), because a sliver reads as a stray pixel and a lone full bar reads as a rule; the figure already says it. The bars are aria-hidden, 6px so they can never be mistaken for a 1px hairline, and never Blueprint Cobalt, which stays reserved for action, state and focus.
+The spec-sheet table of a case: every verified before/after or count, so the numbers a hiring manager checks are read as figures, not prose. Its heading says what the figures are: "Measured" when at least one row is a before/after change, "Scope" when every row is a count of what was built (22 widgets, 290 / 317 commits, 23 API routes), so "Measured" only ever promises change. It is an `aside` with that heading in the same uppercase label style as the prose sections, holding a definition list. Each row shows the value in Figure (arrows read as "to") above its mono label, with a hairline under every row. Values stay short ("337 → 1", "26 → 4") and units live in the label, so a row fits a 320px phone. In the DOM it follows the prose `article`, so a screen reader hears the story before the figures. On desktop it sits in the right column beside the prose, top-aligned with the first section and sticky 24px from the top; below 960px it follows the prose, so a phone reader learns what the project was before reading its numbers. It renders only when the case's `measures` frontmatter has entries, and only verified figures go in it. A "Stack" block in the same label style closes the aside. Every before/after row also draws its scale: two 6px bars under the label, measured against the larger of the two numbers. "Before" is an empty track outlined 1px in Muted and "after" is solid Ink, so a reader sees 26 → 4 shrink before reading it, in either theme. Magnitude suffixes count ("2.1k" is 2,100). No bars are drawn when the two sides carry different units ("2.1 s → 900 ms") or when the smaller side is under 5% of the larger (0 → 884, 337 → 1), because a sliver reads as a stray pixel and a lone full bar reads as a rule; the figure already says it. The bars are aria-hidden, 6px so they can never be mistaken for a 1px hairline, and never Blueprint Cobalt, which stays reserved for action, state and focus.
+
+### Schematic
+The drawing a datasheet always carries. Client screenshots are under NDA, so every case page has one schematic of its own mechanism instead, drawn from what the case text states and nothing more. It sits between the case header and the case body, under a 1px hairline with an uppercase "Schematic" label (an `h2`) on the left and a mono caption on the right, both inside the `figcaption`. Below that, four numbered steps in the four-column grid of the tile row (two columns below 960px, one below 640px), each topped by a hairline: a mono index and the step name in Name type, the drawing, then one or two sentences in Body Graphite. A muted arrow sits in the gap between steps on the same row.
+
+Drawings are inline SVG on a 240×96 viewBox, capped at 280px wide so their 12-unit mono text never renders below about 12px. Strokes are 1px and non-scaling, corners square, nothing filled except small solid markers. Ink draws the structure, Muted draws context and the old path, and Blueprint Cobalt draws only the current path (the new helper, the chosen card type, the winning write). Labels inside the drawing are short mono words; the explanation lives in the HTML text, and the drawings are `aria-hidden`. Each case's drawing is its own component in `src/components/schematics/<case id>.astro`, built from `Schematic.astro` and `SchematicStep.astro`; the case page picks it up by the case id, and a case without one renders no figure.
 
 ### Breadcrumb
 The identity strip at the top of case pages, above a hairline, for a reader who arrives on a forwarded case link. On the left, a mono "← Name" link in ink with no underline, then the role and focus in Graphite, written exactly like the hero title ("Senior Front-End Engineer · Lead | TypeScript"). On the right, the cobalt status marker and a cobalt mono "Download CV" link with a 40px hit area. Below 640px the name, role and actions stack into three short lines. The case's position ("Case 02 / 05") opens the mono meta line above the title. The period on that line is the case's own dates; a case that covers a whole engagement says so ("engagement 03/2025 – 10/2026"), so a span is never read as the length of one project. Separators in the role and the dash in every period are joined with non-breaking characters (`src/lib/text.ts`), so a line never starts with "·" or "|" and a date range never splits at its dash.

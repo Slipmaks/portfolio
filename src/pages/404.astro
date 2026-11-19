@@ -22,6 +22,7 @@ import { profile } from '../data/profile';
   <footer class="page">
     <div class="section missing-footer">
       <p class="footer-lead">Or get in touch.</p>
+      <p class="footer-intent">{profile.contactNote}</p>
       <ContactLinks />
     </div>
   </footer>
@@ -67,6 +68,12 @@ import { profile } from '../data/profile';
 
   .footer-lead {
     font: var(--type-display);
-    margin-bottom: 24px;
+  }
+
+  .footer-intent {
+    margin: 8px 0 24px;
+    max-width: var(--measure-lead);
+    font: var(--type-lead);
+    color: var(--ink-2);
   }
 </style>

@@ -9,6 +9,8 @@ import { scaleOf, splitChange } from '../../lib/figures';
 import { keepRangeTogether, keepSeparatorsTogether } from '../../lib/text';
 import { profile } from '../../data/profile';
 
+const schematics = import.meta.glob<typeof import('../../components/schematics/weekfit.astro')>('../../components/schematics/*.astro', { eager: true });
+
 export async function getStaticPaths() {
   const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
   const numbered = cases.map((entry, index) => ({ entry, position: index + 1 }));
@@ -36,6 +38,7 @@ const { Content } = await render(entry);
 const { title, company, period, role, summary, metric, measures, stack } = entry.data;
 const hasMeasures = (measures?.length ?? 0) > 0;
 const measuresHeading = measures?.some((measure) => splitChange(measure.value)) ? 'Measured' : 'Scope';
+const CaseSchematic = schematics[`../../components/schematics/${entry.id}.astro`]?.default;
 
 ---
 
@@ -74,7 +77,12 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
       }
     </header>
 
+    {CaseSchematic && <CaseSchematic />}
+
     <div class:list={['case-body', { 'case-body-flush': hasMeasures }]}>
+      <article class="prose">
+        <Content />
+      </article>
       {
         hasMeasures && (
           <aside class="measures" aria-labelledby="measures-title">
@@ -103,9 +111,6 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
           </aside>
         )
       }
-      <article class="prose">
-        <Content />
-      </article>
     </div>
 
     <section class="section" aria-labelledby="more-title">
@@ -210,6 +215,7 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
     gap: 48px 64px;
     align-items: start;
     margin-top: 64px;
+    font: var(--type-reading);
   }
 
   .case-body-flush :global(.prose > h2:first-child),
@@ -252,6 +258,10 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
     padding-top: 0;
   }
 
+  .measure dt {
+    font: var(--type-mono-label);
+  }
+
   .measure-value {
     order: -1;
     font: var(--type-display);
@@ -292,6 +302,16 @@ const measuresHeading = measures?.some((measure) => splitChange(measure.value)) 
     .measures {
       position: static;
       max-width: var(--measure-prose);
+    }
+
+    .case-body-flush .measures-title:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .case-body {
+      font: var(--type-reading-compact);
     }
   }
 
