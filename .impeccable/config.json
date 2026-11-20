@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "lato",
+        "createdAt": "2026-11-20T16:25:35.291Z",
+        "reason": "Resume PDF keeps the previous resume's font (Lato), separate from the site's type system"
+      },
+      {
+        "rule": "overused-font",
+        "value": "lato",
+        "createdAt": "2026-11-20T16:25:58.624Z",
+        "reason": "Resume PDF intentionally keeps Lato from the previous resume; plain, ATS-friendly face chosen over a distinctive one"
+      }
+    ]
+  }
+}

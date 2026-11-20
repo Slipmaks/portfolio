@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Maksym Matsydulskas — Senior Front-End Engineer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap">
+<style>
+  @page { size: A4; margin: 12mm 13mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Lato, Carlito, "Noto Sans", Arial, sans-serif; font-size: 9.6pt; line-height: 1.38; color: #1d1d1f; }
+  a { color: #1f4e9c; text-decoration: none; }
+  header { text-align: center; margin-bottom: 7pt; }
+  h1 { font-size: 21pt; font-weight: 900; color: #1f4e9c; letter-spacing: .2pt; }
+  .title { font-size: 11.5pt; margin-top: 1pt; }
+  .contacts { font-size: 8.6pt; color: #555; margin-top: 3pt; }
+  .contacts span { white-space: nowrap; }
+  .contacts span + span::before { content: "|"; color: #aaa; margin: 0 5pt; }
+  h2 { font-size: 10.5pt; font-weight: 900; color: #1f4e9c; text-transform: uppercase; letter-spacing: .4pt;
+       border-bottom: 1.4pt solid #1f4e9c; padding-bottom: 1.5pt; margin: 9pt 0 4pt; }
+  p, li { orphans: 2; widows: 2; }
+  .skills div { margin-bottom: 1pt; }
+  .skills b { font-weight: 700; }
+  .job { margin-top: 6pt; break-inside: avoid-page; }
+  .job.long { break-inside: auto; }
+  h3 { font-size: 11pt; font-weight: 700; color: #1f4e9c; }
+  .meta { font-size: 8.9pt; color: #555; margin-bottom: 2pt; }
+  .meta b { color: #1d1d1f; }
+  .meta span + span::before { content: "|"; color: #aaa; margin: 0 5pt; }
+  ul { margin: 2pt 0 0 12pt; }
+  li { margin-bottom: 1.5pt; padding-left: 1pt; }
+  li::marker { color: #1f4e9c; font-size: 8pt; }
+  li b { font-weight: 700; }
+  .stack { font-size: 8.6pt; font-style: italic; color: #666; margin-top: 2pt; }
+  .compact .job { margin-top: 4pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Maksym Matsydulskas</h1>
+  <div class="title">Senior Front-End Engineer &nbsp;|&nbsp; TypeScript · Vue · React · Node.js</div>
+  <div class="contacts">
+    <span>Dnipro, Ukraine (Remote)</span><span>+380669723993</span><span><a href="mailto:slipmaks@gmail.com">slipmaks@gmail.com</a></span><span><a href="https://www.linkedin.com/in/maksym-matsydulskas">linkedin.com/in/maksym-matsydulskas</a></span><span><a href="https://github.com/Slipmaks">github.com/Slipmaks</a></span>
+  </div>
+</header>
+
+<h2>Professional Summary</h2>
+<p>Senior front-end engineer and front-end lead with 5+ years across telecom, fintech and B2B SaaS. Most recently led the front end in a team of three across five apps of an enterprise fiber network platform: reviewed code, mentored two developers, owned the architecture and ran a six-week overhaul with no feature freeze (unit tests 0 → 884, production build 26 → 4 s). Built two production apps alone from the first commit in strict TypeScript, in four languages including right-to-left. Ships full-stack products end to end on Node.js (Hono), PostgreSQL and Drizzle. Available now for remote full-time or contract roles.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div><b>Front end:</b> TypeScript, JavaScript, Vue 3 (Composition API), Nuxt, React, Next.js, Pinia, Vuex, Vue Router, Vue I18n, Tailwind CSS, HTML5, CSS3/SCSS</div>
+  <div><b>Performance &amp; architecture:</b> Web Vitals / Lighthouse, code splitting, SSR / SSG, PWA, accessibility (a11y), RBAC, WebSocket / Socket.IO, centralized API and error layer, RTL layouts</div>
+  <div><b>Testing &amp; quality:</b> Vitest, Playwright, ESLint / oxlint, oxfmt, Knip, Sentry</div>
+  <div><b>Back end:</b> Node.js, Hono, PostgreSQL, Drizzle ORM, MongoDB, Better Auth</div>
+  <div><b>DevOps:</b> Docker, GitHub Actions, GitLab CI/CD, Vercel, Railway</div>
+  <div><b>Mobile:</b> React Native, Expo</div>
+  <div><b>Tools &amp; process:</b> Git, Jira, Figma, Claude Code, Codex, MCP, ADRs, Agile/Scrum</div>
+</div>
+
+<h2>Professional Experience</h2>
+
+<div class="job long">
+  <h3>Senior Front-End Engineer</h3>
+  <div class="meta"><span>CONNECT 972 LTD (Israel)</span><span><b>03/2025 – 10/2026</b></span><span>Full-time / Remote</span></div>
+  <p>Front-end lead in a team of three across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers, owned architectural decisions and worked directly with the client.</p>
+  <ul>
+    <li><b>Architecture overhaul without a feature freeze</b> — led a six-week refactor merged in small expand-migrate-contract branches with CI green at every step; introduced the project's first test runner (0 → 884 Vitest unit tests in CI) and CI checks that block the old patterns</li>
+    <li><b>Shared modules enforced by lint</b> — API error handling moved from 337 files into one helper, with an oxlint rule failing CI on raw error payloads anywhere else; 83 paginated tables onto one store factory (−5,300 lines of store code); 188 files onto one date module, removing moment.js (payment-form chunk 70.5 → 10.2 kB)</li>
+    <li><b>Build and tooling</b> — migrated from Vue CLI (webpack) to Vite and later Vite 8 (production build 26 → 4 s); Ant Design v3 → v4; 20,000+ lines of dead code removed with Knip; set up oxlint, oxfmt and GitLab CI/CD</li>
+    <li><b>Security</b> — found and closed a data leak where user data survived logout in the multi-tenant app</li>
+    <li><b>AI-assisted delivery</b> — split the refactor into tickets a coding agent could finish in one pass, each with figures counted from the code; owned the design and reviewed every branch</li>
+    <li><b>Ticket portal and payment-store PWA, built alone</b> (290 of 317 commits) — strict TypeScript with vue-tsc blocking the deploy; four languages with right-to-left Arabic and Hebrew generated by postcss-rtlcss; two-factor sign-in; one Docker image for every environment and tenant through runtime config; decisions recorded in ADRs. Technicians work tickets on a phone (customer services and invoices, in-browser photo compression, signatures, router reboot); payment points moved from WhatsApp chats to one system with top-ups, transfers with limits and commission, and PDF receipts</li>
+    <li><b>Dashboard builder</b> — user-customizable drag-and-drop dashboards on GridStack: 22 widgets in 5 card types charted with ApexCharts, one period selector for all widgets, per-user layouts synced to the backend, card types loaded on demand</li>
+    <li><b>Real-time chat</b> on live socket updates with a global unread badge, replacing 5–30 s polling</li>
+  </ul>
+  <div class="stack">Tech stack: Vue 3, TypeScript, JavaScript, Pinia, Vuex, Vue Router, Vue I18n, Axios, Ant Design Vue, Quasar, Tailwind CSS, GridStack, ApexCharts, Leaflet, Vitest, Playwright, Vite, Docker, GitLab CI</div>
+</div>
+
+<div class="job">
+  <h3>Front-End Engineer</h3>
+  <div class="meta"><span>SDA (Estonia)</span><span><b>03/2026 – 07/2026</b></span><span>Part-time contract, alongside CONNECT 972 / Remote</span></div>
+  <p>Brought in to take over a 250+ component Vue 3 B2B platform in the precious metals industry from the previous developer, as its only dedicated front-end developer.</p>
+  <ul>
+    <li><b>Sign-in and access control</b> — login, registration and password flows on Laravel Sanctum sessions; role-based route guards for six permission roles, down to individual CRUD actions</li>
+    <li><b>Product editor</b> — drag-and-drop multi-file upload with validation and video thumbnails; dynamic spec fields; immediate, scheduled or draft publishing</li>
+    <li><b>Technical initiatives</b> — custom reorder composable replacing a drag-and-drop library; in-app error reporting on the global Axios error layer (CSRF, interceptors); authored the front-end architecture docs</li>
+  </ul>
+  <div class="stack">Tech stack: Vue 3, Vite, Pinia, Vue Router, Vuelidate, Axios, SCSS, Laravel Sanctum</div>
+</div>
+
+<div class="job">
+  <h3>Front-End Engineer</h3>
+  <div class="meta"><span>EVE.calls (USA)</span><span><b>12/2024 – 03/2025</b></span><span>Part-time / Remote</span></div>
+  <ul>
+    <li>Sole front-end developer extending a node-based editor for AI voice-call scenarios: added extract-and-compare branching to speech recognition and an SMS node wired into the scenario-wide validator; migrated legacy Vue 2 modules to Vue 3</li>
+  </ul>
+  <div class="stack">Tech stack: Vue 3, TypeScript, Pinia, Bootstrap, Vue I18n, Axios, Vite</div>
+</div>
+
+<div class="job">
+  <h3>Front-End Developer</h3>
+  <div class="meta"><span>Onepointcollab / OneVOIPlanet (Ukraine)</span><span><b>09/2023 – 06/2024</b></span></div>
+  <p>One of two core front-end developers on a cloud telephony customer cabinet: 80+ components and pages across 8 product modules.</p>
+  <ul>
+    <li><b>Embeddable widgets</b> — async script rendered in an isolated iframe on third-party sites; callback and call-from-site widgets, each with its own admin builder (appearance, scenario rules, embed snippet, per-widget stats); softphone shipped as a Chrome extension with its own Vite build</li>
+    <li><b>Integrations and real time</b> — CRM integrations with SalesDrive, KeyCRM and NetHunt; Telegram; Google sign-in; Firebase push with a custom service worker; Socket.IO chat, presence and live call stats; KPI calculation with xlsx export</li>
+    <li><b>Localization and migrations</b> — 2 → 4 languages (~2,200 keys each) with GeoIP locale detection; Vuex → Pinia, JS → TS, Vite 5 and Vue 3.4; mentored a junior developer</li>
+  </ul>
+  <div class="stack">Tech stack: Vue 3, TypeScript, Pinia, Vuetify 3, Vite, Vue Router, Vue I18n, Vuelidate, VueUse, Axios, Chart.js, Firebase (FCM), Socket.IO</div>
+</div>
+
+<div class="compact">
+<div class="job">
+  <h3>Earlier experience</h3>
+  <ul>
+    <li><b>E-groshi (Ukraine)</b>, Front-End Developer, 04/2023 – 08/2023 — investment CRM built as the sole developer on Directus, with a ChatGPT assistant (OpenAI API) and a Telegram bot</li>
+    <li><b>Visit Everywhere (Ukraine)</b>, Front-End Developer, 11/2022 – 02/2023 — B2B restaurant management admin panel in a three-person startup (Vue 3, Nuxt 3, Vuetify 3)</li>
+    <li><b>University of Customs and Finance (Ukraine)</b>, Web Developer (part-time), 01/2021 – 01/2026 — built and maintained the university website; Lighthouse Performance under 30 → 98, SEO 100</li>
+    <li><b>University of Customs and Finance (Ukraine)</b>, System Administrator / Programmer, 09/2017 – 01/2021 — network administration, IT support, automated data processing and reporting</li>
+  </ul>
+</div>
+</div>
+
+<h2>Projects</h2>
+<ul>
+  <li><b>WeekFit</b> (Expo, React Native, TypeScript, Hono, Drizzle, PostgreSQL, Better Auth) — offline-first iOS gym notebook in private beta, built alone from the mobile client to the database: 23 API routes typed end to end without codegen, idempotent photo uploads to S3-compatible storage, 43 unit tests, nightly backups verified by a test restore — private repo, demo on request</li>
+  <li><b>“Python-1” Station</b> (SvelteKit, Svelte 5, Drizzle, Turso, Playwright) — browser game used in grade-9 classrooms with server-side answer checking and a teacher dashboard — <a href="https://station-python-1.vercel.app">station-python-1.vercel.app</a></li>
+  <li><b>Tech graph</b> (React, TypeScript, ELK) — interactive map of the technologies I know, how they connect and how deeply I have used each — <a href="https://my-tech-graph.vercel.app">my-tech-graph.vercel.app</a></li>
+  <li><b>Challenge tracker</b> (Rust, Leptos, PWA, no hand-written JavaScript) — <a href="https://slipmaks.github.io/challenge-tracker">slipmaks.github.io/challenge-tracker</a></li>
+</ul>
+
+<h2>Education &amp; Languages</h2>
+<p><b>Master’s Degree in Computer Science</b> — University of Customs and Finance, Dnipro, Ukraine, 2012 – 2017<br>
+English: Upper-Intermediate (B2) &nbsp;|&nbsp; Ukrainian: Native</p>
+
+</body>
+</html>
