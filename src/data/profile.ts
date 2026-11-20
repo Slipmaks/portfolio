@@ -7,7 +7,7 @@ export const profile = {
   lead: 'Most recently front-end lead in a team of three: I reviewed code, mentored two developers and owned the architecture. I refactor codebases without a feature freeze and build product UI end to end.',
   spec: [
     { label: 'Experience', value: '5+ yrs · since 2021' },
-    { label: 'Core stack', value: 'TypeScript · Vue 3 · React' },
+    { label: 'Core stack', value: 'TypeScript · Vue 3 · React · Node.js' },
     { label: 'Domains', value: 'Telecom · Fintech · B2B SaaS' },
     { label: 'Availability', value: 'Remote · Full-time, contract' },
     { label: 'Location', value: 'Ukraine · English B2' },
@@ -21,10 +21,12 @@ export const profile = {
   cv: '/Maksym_Matsydulskas_Resume.pdf',
   cvUpdated: '11/2026',
   skills: [
-    { group: 'Front end', items: ['TypeScript', 'JavaScript', 'HTML/CSS', 'Vue 3', 'Nuxt', 'React', 'Pinia', 'Vuex'] },
+    { group: 'Front end', items: ['TypeScript', 'Vue 3', 'Nuxt', 'React', 'Next.js', 'Pinia', 'Tailwind CSS'] },
+    { group: 'Performance & architecture', items: ['Web Vitals / Lighthouse', 'Code splitting', 'SSR / SSG', 'PWA', 'Accessibility (a11y)', 'RBAC', 'WebSocket'] },
+    { group: 'Testing & quality', items: ['Vitest', 'Playwright', 'ESLint / oxlint', 'Sentry'] },
+    { group: 'Back end', items: ['Node.js', 'Hono', 'PostgreSQL', 'Drizzle ORM', 'MongoDB', 'Better Auth'] },
+    { group: 'DevOps', items: ['Docker', 'GitHub Actions', 'GitLab CI', 'Vercel', 'Railway'] },
     { group: 'Mobile', items: ['React Native', 'Expo'] },
-    { group: 'Testing & build', items: ['Vitest', 'Playwright', 'Vite'] },
-    { group: 'Back end', items: ['Node.js (Hono)', 'PostgreSQL'] },
   ],
 };
 
