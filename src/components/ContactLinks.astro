@@ -8,7 +8,7 @@ const cvKilobytes = Math.round(statSync(`public${profile.cv}`).size / 1024);
 <div class="contact-group">
   <ul class="contacts">
     <li><a class="button button-primary" href={profile.cv} download>Download CV<span class="visually-hidden"> (PDF)</span></a></li>
-    <li><a class="button" href={profile.linkedin} rel="me">LinkedIn</a></li>
+    <li><a class="button" href={profile.linkedin} target="_blank" rel="me noopener">LinkedIn</a></li>
     <li class="email">
       <a class="button" href={`mailto:${profile.email}`}>{profile.email}</a>
       <button class="button copy" type="button" data-copy={profile.email} aria-label="Copy email address" hidden>Copy</button>
@@ -17,7 +17,7 @@ const cvKilobytes = Math.round(statSync(`public${profile.cv}`).size / 1024);
   </ul>
   <p class="mono contacts-note">
     <span>CV: PDF, {cvKilobytes} KB, updated {profile.cvUpdated}</span>
-    <span>Also on <a href={profile.telegram} rel="me">Telegram</a></span>
+    <span>Also on <a href={profile.telegram} target="_blank" rel="me noopener">Telegram</a></span>
   </p>
 </div>
 

@@ -121,7 +121,7 @@ const jobGroups = [
     <section class="section" aria-labelledby="skills-title">
       <div class="section-head">
         <h2 class="section-title" id="skills-title">Skills</h2>
-        {techGraph?.url && <a class="section-index" href={techGraph.url}>Full map in Tech graph <span aria-hidden="true">↗</span></a>}
+        {techGraph?.url && <a class="section-index" href={techGraph.url} target="_blank" rel="noopener">Full map in Tech graph <span aria-hidden="true">↗</span></a>}
       </div>
       <dl class="skills">
         {
@@ -144,14 +144,14 @@ const jobGroups = [
     <section class="section" aria-labelledby="projects-title">
       <div class="section-head">
         <h2 class="section-title" id="projects-title">Projects</h2>
-        <a class="section-index" href={profile.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="section-index" href={profile.github} target="_blank" rel="me noopener">GitHub <span aria-hidden="true">↗</span></a>
       </div>
       <ul class="projects">
         {
           projects.map((project) => (
             <li class="project">
               <h3 class="project-name">
-                {project.url ? <a href={project.url}>{project.name} <span aria-hidden="true">↗</span></a> : project.name}
+                {project.url ? <a href={project.url} target="_blank" rel="noopener">{project.name} <span aria-hidden="true">↗</span></a> : project.name}
               </h3>
               <p>{project.description}</p>
               <StackList items={project.stack.split(' · ')} />

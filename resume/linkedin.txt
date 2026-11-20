@@ -1,0 +1,152 @@
+=====================================================================
+HEADLINE  (limit 220 chars)
+=====================================================================
+Senior Front-End Engineer · Front-End Lead | TypeScript, Vue 3, Nuxt, React, Node.js | Refactoring without feature freezes, 0 → 884 tests | Open to remote roles
+
+
+=====================================================================
+ABOUT  (limit 2,600 chars)
+=====================================================================
+Senior front-end engineer and front-end lead with 5+ years across telecom, fintech and B2B SaaS. I take codebases that are hard to change and make them easy to change, without stopping the team from shipping features.
+
+Most recently I led the front end in a team of three across five apps of an enterprise fiber network platform. I reviewed code, mentored two developers, owned the architecture and worked directly with the client.
+
+What that looked like in numbers:
+• Unit tests: 0 → 884, running in CI
+• Production build: 26 → 4 seconds
+• API error handling: 337 files → one helper, with a lint rule that fails CI on the old pattern
+• Payment page code: 70.5 → 10.2 kB
+• Two production apps built alone from the first commit, in strict TypeScript and four languages including right-to-left Arabic and Hebrew
+
+How I work:
+• Expand, migrate, contract instead of a rewrite branch: CI stays green and features keep shipping
+• Rules enforced by lint and CI, not by a style guide nobody reads
+• Decisions written down in ADRs
+• AI coding agents for the mechanical work; the architecture and every review stay mine
+
+I also ship full-stack products end to end. WeekFit, my offline-first iOS app in private beta, runs on Expo, Hono, Drizzle, PostgreSQL and Better Auth, with 23 API routes typed end to end and no codegen.
+
+Stack: TypeScript, Vue 3, Nuxt, React, Next.js, Pinia, Tailwind CSS, Vitest, Playwright, Node.js, Hono, PostgreSQL, Drizzle, Docker, GitHub Actions, GitLab CI.
+
+Looking for a senior or lead front-end role, remote, full-time or contract.
+
+
+=====================================================================
+EXPERIENCE  (each description limit 2,000 chars)
+=====================================================================
+
+---------------------------------------------------------------------
+Title:      Senior Front-End Engineer
+Company:    CONNECT 972
+Type:       Full-time · Remote
+Location:   Israel
+Dates:      Mar 2025 – Oct 2026
+Skills:     TypeScript · Vue.js · Vitest · Vite · Pinia · Docker
+---------------------------------------------------------------------
+Front-end lead in a team of three across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers, owned architectural decisions and worked directly with the client.
+
+• Led a six-week architecture overhaul with no feature freeze, merged in small branches with CI green at every step
+• Introduced the project's first test runner: 0 → 884 Vitest unit tests in CI
+• Moved API error handling from 337 files into one helper, guarded by an oxlint rule that fails CI on the old pattern
+• Moved 83 paginated tables onto one store factory (−5,300 lines of store code) and 188 files onto one date module, removing moment.js (payment page code 70.5 → 10.2 kB)
+• Migrated from Vue CLI (webpack) to Vite and later Vite 8: production build 26 → 4 s; removed 20,000+ lines of dead code with Knip
+• Found and closed a data leak where user data survived logout in the multi-tenant app
+• Built a ticket portal and a payment-store PWA alone (290 of 317 commits): strict TypeScript, four languages with right-to-left Arabic and Hebrew, two-factor sign-in, one Docker image for every environment and tenant
+• Built user-customizable drag-and-drop dashboards: 22 widgets in 5 card types, layouts saved per user
+
+
+---------------------------------------------------------------------
+Title:      Front-End Engineer
+Company:    SDA
+Type:       Part-time · Contract · Remote
+Location:   Estonia
+Dates:      Mar 2026 – Jul 2026
+Skills:     Vue.js · Pinia · SCSS · Laravel Sanctum
+---------------------------------------------------------------------
+Brought in to take over a 250+ component Vue 3 B2B platform in the precious metals industry from the previous developer, as its only dedicated front-end developer.
+
+• Built sign-in and access control for six permission roles, down to individual CRUD actions, on Laravel Sanctum sessions
+• Built the product editor: drag-and-drop multi-file upload with validation and video thumbnails; immediate, scheduled or draft publishing
+• Added in-app error reporting on the global Axios error layer
+• Wrote the front-end architecture docs
+
+
+---------------------------------------------------------------------
+Title:      Front-End Engineer
+Company:    EVE.calls
+Type:       Part-time · Remote
+Location:   USA
+Dates:      Dec 2024 – Mar 2025
+Skills:     Vue.js · TypeScript · Pinia
+---------------------------------------------------------------------
+Sole front-end developer extending a node-based editor for AI voice-call scenarios.
+
+• Added extract-and-compare branching to speech recognition
+• Built an SMS node wired into the scenario-wide validator
+• Migrated legacy Vue 2 modules to Vue 3
+
+
+---------------------------------------------------------------------
+Title:      Front-End Developer
+Company:    Onepointcollab / OneVOIPlanet
+Type:       Full-time
+Location:   Ukraine
+Dates:      Sep 2023 – Jun 2024
+Skills:     Vue.js · TypeScript · Socket.IO · Vite · Chrome Extensions
+---------------------------------------------------------------------
+One of two core front-end developers on a cloud telephony customer cabinet: 80+ components and pages across 8 product modules.
+
+• Built an embeddable callback widget: an async script rendered in an isolated iframe on third-party sites, with an admin builder for appearance, scenario rules and per-widget statistics
+• Shipped a call-from-site widget and a softphone as a Chrome extension with its own Vite build
+• Integrated CRMs (SalesDrive, KeyCRM, NetHunt), Telegram, Google sign-in and Firebase push notifications
+• Built real-time chat, presence and live call statistics on Socket.IO
+• Expanded localization from 2 to 4 languages with GeoIP detection
+• Migrated Vuex → Pinia, JavaScript → TypeScript, upgraded to Vite 5 and Vue 3.4; mentored a junior developer
+
+
+---------------------------------------------------------------------
+Title:      Front-End Developer
+Company:    E-groshi
+Location:   Ukraine
+Dates:      Apr 2023 – Aug 2023
+Skills:     Vue.js · TypeScript · OpenAI API
+---------------------------------------------------------------------
+Built an investment CRM as the sole developer on Directus, with a ChatGPT assistant (OpenAI API) and a Telegram bot.
+
+
+---------------------------------------------------------------------
+Title:      Front-End Developer
+Company:    Visit Everywhere
+Type:       Startup
+Location:   Ukraine
+Dates:      Nov 2022 – Feb 2023
+Skills:     Vue.js · Nuxt.js · Vuetify
+---------------------------------------------------------------------
+B2B restaurant management admin panel in a three-person startup team.
+
+
+---------------------------------------------------------------------
+Title:      Web Developer
+Company:    University of Customs and Finance
+Type:       Part-time
+Location:   Dnipro, Ukraine
+Dates:      Jan 2021 – Jan 2026
+---------------------------------------------------------------------
+Built and maintained the university website for 5+ years. Lighthouse Performance from under 30 to 98, SEO 100.
+
+
+---------------------------------------------------------------------
+Title:      System Administrator / Programmer
+Company:    University of Customs and Finance
+Location:   Dnipro, Ukraine
+Dates:      Sep 2017 – Jan 2021
+---------------------------------------------------------------------
+Network administration, IT support, and automated data processing and reporting.
+
+
+=====================================================================
+FEATURED  (optional)
+=====================================================================
+• Portfolio site (add its URL)
+• Tech graph — https://my-tech-graph.vercel.app
+• Resume PDF
