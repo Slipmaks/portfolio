@@ -116,7 +116,7 @@ export const projects: Project[] = [
     name: '“Python-1” Station',
     description: 'A browser game used in grade-9 classrooms, with server-side answer checking and a teacher dashboard.',
     stack: 'SvelteKit · Svelte 5 · Drizzle · Turso · Playwright',
-    url: 'https://station-python-1.vercel.app',
+    url: 'https://station-python-1.vercel.app/demo',
   },
   {
     name: 'Challenge tracker',
