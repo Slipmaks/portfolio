@@ -55,7 +55,7 @@ export const experience: Job[] = [
     country: 'Estonia',
     role: 'Front-End Engineer · part-time contract',
     period: '03/2026 – 07/2026',
-    note: 'Brought in to take over a 250+ component B2B platform from the previous developer, as its only dedicated front-end developer. Built sign-in and access for six permission roles, the product editor and the front-end architecture docs.',
+    note: 'Brought in to recover an overdue 250+ component B2B platform after the client had put payment on hold. Onboarded in one day and, as its only dedicated front-end developer, brought it back on schedule within two months: the client signed off without a single complaint and paid in full. Built sign-in and access for six permission roles and the product editor.',
   },
   {
     company: 'EVE.calls',

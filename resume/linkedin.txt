@@ -63,12 +63,29 @@ Location:   Estonia
 Dates:      Mar 2026 – Jul 2026
 Skills:     Vue.js · Pinia · SCSS · Laravel Sanctum
 ---------------------------------------------------------------------
-Brought in to take over a 250+ component Vue 3 B2B platform in the precious metals industry from the previous developer, as its only dedicated front-end developer.
+Part-time contract alongside CONNECT 972. Brought in mid-project to recover an overdue enterprise B2B platform for the precious metals industry after the client had put payment on hold. Took over from the previous developer as the sole dedicated front-end developer of a 250+ component Vue 3 SPA with eight domain modules and six permission roles, working directly with the backend lead.
 
-• Built sign-in and access control for six permission roles, down to individual CRUD actions, on Laravel Sanctum sessions
-• Built the product editor: drag-and-drop multi-file upload with validation and video thumbnails; immediate, scheduled or draft publishing
-• Added in-app error reporting on the global Axios error layer
-• Wrote the front-end architecture docs
+Project recovery
+• Onboarded in one day and shipped features from day two
+• Brought the project back on schedule within two months
+• Client signed off with no rework requests and paid in full
+
+Core features
+• Authentication and access control: login, registration, password reset/set/change, Laravel Sanctum sessions, role-based route guards for six roles down to individual CRUD actions
+• Media pipeline: drag-and-drop multi-file upload with type and size validation, multimedia preview with video thumbnails, media and text export
+• Product create/edit forms: dynamic spec fields, "apply specs from an existing product", yearly editions, publishing options (immediate, scheduled, draft); company profile and certifications; dealer-facing announcements
+
+Technical initiatives
+• Built a custom reorder composable and components (~370 lines) that replaced the project's drag-and-drop library
+• Proposed and built an in-app error-reporting modal wired into the global Axios error layer
+• Extended the shared Axios layer: CSRF, interceptors, centralized error handling
+• Authored the front-end architecture documentation
+
+UI & cross-browser quality
+• Implemented modules from scratch in the project's custom SCSS library (BEM-like, no UI framework) to pixel-perfect designs
+• Fixed cross-browser/OS issues: macOS modal rendering, 125% zoom layout, popup scroll
+
+Made front-end architecture decisions; worked directly with the designer and stakeholders; estimates and sprint planning (Agile/Scrum, Jira).
 
 
 ---------------------------------------------------------------------
