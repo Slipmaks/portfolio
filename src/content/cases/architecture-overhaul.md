@@ -29,7 +29,7 @@ stack: [Vue 3, JavaScript, Vuex, Vitest, Vite, Ant Design Vue, oxlint, GitLab CI
 
 ## Context
 
-An enterprise fiber network management platform: the operational system a telecom operator runs its business on. A team of three front-end developers; I reviewed code, mentored two developers and owned architectural decisions.
+An enterprise fiber network management platform: the operational system a telecom operator runs its business on. I was the front-end lead: I reviewed code, mentored two developers and owned architectural decisions.
 
 ## Problem
 

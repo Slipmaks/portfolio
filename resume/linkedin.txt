@@ -9,7 +9,7 @@ ABOUT  (limit 2,600 chars)
 =====================================================================
 Senior front-end engineer and front-end lead with 5+ years across telecom, fintech and B2B SaaS. I take codebases that are hard to change and make them easy to change, without stopping the team from shipping features.
 
-Most recently I led the front end in a team of three across five apps of an enterprise fiber network platform. I reviewed code, mentored two developers, owned the architecture and worked directly with the client.
+Most recently I led the front end across five apps of an enterprise fiber network platform. I reviewed code, mentored two developers, owned the architecture and worked directly with the client.
 
 What that looked like in numbers:
 • Unit tests: 0 → 884, running in CI
@@ -43,7 +43,7 @@ Location:   Israel
 Dates:      Mar 2025 – Oct 2026
 Skills:     TypeScript · Vue.js · Vitest · Vite · Pinia · Docker
 ---------------------------------------------------------------------
-Front-end lead in a team of three across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers, owned architectural decisions and worked directly with the client.
+Front-end lead across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers, owned architectural decisions and worked directly with the client.
 
 • Led a six-week architecture overhaul with no feature freeze, merged in small branches with CI green at every step
 • Introduced the project's first test runner: 0 → 884 Vitest unit tests in CI

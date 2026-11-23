@@ -4,7 +4,7 @@ export const profile = {
   focus: 'TypeScript',
   summary:
     'Senior front-end engineer and lead, 5+ years across telecom, fintech and B2B SaaS. Led five apps for a fiber network operator: 0 to 884 unit tests, builds from 26 s to 4 s.',
-  lead: 'Most recently front-end lead in a team of three: I reviewed code, mentored two developers and owned the architecture. I refactor codebases without a feature freeze and build product UI end to end.',
+  lead: 'Most recently front-end lead: I reviewed code, mentored two developers and owned the architecture. I refactor codebases without a feature freeze and build product UI end to end.',
   spec: [
     { label: 'Experience', value: '5+ yrs · since 2021' },
     { label: 'Core stack', value: 'TypeScript · Vue 3 · React · Node.js' },
@@ -47,7 +47,7 @@ export const experience: Job[] = [
     country: 'Israel',
     role: 'Front-End Engineer · front-end lead',
     period: '03/2025 – 10/2026',
-    note: 'Front-end lead in a team of three across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers and worked directly with the client. Built the ticket portal and payment store from scratch in TypeScript and moved two apps from Vue CLI to Vite.',
+    note: 'Front-end lead across five apps of an enterprise fiber network platform: admin panel, customer portal, ticket portal, payment store and multi-tenant call center. Reviewed code, mentored two developers and worked directly with the client. Built the ticket portal and payment store from scratch in TypeScript and moved two apps from Vue CLI to Vite.',
     cases: ['architecture-overhaul', 'dashboard-builder', 'ticket-portal-and-payment-store'],
   },
   {
