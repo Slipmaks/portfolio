@@ -1,7 +1,7 @@
 =====================================================================
 HEADLINE  (limit 220 chars)
 =====================================================================
-Senior Front-End Engineer · Front-End Lead | TypeScript, Vue 3, Nuxt, React, Node.js | Refactoring without feature freezes, 0 → 884 tests | Open to remote roles
+Senior Front-End Engineer | TypeScript, Vue 3, Nuxt, React, Next.js, Node.js | Telecom & B2B SaaS | Architecture, Testing, Performance
 
 
 =====================================================================
@@ -36,7 +36,7 @@ EXPERIENCE  (each description limit 2,000 chars)
 =====================================================================
 
 ---------------------------------------------------------------------
-Title:      Senior Front-End Engineer
+Title:      Senior Front-End Engineer (Front-End Lead)
 Company:    CONNECT 972
 Type:       Full-time · Remote
 Location:   Israel
@@ -96,29 +96,46 @@ Location:   USA
 Dates:      Dec 2024 – Mar 2025
 Skills:     Vue.js · TypeScript · Pinia
 ---------------------------------------------------------------------
-Sole front-end developer extending a node-based editor for AI voice-call scenarios.
+Sole front-end developer on a visual node-based editor for building AI voice-call scenarios — the tool campaign teams use to design branching phone conversations without writing code. Maintained and extended a production codebase inherited from previous developers.
 
-• Added extract-and-compare branching to speech recognition
-• Built an SMS node wired into the scenario-wide validator
+New scenario nodes
+• Conditional branching on speech-extracted variables: extracts a named, typed value from the caller's spoken reply via a recognition prompt, then routes the conversation by comparing it against another variable
+• SMS node: composes and sends an SMS mid-scenario, with a variable-driven sender field and message-length validation wired into the scenario-wide validator, which takes the author straight to the offending node
+
+Codebase health
 • Migrated legacy Vue 2 modules to Vue 3
+• Diagnosed and resolved inherited defects in the speech-recognition editor: broken recognizer requests, undefined-translation crashes, empty-value edge cases
+• Localization pass moving hardcoded strings into the i18n key registry
+
+Worked directly with the client on requirements.
 
 
 ---------------------------------------------------------------------
-Title:      Front-End Developer
+Title:      Middle Front-End Developer
 Company:    Onepointcollab / OneVOIPlanet
 Type:       Full-time
 Location:   Ukraine
 Dates:      Sep 2023 – Jun 2024
 Skills:     Vue.js · TypeScript · Socket.IO · Vite · Chrome Extensions
 ---------------------------------------------------------------------
-One of two core front-end developers on a cloud telephony customer cabinet: 80+ components and pages across 8 product modules.
+One of two core front-end developers on the customer cabinet of a cloud telephony provider — the self-service portal where businesses run their virtual PBX. Built 80+ components and pages from scratch across 8 product modules.
 
-• Built an embeddable callback widget: an async script rendered in an isolated iframe on third-party sites, with an admin builder for appearance, scenario rules and per-widget statistics
-• Shipped a call-from-site widget and a softphone as a Chrome extension with its own Vite build
-• Integrated CRMs (SalesDrive, KeyCRM, NetHunt), Telegram, Google sign-in and Firebase push notifications
-• Built real-time chat, presence and live call statistics on Socket.IO
-• Expanded localization from 2 to 4 languages with GeoIP detection
-• Migrated Vuex → Pinia, JavaScript → TypeScript, upgraded to Vite 5 and Vue 3.4; mentored a junior developer
+Embeddable widgets
+• Callback widget: async-loaded script for third-party websites, rendered in an isolated iframe to avoid CSS collisions; a visitor enters a phone number and gets an automated call-back within 30 seconds. Also built its admin builder: appearance editor, working-hours / offline / delayed-call / site-exit scenarios, embed snippet, per-widget stats
+• Call-from-site widget: browser-to-agent voice calls from a client's website — creation flow, widget profile with real-time call status, usage analytics
+• Browser softphone shipped as a Chrome extension, with its own Vite build
+
+Real-time & platform
+• Socket.IO: in-app chat, live online-user presence and live call statistics, with connection state management and UI kept in sync with socket events
+• KYC verification: multi-step onboarding for three entity types with document upload and per-type validation
+• Telephony configuration: SIP trunk CRUD, external-number routing with redirect timeouts, blacklist
+• Localization from 2 to 4 languages (~2,200 keys each), adding English and Polish, with GeoIP locale detection and user-timezone rendering
+• Web push on Firebase Cloud Messaging with a custom service worker and in-app notification center
+
+Migrations
+• Vuex → Pinia, Options → Composition API, JavaScript → TypeScript, Vite 4 → 5, Vue 3.3 → 3.4
+
+Also: call analytics and billing screens, CRM integrations (KeyCRM, NetHunt, SalesDrive), Telegram notifications, Google OAuth sign-in; code review and mentoring a junior developer.
 
 
 ---------------------------------------------------------------------
@@ -159,6 +176,17 @@ Location:   Dnipro, Ukraine
 Dates:      Sep 2017 – Jan 2021
 ---------------------------------------------------------------------
 Network administration, IT support, and automated data processing and reporting.
+
+
+---------------------------------------------------------------------
+Title:      Unity 3D Developer
+Company:    Indie
+Type:       Seasonal
+Location:   Dnipro, Ukraine
+Dates:      Sep 2016 – Feb 2017
+Skills:     Git
+---------------------------------------------------------------------
+(no description)
 
 
 =====================================================================
