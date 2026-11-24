@@ -18,7 +18,7 @@ measures:
     label: unit tests across the API and the app
   - value: "13"
     label: screens in the iOS app
-stack: [Expo, React Native, TypeScript, Hono, Drizzle, PostgreSQL, Better Auth]
+stack: [Expo, React Native, Expo Router, TypeScript, Hono, Drizzle, PostgreSQL, Better Auth]
 ---
 
 ## Context
@@ -31,14 +31,16 @@ At a machine you need your own settings: seat height, pin position, the cue that
 
 ## What I did
 
-- An Expo (React Native) client: body parts, exercise cards with photos and notes, search, and a notebook that opens with no connection.
-- A Hono API with Drizzle on PostgreSQL, Better Auth, and photos stored in S3-compatible storage as WebP with a thumbnail.
+- An Expo (React Native) client: body parts, exercise cards with photos and notes, search, and a notebook that opens with no connection. 13 screens on Expo Router, with the app behind a protected sign-in group.
+- A Hono API with Drizzle on PostgreSQL, Better Auth, and photos stored in Cloudflare R2 (S3-compatible) as WebP with a thumbnail.
+- Deployment: the API ships as a Docker image to Railway on every push, with Postgres beside it and migrations run on startup; the R2 bucket is private behind one-hour signed links; API errors go to Sentry. Testers run the app through Expo Go, and EAS preview builds are set up as the next step.
 - 43 unit tests: API suites against an in-memory Postgres, and the offline and upload logic tested through injected file and network ports.
 
 ## Decisions
 
 - **My own API instead of a backend-as-a-service.** I wanted to own and understand the whole path from screen to database, so the backend is Hono, Better Auth and Drizzle rather than Supabase or Firebase. That choice also gave me one typed contract and ownership checks in a single middleware.
-- **Types without codegen.** The API exports its route types and the app imports them type-only, so a change in a server response breaks the app's typecheck instead of a screen at runtime. There is no generated client to drift.
+- **Types without codegen.** The app calls the API through Hono's typed RPC client: the API exports its route types and the app imports them type-only, so a change in a server response breaks the app's typecheck instead of a screen at runtime. There is no generated client to drift.
+- **No global store.** Screen data comes through a small request hook (data, failure, retry), and one context holds the notebook and its offline copy. The server stays the source of truth: a failed save keeps the draft on screen until the user retries or cancels, and a 401 signs the user out even offline.
 - **Uploads that can be retried safely.** Every photo carries an idempotency key, backed by a unique index. If two attempts race, the loser deletes its own files and returns the winner's row, and a photo whose response was lost is never uploaded twice.
 - **Offline data that belongs to one person.** Photos are saved by ID, not by URL, so hourly re-signed storage links do not trigger re-downloads. Only the signed-in user can write to the offline copy, so a download that finishes after sign-out leaves nothing behind, and an expired session makes the notebook read-only instead of wiping it.
 - **Backups proven, not assumed.** Every night the database dump is restored into a clean Postgres and its row counts are compared. Photo files are deleted only after the database transaction commits.
