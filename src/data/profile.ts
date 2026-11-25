@@ -1,9 +1,9 @@
 export const profile = {
   name: 'Maksym Matsydulskas',
-  title: 'Senior Front-End Engineer · Lead',
+  title: 'Senior Full-Stack Engineer · Lead',
   focus: 'TypeScript',
   summary:
-    'Senior front-end engineer and lead, 5+ years across telecom, fintech and B2B SaaS. Led five apps for a fiber network operator: 0 to 884 unit tests, builds from 26 s to 4 s.',
+    'Senior full-stack engineer and lead, 5+ years across telecom, fintech and B2B SaaS. Led five apps for a fiber network operator: 0 to 884 unit tests, builds from 26 s to 4 s.',
   lead: 'Most recently front-end lead: I reviewed code, mentored two developers and owned the architecture. I refactor codebases without a feature freeze and build product UI end to end.',
   spec: [
     { label: 'Experience', value: '5+ yrs · since 2021' },
@@ -13,7 +13,7 @@ export const profile = {
     { label: 'Location', value: 'Ukraine · English B2' },
   ],
   status: 'Open to work',
-  contactNote: 'Looking for a senior or lead front-end role, full-time or contract. LinkedIn gets the fastest reply.',
+  contactNote: 'Looking for a senior or lead full-stack or front-end role, full-time or contract. LinkedIn gets the fastest reply.',
   email: 'slipmaks@gmail.com',
   linkedin: 'https://www.linkedin.com/in/maksym-matsydulskas',
   github: 'https://github.com/Slipmaks',

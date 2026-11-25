@@ -17,7 +17,7 @@ Both readers have to succeed on the same page. The scan layer must not hide the 
 
 ## Product Purpose
 
-This is the personal portfolio of Maksym Matsydulskas, a Senior Front-End Engineer and front-end lead (TypeScript), based in Ukraine and working remotely (UTC+2, UTC+3 in summer). The goal is to get hired. A full-time remote senior or lead front-end role comes first, and contract work is also welcome. Success is either of two outcomes, and both count. A recruiter downloads the CV to put into their hiring pipeline, which is why Download CV is the primary action on every contact group. Or a reader makes contact (LinkedIn replies fastest, then email or Telegram) to set up a conversation.
+This is the personal portfolio of Maksym Matsydulskas, a Senior Full-Stack Engineer and front-end lead (TypeScript), based in Ukraine and working remotely (UTC+2, UTC+3 in summer). The goal is to get hired. A full-time remote senior or lead full-stack or front-end role comes first, and contract work is also welcome. Success is either of two outcomes, and both count. A recruiter downloads the CV to put into their hiring pipeline, which is why Download CV is the primary action on every contact group. Or a reader makes contact (LinkedIn replies fastest, then email or Telegram) to set up a conversation.
 
 ## Positioning
 
@@ -45,7 +45,7 @@ He is a front-end lead who owns hard product UI from start to finish and leaves 
 
 ## Brand Commitments
 
-- Name and title: "Maksym Matsydulskas — Senior Front-End Engineer · Lead | TypeScript".
+- Name and title: "Maksym Matsydulskas — Senior Full-Stack Engineer · Lead | TypeScript".
 - Voice: plain, factual, first person when it needs to be, and led by numbers. Claims are specific and measured (counts, sizes, before and after), never adjectives.
 - Status line: "Open to work".
 
