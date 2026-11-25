@@ -1,13 +1,13 @@
 =====================================================================
 HEADLINE  (limit 220 chars)
 =====================================================================
-Senior Front-End Engineer | TypeScript, Vue 3, Nuxt, React, Next.js, Node.js | Telecom & B2B SaaS | Architecture, Testing, Performance
+Senior Full-Stack Engineer · Lead | TypeScript, Vue 3, Nuxt, React, Next.js, Node.js | Telecom & B2B SaaS | Architecture, Testing, Performance
 
 
 =====================================================================
 ABOUT  (limit 2,600 chars)
 =====================================================================
-Senior front-end engineer and front-end lead with 5+ years across telecom, fintech and B2B SaaS. I take codebases that are hard to change and make them easy to change, without stopping the team from shipping features.
+Senior full-stack engineer and front-end lead with 5+ years across telecom, fintech and B2B SaaS. I take codebases that are hard to change and make them easy to change, without stopping the team from shipping features.
 
 Most recently I led the front end across five apps of an enterprise fiber network platform. I reviewed code, mentored two developers, owned the architecture and worked directly with the client.
 
@@ -28,7 +28,7 @@ I also ship full-stack products end to end. WeekFit, my offline-first iOS app in
 
 Stack: TypeScript, Vue 3, Nuxt, React, Next.js, Pinia, Tailwind CSS, Vitest, Playwright, Node.js, Hono, PostgreSQL, Drizzle, Docker, GitHub Actions, GitLab CI.
 
-Looking for a senior or lead front-end role, remote, full-time or contract.
+Looking for a senior or lead full-stack or front-end role, remote, full-time or contract.
 
 
 =====================================================================
